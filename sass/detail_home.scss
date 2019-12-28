@@ -1,0 +1,135 @@
+@import "templates/main";
+
+.central-title{
+   width: 100%;
+   color: $color-base;
+   border-top: 1px solid rgb(230,230,230);
+   border-bottom: 1px solid rgb(230,230,230);
+   margin: 3em 0;
+   padding: 1em 0;
+   text-align: center;
+   .title{ font-size: 3em; }
+}
+
+.content-slider{
+   width: 80%;
+   margin: 5em auto 5em auto;
+   @include flex();
+   .slider{
+      width: 50%;
+      position: relative;
+      .images{
+         width: 100%;
+         overflow: hidden;
+         @include flex();
+         *{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex: 0 0 auto;
+         }
+      }
+      .icons{
+         width: max-content;
+         margin: 0 auto;
+         position: absolute;
+         bottom: 4%;
+         left: 0;
+         right: 0;
+         @include flex;
+         .circle{
+            width: 13px;
+            height: 13px;
+            margin: 0 2px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            &:hover{ background: #fff; }
+         }
+      }
+   }
+   .text{
+      width: 50%;
+      padding: 0 2em;
+      .title-text{
+         font-size: 2em;
+         padding-bottom: 1em;
+      }
+      .desc-text{
+         font-size: 1.1em;
+         line-height: 1.5em;
+         padding-bottom: 2em;
+      }
+   }
+}
+
+.content-tools{
+   width: 80%;
+   margin: 0 auto 3em auto;
+   @include flex(row,space-around){ flex-flow: row wrap; };
+   .card-tool{
+      width: 220px;
+      margin: 5px;
+      padding: 1em;
+      //border: 1px solid rgb(230,230,230);
+      box-shadow: 0 5px 15px rgb(230,230,230),
+                  0 -1px 2px rgb(230,230,230);
+      font-size: 1.1em;
+      text-align: center;
+      .icon{
+         font-size: 2em;
+         height: 120px;
+         color: $color-base;
+         @include flex(row,center,center);
+      }
+   }
+}
+
+.content-images{
+   width: 80%;
+   margin: 5em auto;
+   @include flex(row,center){ flex-flow: row wrap; };
+   .image{
+      line-height: 0;
+      position: relative;
+      margin: 5px;
+      overflow: hidden;
+      .img{ width: 200px; }
+      .icon{
+         color: #fff;
+         position: absolute;
+         width: max-content;
+         height: max-content;
+         margin: auto;
+         top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         font-size: 2em;
+         z-index: 2;
+         cursor: pointer;
+         visibility: hidden;
+         opacity: 0;
+         transition: .3s;
+      }
+      &:after{
+         content: "";
+         width: 100%;
+         height: 100%;
+         position: absolute;
+         top: 0;
+         left: 0;
+         background: rgba(#000,.6);
+         z-index: 1;
+         opacity: 0;
+         transition: .3s;
+      }
+      &:hover{
+         &:after{ opacity: 1; }
+         .icon{ opacity: 1; visibility: visible; }
+      }
+   }
+   
+}
+
+@import "templates/footer";

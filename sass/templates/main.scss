@@ -1,0 +1,22 @@
+@import "./reset";
+@import "./variables";
+@import "./header";
+@import "./nav";
+
+.app-content{
+}
+
+.btn-global{
+   padding: 0 .8em;
+   line-height: 2.5em; 
+   background: $color-base;
+   color: #fff;
+   font-size: 1.1em; 
+   transition: .3s;
+   &:hover{
+      background: darken($color-base,5);
+   }
+   &:active{
+      transform: scale(.95);
+   }
+}

@@ -1,0 +1,68 @@
+@import "https://fonts.google.com/specimen/Muli";
+
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Muli', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+
+button{ cursor: pointer; }
+
+input,button,textarea{
+   background: none;
+   border: none;
+   outline: none;
+}
+
+li{
+   list-style: none;
+}
+
+a{
+   cursor: pointer;
+   display: inline-block;
+   text-decoration: none;
+}
+
+body {
+  animation: show .3s 1 ease;
+}
+@keyframes show {
+  from {
+    opacity: 0.4;
+  }
+}
+
+body::-webkit-scrollbar {
+    background:rgb(240,240,240);
+    width: 8px;
+    transition: .3s;
+    &:hover {
+      background: white;
+    }
+    /*@include responsive($width-mobile){
+      display: none;
+    }*/
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgb(222, 13, 107);
+    border-radius: 5px;
+    transition: .3s;
+}
+
+body::-webkit-scrollbar-thumb:vertical:hover {
+    background: rgb(230,60,90);
+}

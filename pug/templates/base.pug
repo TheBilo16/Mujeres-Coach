@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+html(lang="en")
+   head
+      meta(charset="UTF-8")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      meta(http-equiv="X-UA-Compatible", content="ie=edge")
+      block title
+      block css
+   body
+      block header-content
+         include header
+         include nav
+      section.app-content
+         block content
+      block footer-content
+         include footer
+      block floating-content
+      block js
+         script(src="../js/icons.js")

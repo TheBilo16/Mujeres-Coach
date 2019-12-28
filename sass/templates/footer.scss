@@ -1,0 +1,16 @@
+.app-footer{
+   background: rgb(240,240,240);
+   font-size: 1.1em;
+   .content{
+      padding: 2em 4em;
+      @include flex;
+      *{
+         padding: 1em;
+      }
+   }
+   .copyright{
+      text-align: center;
+      padding: 1em;
+      background: darken(rgb(240,240,240),10);
+   }
+}
