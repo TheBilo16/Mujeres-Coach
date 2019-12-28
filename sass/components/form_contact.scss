@@ -1,0 +1,52 @@
+.contact-form {
+  @include flex(column,none,stretch);
+  margin: 20px auto;
+  width: 500px;
+  max-width: 90%;
+  background: white;
+  box-shadow: 0 3px 5px rgba(100,100,100,.3);
+  padding: 20px 30px;
+  border-radius: 5px;
+
+  .row {
+    @include flex(column);
+    margin-bottom: 30px;
+    .name-field {
+      font-size: .7em;
+      color: silver;
+      padding-left: 10px;
+    }
+    .text-field {
+      background: white;
+      width: 100%;
+      border-radius: 5px;
+      padding: 15px 10px;
+      border:1px solid rgba(100,100,100,.1);
+      margin: 5px 0;
+      font-size:1em;
+      transition: .3s;
+      &:focus {
+        border-color: rgba(230,60,90,.5);
+        color:rgba(230,60,90,1);
+      }
+      @include responsive(600px) {
+        font-size: .9em;
+      }
+    }
+    .button-send {
+      background: rgb(230,60,90);
+      color: white;
+      width: 100%;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 1em;
+      @include responsive(600px) {
+        font-size: .9em;
+      }
+    }
+  }
+
+  .control-send {
+
+  }
+}

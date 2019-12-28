@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Homepage</title>
     <link rel="stylesheet" href="../css/detail_home.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </head>
   <body>
     <header class="app-title">
@@ -21,9 +23,11 @@
         <li class="option"><a class="link" href="">Option-2</a>
           <ul class="sub-list">
             <li class="sub-option"><a class="link sub" href="">Sub-Option-1</a></li>
-            <li class="sub-option"><a class="link sub" href="">Sub-Option-2</a></li>
+            <li class="sub-option"><a class="link sub" href="">Sub-Option-2      </a></li>
           </ul>
         </li>
+        <li class="option"><a class="link" href="">Nosotros</a></li>
+        <li class="option"><a class="link" href="">Contacto</a></li>
       </ul>
     </nav>
     <section class="app-content">
@@ -42,9 +46,9 @@
         </div>
       </div>
       <div class="central-title">
-        <p class="title">Services</p>
+        <p class="title" data-aos="fade-up">Services</p>
       </div>
-      <div class="content-tools">
+      <div class="content-tools" data-aos="fade-up">
         <div class="card-tool">
           <div class="icon"><i class="fa fa-home"></i></div>
           <div class="desc">
@@ -71,9 +75,9 @@
         </div>
       </div>
       <div class="central-title">
-        <p class="title">Images</p>
+        <p class="title" data-aos="fade-up">Images</p>
       </div>
-      <div class="content-images">
+      <div class="content-images" data-aos="fade-up">
         <div class="image"><img class="img" src="https://cdn.pixabay.com/photo/2016/02/18/22/41/girl-1208307_960_720.jpg" alt=""/>
           <div class="icon"><i class="fa fa-image"></i></div>
         </div>
@@ -116,5 +120,7 @@
       </div>
     </footer>
     <script src="../js/icons.js"></script>
+    <script>
+       AOS.init()</script>
   </body>
 </html>

@@ -1,0 +1,30 @@
+extends ../templates/base
+
+block title
+   title Contacto
+block css
+   link(rel="stylesheet", href="../css/detail_contact.css")
+block content
+  
+  .panel-contact 
+    .message 
+      .container-message
+        h1.title-contact(data-aos="fade-up") Contáctanos 
+        p.message-contact(data-aos="fade-up",data-aos-duration="1000")
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    .container-form
+      form.contact-form(action=".")
+        .row
+          input.text-field(type="text",name="name",placeholder="nombre completo...",spellcheck="false",required)
+          label.name-field nombre
+        .row
+          input.text-field(type="email",name="email",placeholder="correo electrónico...",spellcheck="false",required)
+          label.name-field correo electrónico
+        .row
+          input.text-field(type="number",name="phone",placeholder="numero telefónico o celular...",spellcheck="false",required)
+          label.name-field numero telefonico
+        .row
+          textarea.text-field.text-message(name="message",placeholder="escribenos un mensaje...",rows="5",spellcheck="false",required)
+          label.name-field mensaje
+        .row
+          input.button-send(type="submit")

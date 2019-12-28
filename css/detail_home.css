@@ -20,7 +20,10 @@ button {
 input, button, textarea {
   background: none;
   border: none;
-  outline: none; }
+  outline: none;
+  resize: none; }
+  input[type="number"]::-webkit-inner-spin-button, button[type="number"]::-webkit-inner-spin-button, textarea[type="number"]::-webkit-inner-spin-button {
+    display: none; }
 
 li {
   list-style: none; }

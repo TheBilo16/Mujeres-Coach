@@ -24,6 +24,8 @@ input,button,textarea{
    background: none;
    border: none;
    outline: none;
+   resize: none;
+   &[type="number"]::-webkit-inner-spin-button{ display: none; }
 }
 
 li{
