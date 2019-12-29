@@ -1,0 +1,25 @@
+.panel-contact 
+    .header-title 
+      h1.title-panel Hola! Contactenos ahora
+      p.message-panel Para poder brindarte nuestros servicios necesitamos que nos brindes tu información
+    .container-form
+      form.contact-form(action=".")
+        .row
+          input.text-field(type="text",name="name",placeholder="nombre completo...",spellcheck="false",required)
+        .row
+          input.text-field(type="email",name="email",placeholder="correo electrónico...",spellcheck="false",required)
+        .row
+          input.text-field(type="number",name="phone",placeholder="numero telefónico...",spellcheck="false",required)
+        .row.row-message
+          textarea.text-field.text-message(name="message",placeholder="escribenos un mensaje...",rows="5",spellcheck="false",required)
+        .row.row-button
+          input.btn-global.button-send(type="submit")
+    .container-politics
+      h1.title-politics Politicas de privacidad:
+      ul.list-politics
+        li.item 
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        li.item 
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        li.item 
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

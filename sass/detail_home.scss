@@ -7,9 +7,9 @@
    margin: 3em 0;
    padding: 1em 0;
    text-align: center;
-   .title{ 
+   .title{
       @include text-gradient($text-g);
-      font-size: 3em; 
+      font-size: 3em;
    }
 }
 
@@ -171,7 +171,7 @@
          .icon{ opacity: 1; visibility: visible; }
       }
    }
-   
+
 }
 
 @import "templates/footer";
