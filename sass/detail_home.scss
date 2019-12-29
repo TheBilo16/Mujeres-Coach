@@ -2,13 +2,15 @@
 
 .central-title{
    width: 100%;
-   color: $color-base;
    border-top: 1px solid rgb(230,230,230);
    border-bottom: 1px solid rgb(230,230,230);
    margin: 3em 0;
    padding: 1em 0;
    text-align: center;
-   .title{ font-size: 3em; }
+   .title{ 
+      @include text-gradient($text-g);
+      font-size: 3em; 
+   }
 }
 
 .content-slider{
@@ -54,11 +56,13 @@
       .title-text{
          font-size: 2em;
          padding-bottom: 1em;
+         color: $color-base;
       }
       .desc-text{
          font-size: 1.1em;
          line-height: 1.5em;
          padding-bottom: 2em;
+         color: lighten(#000,45);
       }
    }
 }
@@ -70,17 +74,55 @@
    .card-tool{
       width: 220px;
       margin: 5px;
-      padding: 1em;
+      padding: 1.5em 2em;
+      border-radius: 1.5em;
       //border: 1px solid rgb(230,230,230);
       box-shadow: 0 5px 15px rgb(230,230,230),
                   0 -1px 2px rgb(230,230,230);
-      font-size: 1.1em;
+      font-size: 0.9em;
       text-align: center;
       .icon{
-         font-size: 2em;
+         font-size: 3em;
          height: 120px;
          color: $color-base;
          @include flex(row,center,center);
+         &:hover{ transform: scale(1.1); cursor: pointer; }
+      }
+      .desc{
+         color: lighten(#000,50);
+      }
+   }
+}
+
+.content-profile{
+   width: 80%;
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   .image{
+      padding-top: 1.5em;
+      .img{
+         width: 100%;
+         height: auto;
+         margin: 0 auto;
+         border-radius: 0 0 50% 50%;
+         filter:brightness(60%);
+         transition: .3s;
+         &:hover{ filter:brightness(100%) }
+      }
+   }
+
+   .desc{
+      padding: 0 2em;
+      font-size: 1.1em;
+      .title{
+         color: $color-base;
+         font-size: 2em;
+         padding-bottom: 1em;
+      }
+      .text{
+         line-height: 1.7em;
+         color: lighten(#000,50);
       }
    }
 }

@@ -1,4 +1,4 @@
-@import "./reset";
+@import "./reset" ;
 @import "./variables";
 @import "./header";
 @import "./nav";
@@ -13,7 +13,11 @@
    color: #fff;
    font-size: 1.1em; 
    transition: .3s;
+   &.minun{
+      font-size: 0.8em;
+   }
    &:hover{
+      border-radius: 1.5em;
       background: darken($color-base,5);
    }
    &:active{

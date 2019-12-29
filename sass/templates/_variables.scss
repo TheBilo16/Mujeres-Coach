@@ -1,6 +1,8 @@
 @import "./mixins.scss";
 
-$color-base : #e63c5a;
+$color-base : rgb(222, 13, 107);
+$color-base-2 : #831cf6;
+$text-g : linear-gradient(top,$color-base,$color-base,$color-base-2);
 
 //Nav colors
 $nav-option-color : #000;
