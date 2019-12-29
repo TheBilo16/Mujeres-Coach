@@ -1,2 +1,69 @@
 @import "templates/main";
+
+.container-about {
+  margin-top:3em;
+  .panel-title {
+    .title {
+
+    }
+  }
+  .panel-detail {
+    .card-panel {
+      margin: auto;
+      width: 600px;
+      position: relative;
+      text-align: center;
+      .image-about-panel {
+        width: 120px;
+        height: 120px;
+        border-radius: 100%;
+        object-fit: cover;
+      }
+      .title-card {
+        font-size: 2em;
+        color: rgb(40,40,40);
+      }
+      .description {
+        font-size: 1em;
+        line-height: 25px;
+        color: rgb(80,80,80);
+        padding: 20px 0;
+      }
+    }
+  }
+}
+
+.container-cards {
+  @include flex(row,space-around);
+  margin: 1.5in auto;
+  width: 80%;
+  .card {
+    width: 200px;
+    &:nth-child(odd){
+      transform: translateY(-50px);
+    }
+    @include flex(column,none,center);
+    .card-image {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 100%;
+      margin: 10px 0;
+      padding: 4px;
+    }
+    .detail-content {
+      text-align: center;
+      .dark {
+        display: block;
+        margin: 10px 0;
+        @include text-gradient($text-g);
+
+      }
+      .light {
+        font-size: .9em;
+        color: rgb(80,80,80);
+      }
+    }
+  }
+}
 @import "templates/footer";
