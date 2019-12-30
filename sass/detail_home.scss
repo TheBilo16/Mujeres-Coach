@@ -174,7 +174,13 @@
       }      
    }
    .desc{
-      
+      padding: 3em 0 0 0;
+      text-align: center;
+      .message{
+         width: 40%;
+         margin: 0 auto;
+         color: lighten(#000, 45);
+      }
    }
 }
 

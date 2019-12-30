@@ -1,20 +1,23 @@
 aside.panel-contact(data-aos="zoom-out")
+  .title
+    p.t Contactanos
+  .content
     .container-form
       .header-title 
         p.message-panel Para poder brindarte nuestros servicios necesitamos que nos brindes tu información
       form.contact-form(action=".")
         .row
-          input.text-field(type="email",name="email",placeholder="correo electrónico...",spellcheck="false",required)
+          input.text-field(type="text",autocomplete="off",name="name",placeholder="Nombre completo",spellcheck="false",required)
         .row
-          input.text-field(type="number",name="phone",placeholder="numero telefónico...",spellcheck="false",required)
+          input.text-field(type="email",autocomplete="off",name="email",placeholder="Correo electrónico",spellcheck="false",required)
         .row
-          input.text-field(type="text",name="name",placeholder="nombre completo...",spellcheck="false",required)
+          input.text-field(type="number",autocomplete="off",name="phone",placeholder="Numero telefónico",spellcheck="false",required)
         .row.row-message
-          textarea.text-field.text-message(name="message",placeholder="escribenos un mensaje...",rows="5",spellcheck="false",required)
+          textarea.text-field.text-message(name="message",placeholder="Escribenos un mensaje",rows="5",spellcheck="false",required)
         .row.row-button
           input.btn-global.button-send(type="submit")
     .container-politics
-      h1.title-politics Politicas de privacidad:
+      p.title-politics Politicas de privacidad:
       ul.list-politics
         li.item 
           | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

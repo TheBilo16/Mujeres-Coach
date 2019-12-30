@@ -1,7 +1,16 @@
 @import "templates/main";
 
+.parallax-image{
+  background: linear-gradient(bottom,#000,transparent), url("https://cdn.pixabay.com/photo/2019/12/03/07/34/gift-4669449_960_720.jpg") no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+}
+
 .container-about {
-  margin-top:3em;
+  margin-top: 5em;
+
   .panel-detail {
     .card-panel {
       margin: auto;
@@ -29,39 +38,40 @@
       }
     }
   }
-}
-
-.container-cards {
-  @include flex(row,space-around);
-  margin: 1.5in auto;
-  width: 80%;
-  .card {
-    width: 200px;
-    &:nth-child(odd){
-      transform: translateY(-50px);
-    }
-    @include flex(column,none,center);
-    .card-image {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 100%;
-      margin: 10px 0;
-      padding: 4px;
-    }
-    .detail-content {
-      text-align: center;
-      .dark {
-        display: block;
-        margin: 10px 0;
-        @include text-gradient($text-g);
+  .container-cards {
+    @include flex(row,space-around);
+    margin: 8em auto;
+    width: 80%;
+    .card {
+      width: 200px;
+      &:nth-child(odd){
+        transform: translateY(-50px);
       }
-      .light {
-        font-size: .9em;
-        color: rgb(80,80,80);
+      @include flex(column,none,center);
+      .card-image {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 100%;
+        margin: 10px 0;
+        padding: 4px;
+      }
+      .detail-content {
+        text-align: center;
+        .dark {
+          display: block;
+          margin: 10px 0;
+          @include text-gradient($text-g);
+        }
+        .light {
+          font-size: .9em;
+          color: rgb(80,80,80);
+        }
       }
     }
   }
+
 }
+
 
 @import "templates/footer";

@@ -1,71 +1,65 @@
-
-
 .panel-contact {
-  @include flex(row,space-between);
-  flex-wrap: wrap;
-  margin: 40px auto;
-  width:80%;
+  $m-p : 4em;
+  width:100%;
+  margin: $m-p auto;
   padding: 20px;
+  border-top: 1px solid rgb(230,230,230);
 
-  @include responsive(1200px) {
-    width: 90%;
-  }
-
-  > * {
-    width: 45%;
-    @include responsive(900px) {
-      width: 100%;
+  .title{
+    width: 80%;
+    margin: 0 auto;
+    padding: $m-p .3em 1.5em .3em;
+    .t{
+      font-size: 2.2em;
+      @include text-gradient($text-g);
     }
   }
-  .container-form {
-    .header-title {
-      padding: 0 5px;
+
+  .content{
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .container-form {
       width: 100%;
-      > * {
-        @include responsive(700px) {
-          width: 70%;
-        }
+      .header-title {
+        width: 100%;
+        padding: 0 5px;
 
-        @include responsive(600px) {
-          width: 100%;
+        .title-panel {
+          color: $color-base;
+          margin-bottom: 20px;
         }
-
-      }
-      .title-panel {
-        color: $color-base;
-        margin-bottom: 20px;
-      }
-      .message-panel {
-        font-size: .9em;
-        color: gray;
-        line-height: 20px;
-        margin-bottom: 20px;
-      }
-    }
-    @import "../components/form_contact";
-  }
-  .container-politics {
-      @include responsive(600px) {
-        text-align: center;
-        margin: 40px auto;
-      }
-      .title-politics {
-        color: rgb(40,40,40);
-        margin-bottom: 20px;
-        font-size: 1.5em;
-      }
-      .list-politics {
-        .item {
-          color: lighten(#000,45);
-          list-style-type: disc;
+        .message-panel {
+          font-size: .9em;
+          color: gray;
           line-height: 20px;
-          font-size: .85em;
-          padding: 5px 0;
-          @include responsive(600px) {
-            list-style-type: none;
+          margin-bottom: 20px;
+        }
+      }
+      @import "../components/form_contact";
+    }
+
+    .container-politics {
+        width: 80%;
+        margin: 0 auto;
+        .title-politics {
+          color: #1f1f1f;
+          margin-bottom: 20px;
+          font-size: 1.5em;
+        } 
+        .list-politics {
+          .item {
+            color: lighten(#000,45);
+            list-style-type: disc;
+            line-height: 20px;
+            font-size: .85em;
+            padding: 5px 0;
+            margin: 0 0 0 1em;
           }
         }
-      }
+    }    
   }
 
 }
