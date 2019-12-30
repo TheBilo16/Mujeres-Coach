@@ -374,7 +374,10 @@ body::-webkit-scrollbar-thumb:vertical:hover {
         display: flex;
         -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
-        flex: 0 0 auto; }
+        flex: 0 0 auto;
+        -webkit-transition: .6s;
+        -o-transition: .6s;
+        transition: .6s; }
     .content-slider .slider .icons {
       width: -webkit-max-content;
       width: -moz-max-content;
@@ -402,9 +405,8 @@ body::-webkit-scrollbar-thumb:vertical:hover {
         height: 13px;
         margin: 0 2px;
         border: 2px solid #fff;
-        border-radius: 50%;
-        cursor: pointer; }
-        .content-slider .slider .icons .circle:hover {
+        border-radius: 50%; }
+        .content-slider .slider .icons .circle.active {
           background: #fff; }
   .content-slider .text {
     width: 50%;

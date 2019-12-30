@@ -29,6 +29,7 @@
             height: auto;
             display: flex;
             flex: 0 0 auto;
+            transition: .6s;
          }
       }
       .icons{
@@ -45,8 +46,7 @@
             margin: 0 2px;
             border: 2px solid #fff;
             border-radius: 50%;
-            cursor: pointer;
-            &:hover{ background: #fff; }
+            &.active{ background: #fff; }
          }
       }
    }
