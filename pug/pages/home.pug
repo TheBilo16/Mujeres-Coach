@@ -9,8 +9,8 @@ block content
       .slider
          .images
             img(src="https://cdn.pixabay.com/photo/2015/09/02/13/18/person-918986_960_720.jpg", alt="")
-            img(src="https://cdn.pixabay.com/photo/2015/09/02/13/18/person-918986_960_720.jpg", alt="")
-            img(src="https://cdn.pixabay.com/photo/2015/09/02/13/18/person-918986_960_720.jpg", alt="")
+            img(src="https://cdn.pixabay.com/photo/2019/12/19/22/48/wolf-4707294_960_720.jpg", alt="")
+            img(src="https://cdn.pixabay.com/photo/2018/03/27/21/57/winter-3267564_960_720.jpg", alt="")
          .icons
             .circle.active
             .circle
@@ -53,10 +53,11 @@ block content
    .central-title(data-aos="fade-up")
       p.title Images
    .content-images(data-aos="fade-up")
-      -for(var i = 0;i < 8; i++)
-         .image
-            img(src="https://cdn.pixabay.com/photo/2016/02/18/22/41/girl-1208307_960_720.jpg", alt="").img
-            .icon
-               i.fa.fa-image
+      .content
+         -for(var i = 0;i < 8; i++)
+            .image
+               img(src="https://cdn.pixabay.com/photo/2016/02/18/22/41/girl-1208307_960_720.jpg", alt="").img
+               .icon
+                  i.fa.fa-image
 append js
    script(src="../js/home.js")
