@@ -17,31 +17,31 @@
       width: 100%;
     }
   }
-  .header-title {
-    width: 100%;
-    padding: 20px 0 2em;
-    > * {
-      width: 50%;
-      @include responsive(700px) {
-        width: 70%;
-      }
-
-      @include responsive(600px) {
-        width: 100%;
-      }
-
-    }
-    .title-panel {
-      padding: 10px 0;
-      color: $color-base;
-    }
-    .message-panel {
-      font-size: .9em;
-      color: gray;
-      line-height: 20px;
-    }
-  }
   .container-form {
+    .header-title {
+      padding: 0 5px;
+      width: 100%;
+      > * {
+        @include responsive(700px) {
+          width: 70%;
+        }
+
+        @include responsive(600px) {
+          width: 100%;
+        }
+
+      }
+      .title-panel {
+        color: $color-base;
+        margin-bottom: 20px;
+      }
+      .message-panel {
+        font-size: .9em;
+        color: gray;
+        line-height: 20px;
+        margin-bottom: 20px;
+      }
+    }
     @import "../components/form_contact";
   }
   .container-politics {
@@ -52,14 +52,15 @@
       .title-politics {
         color: rgb(40,40,40);
         margin-bottom: 20px;
+        font-size: 1.5em;
       }
       .list-politics {
         .item {
-          color: rgb(80,80,80);
+          color: lighten(#000,45);
           list-style-type: disc;
           line-height: 20px;
-          font-size: .9em;
-          padding: 10px 0;
+          font-size: .85em;
+          padding: 5px 0;
           @include responsive(600px) {
             list-style-type: none;
           }

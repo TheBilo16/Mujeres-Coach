@@ -187,24 +187,23 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     @media screen and (max-width: 900px) {
       .panel-contact > * {
         width: 100%; } }
-  .panel-contact .header-title {
-    width: 100%;
-    padding: 20px 0 2em; }
-    .panel-contact .header-title > * {
-      width: 50%; }
-      @media screen and (max-width: 700px) {
-        .panel-contact .header-title > * {
-          width: 70%; } }
-      @media screen and (max-width: 600px) {
-        .panel-contact .header-title > * {
-          width: 100%; } }
-    .panel-contact .header-title .title-panel {
-      padding: 10px 0;
-      color: #de0d6b; }
-    .panel-contact .header-title .message-panel {
+  .panel-contact .container-form .header-title {
+    padding: 0 5px;
+    width: 100%; }
+    @media screen and (max-width: 700px) {
+      .panel-contact .container-form .header-title > * {
+        width: 70%; } }
+    @media screen and (max-width: 600px) {
+      .panel-contact .container-form .header-title > * {
+        width: 100%; } }
+    .panel-contact .container-form .header-title .title-panel {
+      color: #de0d6b;
+      margin-bottom: 20px; }
+    .panel-contact .container-form .header-title .message-panel {
       font-size: .9em;
       color: gray;
-      line-height: 20px; }
+      line-height: 20px;
+      margin-bottom: 20px; }
   .panel-contact .container-form .contact-form {
     max-width: 100%;
     background: white;
@@ -230,28 +229,20 @@ body::-webkit-scrollbar-thumb:vertical:hover {
         @media screen and (max-width: 600px) {
           .panel-contact .container-form .contact-form .row.row-message {
             grid-column: auto; } }
-      .panel-contact .container-form .contact-form .row .name-field {
-        font-size: .7em;
-        color: silver;
-        padding-left: 10px;
-        text-transform: uppercase; }
       .panel-contact .container-form .contact-form .row .text-field {
         background: white;
         width: 100%;
         border-radius: 5px;
-        padding: 15px 10px;
+        padding: 10px;
         border: 1px solid rgba(100, 100, 100, 0.15);
-        margin: 15px 0;
-        font-size: .9em;
+        margin-bottom: 10px;
+        font-size: .85em;
         -webkit-transition: .3s;
         -o-transition: .3s;
         transition: .3s; }
         .panel-contact .container-form .contact-form .row .text-field:focus {
           border-color: rgba(230, 60, 90, 0.5);
           color: #e63c5a; }
-        @media screen and (max-width: 600px) {
-          .panel-contact .container-form .contact-form .row .text-field {
-            font-size: .9em; } }
       .panel-contact .container-form .contact-form .row .validity-form {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -274,24 +265,22 @@ body::-webkit-scrollbar-thumb:vertical:hover {
         border-radius: 5px;
         margin-left: auto;
         padding: 0 1in;
-        font-size: 1em;
+        font-size: .9em;
         width: 100%; }
-        @media screen and (max-width: 600px) {
-          .panel-contact .container-form .contact-form .row .button-send {
-            font-size: .9em; } }
   @media screen and (max-width: 600px) {
     .panel-contact .container-politics {
       text-align: center;
       margin: 40px auto; } }
   .panel-contact .container-politics .title-politics {
     color: #282828;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    font-size: 1.5em; }
   .panel-contact .container-politics .list-politics .item {
-    color: #505050;
+    color: #737373;
     list-style-type: disc;
     line-height: 20px;
-    font-size: .9em;
-    padding: 10px 0; }
+    font-size: .85em;
+    padding: 5px 0; }
     @media screen and (max-width: 600px) {
       .panel-contact .container-politics .list-politics .item {
         list-style-type: none; } }
