@@ -1,0 +1,25 @@
+.btn-contact{
+   width: 50px;
+   height: 50px;
+   margin: auto;
+   border-radius: 50%;
+   position: fixed;
+   top: 50%;
+   bottom: 50%;
+   right: 1%;
+   background: $color-base;
+   @include flex(row,center,center);
+   font-size: 1.2em;
+   transition: .3s;
+   box-shadow: 0 10px 10px rgb(220,220,220);
+   .icon{
+      color: #fff;
+      cursor: pointer;
+      &:active{
+         transform: scale(.95);
+      }
+   }
+   &.hide{
+      right: -100%;
+   }
+}

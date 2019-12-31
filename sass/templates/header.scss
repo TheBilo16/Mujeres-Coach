@@ -9,13 +9,4 @@
       text-align: center;
       @include text-gradient($text-g);
    }
-   .logo{
-      position: absolute;
-      z-index: 100;
-      top: 35%;
-      .img-logo{
-         width: 125px;
-         height: auto;
-      }
-   }
 }

@@ -14,18 +14,20 @@
       <div class="title">
         <p>Mujeres Coach</p>
       </div>
-      <div class="logo"><img class="img-logo" src="../assets/icon.png" alt=""/></div>
     </header>
     <nav class="app-menu">
       <ul class="list">
         <li class="option"><a class="link" href="home.html">Home</a></li>
-        <li class="option"><a class="link" href="about.html">Sobre Nosotros</a></li>
-        <li class="option"><a class="link" href="">Option-2</a>
-          <ul class="sub-list">
-            <li class="sub-option"><a class="link sub" href="">Sub-Option-1</a></li>
-            <li class="sub-option"><a class="link sub" href="">Sub-Option-2      </a></li>
-          </ul>
-        </li>
+        <li class="option"><a class="link" href="about.html">Nosotros</a></li>
+        <li class="option"><a class="link" href="coach.html">Coaching</a></li>
+        <li class="option"><a class="link" href="home.html#services">Servicios</a></li>
+        <!--li.option
+        a(href="").link 
+           | Servicios
+           span: i.fa.fa-chevron-down
+        ul.sub-list
+           li.sub-option: a(href="home.html").link.sub Lorem, ipsum dolor.    
+        -->
       </ul>
     </nav>
     <section class="app-content">
@@ -40,9 +42,10 @@
         </div>
         <div class="text" data-aos="fade-left">
           <p class="title-text">Lorem ipsum dolor sit.</p>
-          <p class="desc-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, quasi sint molestiae explicabo ratione facere accusantium tempore quo corporis, hic quae quidem ab eos nisi. Quis rerum dolores necessitatibus nisi debitis minima facere, excepturi, enim doloremque perferendis porro, eveniet odio?</p><a class="btn-global" href="">Ver mas</a>
+          <p class="desc-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, quasi sint molestiae explicabo ratione facere accusantium tempore quo corporis, hic quae quidem ab eos nisi. Quis rerum dolores necessitatibus nisi debitis minima facere, excepturi, enim doloremque perferendis porro, eveniet odio?</p><a class="btn-global" href="coach.html">Ver mas</a>
         </div>
       </div>
+      <div id="services"></div>
       <div class="central-title" data-aos="fade-up">
         <p class="title">Services</p>
       </div>
@@ -117,6 +120,7 @@
         </div>
       </div>
     </section>
+    <div id="contact"></div>
     <aside class="panel-contact" data-aos="zoom-out">
       <div class="title">
         <p class="t">Contactanos</p>
@@ -157,12 +161,12 @@
         </div>
       </div>
     </aside>
-    <footer class="app-footer" data-aos="fade-up">
+    <footer class="app-footer">
       <div class="content">
-        <div class="column">
+        <div class="column" data-aos="fade-up">
           <p class="title">Lorem ipsum dolor sit.</p><a class="link" href="">Mujeres Empoderadas</a><a class="link" href="">Sobre Mi</a>
         </div>
-        <div class="column">
+        <div class="column" data-aos="fade-up">
           <p class="title">Siguenos en : </p><a class="link" href="">Facebook</a><a class="link" href="">Twitter</a><a class="link" href="">Instagram</a>
         </div>
       </div>
@@ -170,7 +174,9 @@
         <p>(2019) Derechos Reservador a M&D DADA</p>
       </div>
     </footer>
+    <div class="btn-contact"><a class="icon" href="#contact"><i class="fa fa-user-alt"></i></a></div>
     <script src="../js/icons.js"></script>
+    <script src="../js/all.js"></script>
     <script src="../js/home.js"></script>
     <script>
        AOS.init()</script>

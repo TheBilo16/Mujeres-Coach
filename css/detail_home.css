@@ -67,6 +67,45 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-thumb:vertical:hover {
   background: #e63c5a; }
 
+.btn-contact {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  border-radius: 50%;
+  position: fixed;
+  top: 50%;
+  bottom: 50%;
+  right: 1%;
+  background: #de0d6b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.2em;
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
+  -webkit-box-shadow: 0 10px 10px gainsboro;
+  box-shadow: 0 10px 10px gainsboro; }
+  .btn-contact .icon {
+    color: #fff;
+    cursor: pointer; }
+    .btn-contact .icon:active {
+      -webkit-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+      transform: scale(0.95); }
+  .btn-contact.hide {
+    right: -100%; }
+
 .app-title {
   width: 100%;
   padding: 1.3em 1em;
@@ -82,18 +121,11 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     background: linear-gradient(top, #de0d6b, #de0d6b, #831cf6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; }
-  .app-title .logo {
-    position: absolute;
-    z-index: 100;
-    top: 35%; }
-    .app-title .logo .img-logo {
-      width: 125px;
-      height: auto; }
 
 .app-menu {
   width: 100%;
   position: relative;
-  background: #fff;
+  background: #de0d6b;
   border-bottom: 1px solid #e6e6e6;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -136,7 +168,6 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       left: 0; }
   .app-menu > .list .option > .sub-list {
     position: absolute;
-    border: 1px solid #e6e6e6;
     border-bottom: none;
     -webkit-transition: .3s;
     -o-transition: .3s;
@@ -146,19 +177,34 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     left: -15px;
     z-index: 10; }
   .app-menu > .list .option .link {
-    background: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: #de0d6b;
     line-height: 2.5em;
     padding: 0 1em;
     font-size: 1.1em;
-    color: gray; }
+    color: #fff; }
+    .app-menu > .list .option .link span {
+      margin-left: 5px;
+      font-size: 0.8em; }
     .app-menu > .list .option .link:hover {
-      color: #de0d6b;
-      background: #e6e6e6; }
+      background: #f32b85; }
     .app-menu > .list .option .link.sub {
       width: -webkit-max-content;
       width: -moz-max-content;
       width: max-content;
-      border-bottom: 1px solid #e6e6e6; }
+      border-top: 1px solid #e6e6e6; }
 
 .panel-contact {
   width: 100%;
