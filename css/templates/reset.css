@@ -1,0 +1,68 @@
+@import "https://fonts.google.com/specimen/Muli";
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Muli', sans-serif; }
+
+html {
+  scroll-behavior: smooth; }
+
+body {
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden; }
+
+button {
+  cursor: pointer; }
+
+input, button, textarea {
+  background: none;
+  border: none;
+  outline: none;
+  resize: none; }
+  input[type="number"]::-webkit-inner-spin-button, button[type="number"]::-webkit-inner-spin-button, textarea[type="number"]::-webkit-inner-spin-button {
+    display: none; }
+
+li {
+  list-style: none; }
+
+a {
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none; }
+
+body {
+  -webkit-animation: show .3s 1 ease;
+  animation: show .3s 1 ease; }
+
+@-webkit-keyframes show {
+  from {
+    opacity: 0.4; } }
+
+@keyframes show {
+  from {
+    opacity: 0.4; } }
+
+body::-webkit-scrollbar {
+  background: #f0f0f0;
+  width: 8px;
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
+  /*@include responsive($width-mobile){
+      display: none;
+    }*/ }
+  body::-webkit-scrollbar:hover {
+    background: white; }
+
+body::-webkit-scrollbar-thumb {
+  background: #de0d6b;
+  border-radius: 5px;
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s; }
+
+body::-webkit-scrollbar-thumb:vertical:hover {
+  background: #e63c5a; }

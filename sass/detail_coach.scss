@@ -1,5 +1,11 @@
 @import "templates/main";
 
+.central-title{
+  padding-top: 1.5em;
+  font-size: 2em;
+  text-align: center;
+}
+
 .container-landing-main {
   width: 80%;
   margin: 5em auto;
@@ -59,7 +65,7 @@
       font-size: 1.8em;
     }
   }
-  .desc-text-great {
+  .desc-text-great { 
     font-size: 1.1em;
     line-height: 1.5em;
     color: lighten(#000,45);
@@ -71,14 +77,21 @@
 
 .cards-more-details {
   margin: auto;
-  width: 80%;
-  padding: 4em 0;
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  grid-gap: 2in;
-  > * {
-    width: 100%;
+  width: 100%;
+  padding: 3em 0 0 0;
+  border-top: 1px solid rgb(230,230,230);;
+
+  .container{
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2em;
+    justify-items: center;
+    > * {
+      width: 100%;
+    }
+    @import "components/card_simple";
   }
-  @import "components/card_simple";
 }
 @import "templates/footer";
