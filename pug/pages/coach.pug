@@ -1,4 +1,23 @@
 extends ../templates/base
-
+block title
+  title coach
 block css
    link(rel="stylesheet", href="../css/detail_coach.css")
+block content
+  .container-landing-main
+    .image
+      img(src="https://cdn.pixabay.com/photo/2018/03/27/21/57/winter-3267564_960_720.jpg",alt="image")
+    .text
+      p.title-text Lirem ipsum dolor sit.
+      p.desc-text Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, quasi sint molestiae explicabo ratione facere accusantium tempore quo corporis, hic quae quidem ab eos nisi. Quis rerum dolores necessitatibus nisi debitis minima facere, excepturi, enim doloremque perferendis porro, eveniet odio?
+      a(href="coach.html").btn-global Ver mas
+  .great-message
+    h1.title 
+      | Elit 
+      span.l-a Lorem 
+      | ipsum 
+      span.l-m dolor 
+      | sit.
+    p.desc-text-great Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, quasi sint molestiae explicabo ratione facere accusantium tempore quo corporis, hic quae quidem ab eos nisi. 
+  .cards-more-details
+    include ../components/card_simple

@@ -1,3 +1,84 @@
 @import "templates/main";
 
+.container-landing-main {
+  width: 80%;
+  margin: 5em auto;
+  @include flex();
+  .image,.text {
+    width: 50%;
+  }
+  .image {
+    img {
+      width: 100%;
+    }
+  }
+  .text {
+    padding: 0 2em;
+      .title-text{
+       font-size: 2em;
+       padding-bottom: 1em;
+       color: $color-base;
+       position: relative;
+     }
+    .desc-text{
+       font-size: 1.1em;
+       line-height: 1.5em;
+       padding-bottom: 2em;
+       color: lighten(#000,45);
+    }
+  }
+}
+
+.great-message {
+  width: 80%;
+  margin: 5em auto 3em;
+  text-align: center;
+  padding: 3em 0;
+  .title {
+    width: 40%;
+    margin: auto;
+    font-size: 2em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    color: rgb(40,40,40);
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      width: 100px;
+      background: black;
+      bottom: 0;
+      left: 50%;
+      margin-left: -50px;
+    }
+    .l-a {
+      font-size: 1.4em;
+    }
+    .l-m {
+      font-size: 1.8em;
+    }
+  }
+  .desc-text-great {
+    font-size: 1.1em;
+    line-height: 1.5em;
+    color: lighten(#000,45);
+    margin: auto;
+    padding: 0 3em;
+    width: 80%;
+  }
+}
+
+.cards-more-details {
+  margin: auto;
+  width: 80%;
+  padding: 4em 0;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 2in;
+  > * {
+    width: 100%;
+  }
+  @import "components/card_simple";
+}
 @import "templates/footer";
