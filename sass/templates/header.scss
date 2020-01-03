@@ -2,11 +2,10 @@
    width: 100%;
    padding: 1.3em 1em;
    position: relative;
-   background: #fff;
-   border-bottom: 1px solid rgb(230,230,230);
+   background:darken($color: $color-base, $amount: 4);
    .title{
       font-size: 2.5em;
       text-align: center;
-      @include text-gradient($text-g);
+      color: white;
    }
 }
