@@ -1,11 +1,5 @@
 @import "templates/main";
 
-.central-title{
-  padding-top: 1.5em;
-  font-size: 2em;
-  text-align: center;
-}
-
 .container-landing-main {
   width: 80%;
   margin: 5em auto;
@@ -36,28 +30,16 @@
 }
 
 .great-message {
-  width: 80%;
-  margin: 5em auto 3em;
+  width: 100%;
   text-align: center;
   padding: 3em 0;
+  border-top: 1px solid rgb(230,230,230);
   .title {
     width: 40%;
     margin: auto;
     font-size: 2em;
-    padding-bottom: 1em;
     margin-bottom: 1em;
-    color: rgb(40,40,40);
     position: relative;
-    &::after {
-      content: "";
-      position: absolute;
-      height: 1px;
-      width: 100px;
-      background: black;
-      bottom: 0;
-      left: 50%;
-      margin-left: -50px;
-    }
     .l-a {
       font-size: 1.4em;
     }
@@ -71,27 +53,86 @@
     color: lighten(#000,45);
     margin: auto;
     padding: 0 3em;
-    width: 80%;
+    width: 55%;
   }
 }
 
 .cards-more-details {
   margin: auto;
   width: 100%;
-  padding: 3em 0 0 0;
-  border-top: 1px solid rgb(230,230,230);;
+  padding: 2em 0 2em 0;
+  $border : 1px solid rgb(230,230,230);
+  border-top: $border;
+  border-bottom: $border;
 
   .container{
     width: 80%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2em;
-    justify-items: center;
-    > * {
-      width: 100%;
-    }
+    display: flex;
+    justify-content: center;
     @import "components/card_simple";
   }
 }
+
+.title-cards{
+  width: 100%;
+  border-bottom: 1px solid rgb(230,230,230);
+  padding: 1.5em 0;
+  text-align: center;
+  .title{
+    font-size: 2.5em;
+    @include text-gradient($text-g)
+  }
+}
+
+.content-cards{
+  width: 70%;
+  margin: 4em auto;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 1em;
+  .card-image{
+    width: 100%;
+    height: 320px;
+    padding: 1em 1.5em;
+    position: relative;
+    color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    @include flex(column,center,center);
+
+    &:after{
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(#000,.6);
+    }
+
+    .title,.text{ position: relative; z-index: 2; }
+    
+    .title{
+      font-size: 2em;
+      padding-bottom: .2em;
+    }
+    .text{
+      font-size: 0.9em;
+    }
+
+    $list : "https://cdn.pixabay.com/photo/2016/12/15/03/27/cocoa-1908020_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2018/10/30/16/03/christmas-tree-3784021_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2019/12/09/17/46/hochybrig-4683994_960_720.jpg";
+    @for $i from 1 through 3{
+      &:nth-child(#{$i}n){
+        background-image: url(nth($list,$i));
+      }
+    }
+  }
+}
+
 @import "templates/footer";

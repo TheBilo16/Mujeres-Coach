@@ -100,16 +100,12 @@
    display: grid;
    grid-template-columns: 1fr 1fr;
    .image{
+      height: auto;
+      background-image: url("../assets/brunella_profile.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       padding-top: 1.5em;
-      .img{
-         width: 100%;
-         height: auto;
-         margin: 0 auto;
-         border-radius: 0 0 50% 50%;
-         filter:brightness(60%);
-         transition: .3s;
-         &:hover{ filter:brightness(100%) }
-      }
    }
 
    .desc{

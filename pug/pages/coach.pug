@@ -4,15 +4,13 @@ block title
 block css
    link(rel="stylesheet", href="../css/detail_coach.css")
 block content
-  .central-title
-    h1 Coaching
   .container-landing-main
-    .image
-      img(src="https://cdn.pixabay.com/photo/2018/03/27/21/57/winter-3267564_960_720.jpg",alt="image")
-    .text
+    .image(data-aos="zoom-out")
+      img(src="https://cdn.pixabay.com/photo/2015/07/28/22/03/fireworks-865104_960_720.jpg",alt="image")
+    .text(data-aos="zoom-out")
       p.title-text Lirem ipsum dolor sit.
-      p.desc-text Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, debitis placeat error voluptatem natus deleniti maiores eaque corrupti corporis laudantium modi incidunt quos magni quis, unde, fugit omnis inventore at. Incidunt tenetur in dolores officiis facilis! Sed laudantium obcaecati sint voluptas mollitia eum, ipsum itaque omnis, iure vero ullam dolorem laboriosam modi atque in delectus officia nulla sapiente dicta nostrum accusamus quidem optio adipisci fuga? Numquam possimus labore minima blanditiis.
-  .great-message
+      p.desc-text Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi optio unde quam repellendus corporis, recusandae assumenda esse. Sint ullam maxime praesentium nobis fugiat quidem quisquam consequuntur consectetur natus numquam, nam tempora odio et laudantium. Quod distinctio ullam exercitationem odit quia unde officia cumque magni id!
+  .great-message(data-aos="fade-up")
     p.title 
       | Elit 
       span.l-a Lorem 
@@ -23,3 +21,11 @@ block content
   .cards-more-details
     .container
       include ../components/card_simple
+  .title-cards(data-aos="fade-up")
+    h3.title Lorem, ipsum dolor.
+    //p.text Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ipsum vero praesentium nihil sequi. Eveniet expedita quae suscipit earum repellat?
+  .content-cards
+    -for(var i=0; i < 3; i++)
+      .card-image(data-aos="zoom-in")
+        h3.title(data-aos="zoom-in-up") Coaching
+        p.text(data-aos="zoom-in-up") Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate veritatis magni voluptate, illo explicabo debitis.

@@ -1,14 +1,14 @@
 .card_simple {
     @include flex(column);
-    width: 90%;
+    width: 500px;
     background: $color-base;
     color: white;
-    margin: 3em 0;
+    margin: 3em 1em 3em 0;
     padding: 1.5em;
     .card-header {
       @include flex();
       .image {
-        $width-image : 100px;
+        $width-image : 80px;
         position: relative;
         width: $width-image / 2;
         img {
@@ -16,13 +16,12 @@
           height: $width-image;
           object-fit: cover;
           position: absolute;
-          transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-75%) translateY(-75%);
           filter: brightness(80%);
           transition: .3s;
         }
       }
       .text {
-        padding: 10px;
         padding-bottom: 1em;
         .text-detail {
           padding-bottom: 5px;
@@ -40,10 +39,8 @@
         line-height: 25px;
       }
     }
-    &:fist-child{
-      margin-top: 0;
-    }
-
+    &:fist-child{ margin-top: 0; }
+    &:last-child{ margin-left: 0; }
     &:hover{
       .card-header > .image > img{
         transform: translateX(-50%) translateY(-50%) scale(1.1);

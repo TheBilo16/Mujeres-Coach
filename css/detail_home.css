@@ -508,20 +508,12 @@ body::-webkit-scrollbar-thumb:vertical:hover {
   -ms-grid-columns: 1fr 1fr;
   grid-template-columns: 1fr 1fr; }
   .content-profile .image {
+    height: auto;
+    background-image: url("../assets/brunella_profile.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding-top: 1.5em; }
-    .content-profile .image .img {
-      width: 100%;
-      height: auto;
-      margin: 0 auto;
-      border-radius: 0 0 50% 50%;
-      -webkit-filter: brightness(60%);
-      filter: brightness(60%);
-      -webkit-transition: .3s;
-      -o-transition: .3s;
-      transition: .3s; }
-      .content-profile .image .img:hover {
-        -webkit-filter: brightness(100%);
-        filter: brightness(100%); }
   .content-profile .desc {
     padding: 0 2em;
     font-size: 1.1em; }
