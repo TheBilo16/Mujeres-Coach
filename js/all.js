@@ -135,3 +135,23 @@ var buttonContact = {
 
 buttonContact.init();
 
+var navAnimation = {
+   nav : () => document.querySelector('nav'),
+   html : () => document.querySelector('html'),
+   section : () => document.querySelector('section'),
+   init : function() {
+      window.addEventListener('scroll',()=> {
+         var style = this.nav().style;
+         if(this.html().scrollTop >= this.nav().getBoundingClientRect().height){
+            style.position = "fixed";
+            style.margin = "0";
+            style.top="0";
+            style.zIndex = "100";
+            this.section().style.marginTop = style.height;
+         } else{
+            style.position = "relative";
+         }
+      });
+   }
+}
+navAnimation.init();
