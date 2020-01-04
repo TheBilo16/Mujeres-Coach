@@ -111,35 +111,6 @@ var viewImages = {
    }
 }
 
-//Button Floating
-var buttonContact = {
-   i : 0,
-   btnContact : () => document.querySelector('.btn-contact'),
-   formContact : () => document.querySelector('.panel-contact'),
-   html : () => document.querySelector('html'), 
-   moveToFormContact : function() {
-      this.btnContact().addEventListener('click', ev => {
-         this.hide();
-      });
-   },
-   show : function(){ this.move(0); },
-   hide : function(){ this.move(150); },
-   move : function(percentage) {
-      this.btnContact().style.transform = `translateX(${percentage}%)`;
-   },
-   init : function() {
-      this.moveToFormContact();
-      window.addEventListener('scroll',() => {
-         this.hide();
-         this.i+=1000;
-         setTimeout(() => {
-            this.show();
-            this.i = 0;
-         },this.i/2);
-      });
-   }
-}
-
 //Nav Animation Scroll
 var navAnimation = {
    nav : () => document.querySelector('nav'),
@@ -148,7 +119,7 @@ var navAnimation = {
    init : function() {
       window.addEventListener('scroll',()=> {
          var style = this.nav().style;
-         if(this.html().scrollTop >= this.nav().getBoundingClientRect().height){
+         if(this.html().scrollTop >= this.nav().previousElementSibling.getBoundingClientRect().height){
             style.position = "fixed";
             style.margin = "0";
             style.top="0";
@@ -161,5 +132,4 @@ var navAnimation = {
    }
 }
 
-buttonContact.init();
 navAnimation.init();

@@ -4,12 +4,11 @@
    margin: auto;
    border-radius: 50%;
    position: fixed;
-   top: 50%;
-   bottom: 50%;
-   right: 1%;
-   background: $color-base;
+   bottom: 4%;
+   right: 4%;
+   background:#25d366;
    @include flex(row,center,center);
-   font-size: 1.2em;
+   font-size: 1.6em;
    transition: .3s;
    .icon{
       color: #fff;

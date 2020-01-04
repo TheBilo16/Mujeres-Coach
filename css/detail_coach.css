@@ -144,9 +144,8 @@ body::-webkit-scrollbar-thumb:vertical:hover {
   margin: auto;
   border-radius: 50%;
   position: fixed;
-  top: 50%;
-  bottom: 50%;
-  right: 1%;
+  bottom: 4%;
+  right: 4%;
   background: #de0d6b;
   display: -webkit-box;
   display: -ms-flexbox;

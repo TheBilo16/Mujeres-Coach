@@ -1,0 +1,22 @@
+.btn-contact {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 4%;
+  right: 4%;
+  background: #25d366;
+  font-size: 2em;
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s; }
+  .btn-contact .icon {
+    color: #fff;
+    cursor: pointer; }
+    .btn-contact .icon:active {
+      -webkit-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+      transform: scale(0.95); }
+  .btn-contact.hide {
+    right: -100%; }
