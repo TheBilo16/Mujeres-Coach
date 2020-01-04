@@ -1,4 +1,4 @@
-//Slider
+//Slider Home
 var slider = {
    idBucle : null,
    time : 2,
@@ -72,6 +72,9 @@ var viewImages = {
          for(let img of images){
             img.style.transform = `translateX(-${this.translate_x}%)`;
          }
+
+         left.classList.remove("active");
+         if(this.translate_x >= maxTranslate) right.classList.add("active");
       })
 
       left.addEventListener("click", ev => {
@@ -82,6 +85,9 @@ var viewImages = {
          for(let img of images){
             img.style.transform = `translateX(-${this.translate_x}%)`;
          }
+
+         right.classList.remove("active");
+         if(this.translate_x == 0) left.classList.add("active");
       })
 
    },
@@ -105,6 +111,7 @@ var viewImages = {
    }
 }
 
+//Button Floating
 var buttonContact = {
    i : 0,
    btnContact : () => document.querySelector('.btn-contact'),
@@ -126,15 +133,14 @@ var buttonContact = {
          this.hide();
          this.i+=1000;
          setTimeout(() => {
-               this.show();
-               this.i = 0;
+            this.show();
+            this.i = 0;
          },this.i/2);
       });
    }
 }
 
-buttonContact.init();
-
+//Nav Animation Scroll
 var navAnimation = {
    nav : () => document.querySelector('nav'),
    html : () => document.querySelector('html'),
@@ -154,4 +160,6 @@ var navAnimation = {
       });
    }
 }
+
+buttonContact.init();
 navAnimation.init();

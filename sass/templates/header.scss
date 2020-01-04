@@ -1,9 +1,10 @@
 .app-title{
    width: 100%;
-   max-height: 120px;
+   max-height: 140px;
    padding: 1.3em 1em;
    position: relative;
-   background:darken($color: $color-base, $amount: 4);
+   background: #fff;
+   //background:darken($color: $color-base, $amount: 4);
    .icon{ 
       text-align: center;
       img{

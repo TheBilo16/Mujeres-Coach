@@ -147,7 +147,7 @@ body::-webkit-scrollbar-thumb:vertical:hover {
   top: 50%;
   bottom: 50%;
   right: 1%;
-  background: #681ae6;
+  background: #de0d6b;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -177,10 +177,10 @@ body::-webkit-scrollbar-thumb:vertical:hover {
 
 .app-title {
   width: 100%;
-  max-height: 120px;
+  max-height: 140px;
   padding: 1.3em 1em;
   position: relative;
-  background: #6017d4;
+  background: #fff;
   /*.title{
       font-size: 1.2em;
       text-align: center;
@@ -194,8 +194,10 @@ body::-webkit-scrollbar-thumb:vertical:hover {
 .app-menu {
   width: 100%;
   position: relative;
-  background: #681ae6;
-  border-bottom: 1px solid #e6e6e6;
+  background: -webkit-gradient(linear, left bottom, left top, from(#223B90), to(#de0d6b));
+  background: -webkit-linear-gradient(bottom, #223B90, #de0d6b);
+  background: -o-linear-gradient(bottom, #223B90, #de0d6b);
+  background: linear-gradient(bottom, #223B90, #de0d6b);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -259,7 +261,6 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background: #681ae6;
     line-height: 2.5em;
     padding: 0 1em;
     font-size: 1.1em;
@@ -268,7 +269,7 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       margin-left: 5px;
       font-size: 0.8em; }
     .app-menu > .list .option .link:hover {
-      background: #8648eb; }
+      text-decoration: underline; }
     .app-menu > .list .option .link.sub {
       width: -webkit-max-content;
       width: -moz-max-content;
@@ -286,10 +287,10 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     padding: 4em 0.3em 1.5em 0.3em; }
     .panel-contact .title .t {
       font-size: 2.2em;
-      background: -webkit-gradient(linear, left top, left bottom, from(#681ae6), color-stop(#681ae6), to(#7700ff));
-      background: -webkit-linear-gradient(top, #681ae6, #681ae6, #7700ff);
-      background: -o-linear-gradient(top, #681ae6, #681ae6, #7700ff);
-      background: linear-gradient(top, #681ae6, #681ae6, #7700ff);
+      background: -webkit-gradient(linear, left bottom, left top, from(#223B90), to(#de0d6b));
+      background: -webkit-linear-gradient(bottom, #223B90, #de0d6b);
+      background: -o-linear-gradient(bottom, #223B90, #de0d6b);
+      background: linear-gradient(bottom, #223B90, #de0d6b);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent; }
   .panel-contact .content {
@@ -305,7 +306,7 @@ body::-webkit-scrollbar-thumb:vertical:hover {
         width: 100%;
         padding: 0 5px; }
         .panel-contact .content .container-form .header-title .title-panel {
-          color: #681ae6;
+          color: #de0d6b;
           margin-bottom: 20px; }
         .panel-contact .content .container-form .header-title .message-panel {
           font-size: .9em;
@@ -349,7 +350,7 @@ body::-webkit-scrollbar-thumb:vertical:hover {
             transition: .3s; }
             .panel-contact .content .container-form .contact-form .row .text-field:focus {
               border-color: rgba(230, 60, 90, 0.5);
-              color: #8648eb; }
+              color: #f32b85; }
           .panel-contact .content .container-form .contact-form .row .validity-form {
             display: -webkit-box;
             display: -ms-flexbox;
@@ -366,7 +367,7 @@ body::-webkit-scrollbar-thumb:vertical:hover {
             align-items: center;
             width: 100%; }
             .panel-contact .content .container-form .contact-form .row .validity-form .text-validity {
-              color: #681ae6;
+              color: #de0d6b;
               margin: 0 10px; }
           .panel-contact .content .container-form .contact-form .row .button-send {
             margin-left: auto;
@@ -393,7 +394,7 @@ body::-webkit-scrollbar-thumb:vertical:hover {
 .btn-global {
   padding: 0 .8em;
   line-height: 2.5em;
-  background: #681ae6;
+  background: #de0d6b;
   color: #fff;
   font-size: 1.1em;
   -webkit-transition: .3s;
@@ -403,7 +404,7 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     font-size: 0.8em; }
   .btn-global:hover {
     border-radius: 1.5em;
-    background: #5d17d0; }
+    background: #c60c5f; }
   .btn-global:active {
     -webkit-transform: scale(0.95);
     -ms-transform: scale(0.95);
@@ -478,11 +479,18 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       bottom: 0;
       color: #fff;
       font-size: 2.5em;
-      cursor: pointer; }
+      cursor: pointer;
+      padding: 1em; }
     .view-images-expand .image .left {
-      left: 8%; }
+      left: 5%; }
+      .view-images-expand .image .left.active {
+        color: #999;
+        cursor: initial; }
     .view-images-expand .image .right {
-      right: 8%; }
+      right: 5%; }
+      .view-images-expand .image .right.active {
+        color: #999;
+        cursor: initial; }
   .view-images-expand .close {
     color: #fff;
     font-size: 2em;
@@ -513,7 +521,7 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     .container-about .panel-detail .card-panel .title-card {
       font-size: 2em;
       margin: 1em 0;
-      color: #681ae6; }
+      color: #de0d6b; }
     .container-about .panel-detail .card-panel .description {
       width: 80%;
       margin: 0 auto;
@@ -568,10 +576,10 @@ body::-webkit-scrollbar-thumb:vertical:hover {
         .container-about .container-cards .card .detail-content .dark {
           display: block;
           margin: 10px 0;
-          background: -webkit-gradient(linear, left top, left bottom, from(#681ae6), color-stop(#681ae6), to(#7700ff));
-          background: -webkit-linear-gradient(top, #681ae6, #681ae6, #7700ff);
-          background: -o-linear-gradient(top, #681ae6, #681ae6, #7700ff);
-          background: linear-gradient(top, #681ae6, #681ae6, #7700ff);
+          background: -webkit-gradient(linear, left bottom, left top, from(#223B90), to(#de0d6b));
+          background: -webkit-linear-gradient(bottom, #223B90, #de0d6b);
+          background: -o-linear-gradient(bottom, #223B90, #de0d6b);
+          background: linear-gradient(bottom, #223B90, #de0d6b);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent; }
         .container-about .container-cards .card .detail-content .light {
@@ -605,20 +613,20 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       align-items: flex-start; }
       .app-footer .content .column .title {
         padding-bottom: 1em;
-        color: #8648eb;
+        color: #f32b85;
         font-size: 1.05em; }
       .app-footer .content .column .link {
         color: gray;
         margin-bottom: .5em;
         font-size: 0.9em; }
         .app-footer .content .column .link:hover {
-          color: #7731e9; }
+          color: #f11377; }
         .app-footer .content .column .link:first-letter {
           font-size: 1.1em; }
   .app-footer .copyright {
     text-align: center;
     padding: 2.5em 1em .5em 1em;
     color: #fff;
-    background: #681ae6;
+    background: #de0d6b;
     text-transform: uppercase;
     font-size: 0.8em; }
