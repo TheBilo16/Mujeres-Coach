@@ -813,10 +813,7 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     position: absolute;
     bottom: 3%;
     left: 2%;
-    background: #fff;
-    /*&.animate{
-            bottom: -100%;
-        }*/ }
+    background: #fff; }
     .publication-blog-expand .create-comment .subtitle {
       font-size: 1.2em;
       padding: 2em 2em 1.2em 2em; }
@@ -843,6 +840,8 @@ body::-webkit-scrollbar-thumb:vertical:hover {
         -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
         grid-gap: 10px; }
+    .publication-blog-expand .create-comment.animate {
+      bottom: -100%; }
   .publication-blog-expand.animate {
     left: 0; }
 
