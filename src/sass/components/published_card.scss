@@ -1,0 +1,41 @@
+.published-card {
+    width: 100%;
+    background: white;
+    box-shadow: 0 3px 5px rgb(230,230,230);
+    @include flex(column,center,none);
+    .container-image {
+        @include flex();
+        overflow: hidden;
+        .image-published {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .3s;
+        }
+        &:hover {
+            .image-published {
+                transform: scale(1.2);
+            }
+        }
+    }
+    .container-detail-published {
+        padding: 20px;
+        .title-published {
+            color: #132846;
+            display: block;
+            margin-bottom: .8em;
+            font-size: 1.1em;
+            line-height: 1.3em;
+        }
+        .text-published {
+            color:lighten($color: #000, $amount: 45);
+            font-size: .9em;
+            line-height: 20px;
+        }
+        .btn-read-more{
+            color: $color-base;
+            padding: 1.5em 0 0 0;
+        }
+    }
+}

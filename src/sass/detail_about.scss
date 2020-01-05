@@ -1,0 +1,107 @@
+@import "templates/main";
+
+.container-about {
+  .panel-detail {
+    .card-panel {
+      margin: auto;
+      width: 600px;
+      position: relative;
+      text-align: center;
+      .image-about-panel {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .title-card {
+        font-size: 2em;
+        margin: 1em 0;
+        color: $color-base;
+      }
+      .description {
+        width: 80%;
+        margin: 0 auto;
+        font-size: 1.1em;
+        line-height: 25px;
+        color: lighten(#000,45);
+        padding: 0;
+      }
+    }
+  }
+  .container-cards {
+    @include flex(row,space-around);
+    margin: 8em auto;
+    width: 80%;
+    .card {
+      width: 200px;
+      &:nth-child(odd){
+        transform: translateY(-50px);
+      }
+      @include flex(column,none,center);
+      .card-image {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 100%;
+        margin: 10px 0;
+        padding: 4px;
+      }
+      .detail-content {
+        text-align: center;
+        .dark {
+          display: block;
+          margin: 10px 0;
+          @include text-gradient($text-g);
+        }
+        .light {
+          font-size: .9em;
+          color: rgb(80,80,80);
+        }
+      }
+    }
+  }
+  .container-detail {
+    margin: 0 auto 4em auto;
+    width: 100%;
+    .card-floating {
+      position: relative;
+      .container-card-text {
+        position: relative;
+        padding: 6em 0;
+        .body-text {
+          color: white;
+          padding: 30px;
+          text-align: center;
+          
+          .title {
+            width: 50%;
+            margin: 0 auto;
+            font-size: 3em;
+            margin-bottom: .5em;
+            display:block;
+          }
+          .text {
+            width: 30%;
+            margin: 0 auto;
+            font-size: .9em;
+            line-height: 1.7em;
+          }
+        }
+      }
+      .container-image {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(bottom,#000,transparent), url("../assets/brunella_profile.jpg");
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+
+}
+
+
+@import "templates/footer";
