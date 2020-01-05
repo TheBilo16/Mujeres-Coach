@@ -1,0 +1,22 @@
+extends ../templates/base
+block title
+  title Blog
+block css
+   link(rel="stylesheet", href="../css/detail_blog.css")
+block content
+    .preview-blog-main 
+        .row
+            img(src="",alt="main-image")
+        .row 
+            .content-description
+                
+    .section-blog-published
+        - for(var i = 0 ;i < 10 ; i++)
+            .published-card 
+                .container-image 
+                    img.image-published(src="https://cdn.pixabay.com/photo/2015/09/16/17/09/newspaper-943004__340.jpg",alt="url image")
+                .container-detail-published
+                    strong.dark.title-published Lorem, ipsum dolor sit amet consectetur
+                    p.text-published
+                        | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi veritatis praesentium eos nesciunt ipsa numquam a, debitis o voluptatem earum...
+                    button.btn-read-more leer más

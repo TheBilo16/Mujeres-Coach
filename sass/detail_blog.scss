@@ -1,0 +1,15 @@
+@import "templates/main";
+
+.preview-blog-main {
+    
+}
+
+.section-blog-published {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    margin:3em auto;
+    width: 80%;
+    @import "components/published_card";
+}
+
+@import "templates/footer";
