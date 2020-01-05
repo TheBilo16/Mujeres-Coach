@@ -133,3 +133,18 @@ var navAnimation = {
 }
 
 navAnimation.init();
+
+var blog = {
+   buttonCard : () => document.querySelectorAll('.btn-read-more'),
+   previewPublished : function() {
+         [...this.buttonCard()].forEach(( button , index ) => {
+            button.addEventListener('click', function(){
+                        
+            });
+         });
+   },
+   init : function() {
+      this.previewPublished();
+   }
+}
+blog.init();
