@@ -1,7 +1,24 @@
 @import "templates/main";
 
 .preview-blog-main {
-    
+    margin:5em auto;
+    width: 80%;
+    @include flex();
+    .image-main, .content-description {
+        width: 50%;
+    }
+    .content-description {
+        padding: 10px 0 10px 30px;
+        .title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .text-description {
+            color: lighten($color: #000, $amount: 45    );
+            font-size: 1em;
+            line-height: 20px;
+        }
+    }
 }
 
 .section-blog-published {
