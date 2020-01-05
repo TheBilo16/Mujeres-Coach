@@ -180,10 +180,9 @@
             .view-comments{
                 width: 100%;
                 height: 100%;
+                padding: 0 5%;
                 position: relative;
-                .comment{
-                    //Comment...
-                }
+                @import "components/comment";
                 .loader-comment{
                     width: 100%;
                     height: 100%;
@@ -252,7 +251,23 @@
         }
 
         &.animate{
+            transition:.5s;
             bottom: -100%;
+            opacity: .4;
+            transform:scale(.5);
+            transform-origin: top;
+        }
+        &:not(.animate) {
+            opacity:1;
+            transform: none;
+            animation: create-animate-show .5s 1;
+            @keyframes create-animate-show {
+                from {
+                    transform-origin: bottom;
+                    transform: scale(.5);
+                    opacity: .4;
+                }
+            }
         }
     }
 

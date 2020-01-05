@@ -53,11 +53,22 @@ append floating-content
             .content-extra
                 .view-comments
                     //.comment
-                    .loader-comment
+                    // 
+                     .loader-comment
                         p.subtitle Loading Comments...
                         .loader
                         .create-comment
-        .create-comment.animate
+                    // 
+                    - for(var i = 0 ; i < 10 ; i++)
+                        .comment
+                            .row.icon
+                              .container-icon
+                                i.fa.fa-user
+                            .row.detail-comment
+                              .commenter-name Tony stark zuckerberg
+                              span.comment-date 10/20/40 10:24am
+                              p.text-comment Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.
+        .create-comment.animate#create-comment
             p.subtitle Create New Comment
             form.create
                 .user
@@ -66,5 +77,5 @@ append floating-content
                 .message
                     textarea(name="" placeholder="Comment").input.t-area
                 .buttons
-                    input(type="submit", value="Send").input.sub
-                    button(type="button").input Close
+                    input#send-comment(type="submit", value="Send").input.sub
+                    button#cancel-comment(type="button").input Close

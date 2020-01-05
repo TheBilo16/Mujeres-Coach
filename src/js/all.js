@@ -132,12 +132,24 @@ var navAnimation = {
    }
 }
 
+//form interactive comment 
+var comment = {
+   formCreateComment : () => document.querySelector('#create-comment'),
+   open : function() {
+      this.formCreateComment().classList.remove('animate');
+   },
+   close : function() {
+      this.formCreateComment().classList.add('animate');
+   }
+}
+
 //Blog
 var blog = {
    modalBlogContent : () => document.querySelector(".publication-blog-expand"),
    closeModalBlog : () => document.querySelector("#close-publication-blog"),
    imagesCards : () => document.querySelectorAll(".handler-image-publication-blog"),
    buttonCard : () => document.querySelectorAll('.handler-click-publication-blog'),
+   formComment : () => comment,
    previewPublished : function() {
       let handlerButton = this.buttonCard();
       let handlerImage = this.imagesCards();
@@ -161,13 +173,21 @@ var blog = {
          document.body.style.overflow = "auto";
       })
    },
+   openAndCloseComment : function() {
+      var f = this.formComment();
+      function click(el, callEvent ) {
+         document.getElementById(el).addEventListener('click',callEvent);
+      }
+      click('active-modal-comment',ev => f.open());
+      click('cancel-comment',ev => f.close());
+   },
    init : function() {
       this.previewPublished();
+      this.openAndCloseComment();
       this.closePublication();
    }
 }
 
 navAnimation.init();
-
 
 blog.init();
