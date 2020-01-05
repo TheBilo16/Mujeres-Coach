@@ -134,6 +134,22 @@
             color: #fff;
             cursor: pointer;
             font-size: 2em;
+            z-index: 2;
+            &.handleModal{
+                top: initial;
+                left: initial;
+                bottom: 2%;
+                right: 2%;
+            }
+        }
+        &:after{
+            content : "";
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.4);
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     }
     
@@ -197,46 +213,47 @@
                 }
             }
         }
-        .create-comment{
-            width: 30%;
-            margin: auto;
-            position: absolute;
-            bottom: 3%;
-            left: 2%;
-            background: #fff;
-            .subtitle{
-                font-size: 1.2em;
-                padding: 2em 2em 1.2em 2em;
-            }
-            .create{
-                display: grid;
-                grid-template-columns: 1fr;
-                grid-gap: 10px;
-                padding: 0 2em 2.5em 2em;
-                .input{
-                    width: 100%; 
-                    padding: .5em;
-                    border: 1px solid rgb(230,230,230);
-                    &.t-area{
-                        resize: none;
-                        height: 100px;
-                    }
-                    &.sub{
-                        background: rgb(230,230,230);
-                        cursor: pointer;
-                    }
-                }
-                .user,.buttons{
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    grid-gap: 10px;
-                }
-            }
+    }
 
-            &.animate{
-                bottom: -100%;
+    .create-comment{
+        width: 30%;
+        margin: auto;
+        position: absolute;
+        bottom: 3%;
+        left: 2%;
+        background: #fff;
+        .subtitle{
+            font-size: 1.2em;
+            padding: 2em 2em 1.2em 2em;
+        }
+        .create{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 10px;
+            padding: 0 2em 2.5em 2em;
+            .input{
+                width: 100%; 
+                padding: .5em;
+                border: 1px solid rgb(230,230,230);
+                &.t-area{
+                    resize: none;
+                    height: 100px;
+                }
+                &.sub{
+                    background: rgb(230,230,230);
+                    cursor: pointer;
+                }
+            }
+            .user,.buttons{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px;
             }
         }
+
+        /*&.animate{
+            bottom: -100%;
+        }*/
     }
 
     &.animate{

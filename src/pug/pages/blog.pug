@@ -2,8 +2,10 @@ extends ../templates/base
 
 block title
     title Blog
+
 block css    
     link(rel="stylesheet", href="../css/detail_blog.css")
+
 block content 
     section.section-blog
         .preview-blog-main 
@@ -32,32 +34,37 @@ block content
                         p.text-published
                             | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi veritatis praesentium eos nesciunt ipsa numquam a, debitis o voluptatem earum...
                         button.btn-read-more.handler-click-publication-blog Leer más
+
 block footer-content
     include ../templates/footer
+
 append floating-content
     .publication-blog-expand
         .image
             img(src="", alt="")
             .icon#close-publication-blog
                 i.fa.fa-times
+            .icon.handleModal#active-modal-comment
+                i.fa.fa-comment-dots
         .content-publication
             .data-description
                 p.title Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, quas!
                 p.content Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum cumque animi est illo consequuntur facere, deserunt labore perspiciatis quis sit facilis numquam accusantium temporibus modi magnam tempora repudiandae ab dolores at magni ea dolor nulla sed itaque? Recusandae rem sequi doloribus maxime expedita sed modi quam? Quidem ullam inventore amet sit expedita ratione fugit quae iusto totam? Ad nesciunt nisi animi enim delectus nihil suscipit? Praesentium culpa non dolorem eos ducimus earum iure sit delectus neque! Aspernatur eius beatae voluptatibus inventore sunt odit harum ducimus. Odio, quisquam excepturi. Laboriosam fugiat corrupti error nihil quis. Eos incidunt porro quis qui recusandae.
             .content-extra
                 .view-comments
+                    //.comment
                     .loader-comment
                         p.subtitle Loading Comments...
                         .loader
                         .create-comment
-            .create-comment.animate
-                p.subtitle Create New Comment
-                form.create
-                    .user
-                        input(type="text" placeholder="User").input
-                        input(type="email" placeholder="Email").input
-                    .message
-                        textarea(name="" placeholder="Comment").input.t-area
-                    .buttons
-                        input(type="submit", value="Send").input.sub
-                        button(type="button").input Close
+        .create-comment.animate
+            p.subtitle Create New Comment
+            form.create
+                .user
+                    input(type="text" placeholder="User").input
+                    input(type="email" placeholder="Email").input
+                .message
+                    textarea(name="" placeholder="Comment").input.t-area
+                .buttons
+                    input(type="submit", value="Send").input.sub
+                    button(type="button").input Close

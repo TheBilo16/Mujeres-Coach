@@ -121,6 +121,7 @@
     <div class="publication-blog-expand">
       <div class="image"><img src="" alt=""/>
         <div class="icon" id="close-publication-blog"><i class="fa fa-times"></i></div>
+        <div class="icon handleModal" id="active-modal-comment"><i class="fa fa-comment-dots"></i></div>
       </div>
       <div class="content-publication">
         <div class="data-description">
@@ -129,6 +130,7 @@
         </div>
         <div class="content-extra">
           <div class="view-comments">
+            <!--.comment-->
             <div class="loader-comment">
               <p class="subtitle">Loading Comments...</p>
               <div class="loader"></div>
@@ -136,22 +138,22 @@
             </div>
           </div>
         </div>
-        <div class="create-comment animate">
-          <p class="subtitle">Create New Comment</p>
-          <form class="create">
-            <div class="user">
-              <input class="input" type="text" placeholder="User"/>
-              <input class="input" type="email" placeholder="Email"/>
-            </div>
-            <div class="message">
-              <textarea class="input t-area" name="" placeholder="Comment"></textarea>
-            </div>
-            <div class="buttons">
-              <input class="input sub" type="submit" value="Send"/>
-              <button class="input" type="button">Close</button>
-            </div>
-          </form>
-        </div>
+      </div>
+      <div class="create-comment animate">
+        <p class="subtitle">Create New Comment</p>
+        <form class="create">
+          <div class="user">
+            <input class="input" type="text" placeholder="User"/>
+            <input class="input" type="email" placeholder="Email"/>
+          </div>
+          <div class="message">
+            <textarea class="input t-area" name="" placeholder="Comment"></textarea>
+          </div>
+          <div class="buttons">
+            <input class="input sub" type="submit" value="Send"/>
+            <button class="input" type="button">Close</button>
+          </div>
+        </form>
       </div>
     </div>
     <script src="../js/icons.js"></script>
