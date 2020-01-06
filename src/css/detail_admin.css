@@ -578,6 +578,7 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     font-size: 2em; }
   .body-publications .add-publication {
     position: fixed;
+    z-index: 100;
     top: 50%;
     left: 50%;
     width: 500px;
@@ -647,21 +648,22 @@ body::-webkit-scrollbar-thumb:vertical:hover {
           height: 100%;
           -o-object-fit: cover;
           object-fit: cover; }
-      .body-publications .row-publications .card-published .container-details {
+      .body-publications .row-publications .card-published .container-details .text {
         padding: 10px; }
-        .body-publications .row-publications .card-published .container-details .dark {
+        .body-publications .row-publications .card-published .container-details .text .dark {
           font-size: 1.3em; }
-        .body-publications .row-publications .card-published .container-details .date {
+        .body-publications .row-publications .card-published .container-details .text .date {
           color: gray;
           font-size: .75em;
           padding: 10px 0; }
-        .body-publications .row-publications .card-published .container-details .container-options {
-          padding: 10px 0;
-          text-align: right; }
-          .body-publications .row-publications .card-published .container-details .container-options button {
-            padding: 10px 15px;
-            background: #223B90;
-            color: white; }
+      .body-publications .row-publications .card-published .container-options {
+        padding: 10px;
+        text-align: right;
+        background: #f7f7f7; }
+        .body-publications .row-publications .card-published .container-options button {
+          padding: 10px 15px;
+          background: #223B90;
+          color: white; }
 
 .app-footer {
   border-top: 1px solid #e6e6e6; }

@@ -42,6 +42,7 @@
     }
     .add-publication {
         position: fixed;
+        z-index: 100;
         top:50%;
         left: 50%;
         width: 500px;
@@ -109,26 +110,29 @@
                 }
             }
             .container-details {
-                padding:10px;
-                .dark {
-                    font-size:1.3em;
-                }
-                .date {
-                    color: gray;
-                    font-size:.75em;
-                    padding: 10px 0;
-                }
-                .container-options {
-                    padding: 10px 0;
-                    text-align: right;
-                    button {
-                        padding: 10px 15px;
-                        background: #223B90;
-                        color: white;
+                .text{
+                    padding: 10px;
+                    .dark {
+                        font-size:1.3em;
+                    }
+                    .date {
+                        color: gray;
+                        font-size:.75em;
+                        padding: 10px 0;
                     }
                 }
             }
-        }
+            .container-options {
+                padding: 10px;
+                text-align: right;
+                background:lighten(#000, 97);
+                button {
+                    padding: 10px 15px;
+                    background: #223B90;
+                    color: white;
+                    }
+                }
+            }
     }
 }
 
