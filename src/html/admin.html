@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Admin Panel Brunella</title>
+    <link rel="stylesheet" href="../css/detail_admin.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </head>
+  <body>
+    <header class="app-title">
+      <div class="icon"><img src="../assets/logo-b.png" alt=""/></div>
+    </header>
+    <nav class="app-menu">
+      <ul class="list">
+        <li class="option"><a class="link" href="home.html">Home</a></li>
+        <li class="option"><a class="link" href="about.html">Acerca de Mi</a></li>
+        <li class="option"><a class="link" href="coaching.html">Coaching</a></li>
+        <li class="option"><a class="link" href="home.html#galeria">Galeria</a></li>
+        <li class="option"><a class="link" href="blog.html">Blog</a></li>
+        <li class="option"><a class="link" href="home.html#contact">Contactanos</a></li>
+      </ul>
+    </nav>
+    <section class="app-content">
+      <div class="header-options">
+        <div class="search"><i class="icon-search fa fa-search"></i>
+          <input class="input-search" placeholder="buscar publicación..."/>
+        </div>
+        <button class="add-publication" id="add-publication"><i class="fa fa-plus"></i></button>
+      </div>
+      <div class="body-publications">
+        <form class="add-publication" id="publication"> 
+          <div class="row-title">
+            <p class="title">Subir publicación</p>
+          </div>
+          <div class="row-body-publication">
+            <textarea class="text-field" placeholder="ingresar un titulo para la publicación" rows="3"></textarea>
+            <textarea class="text-field" placeholder="ingresar la descripción de la publicación" rows="6"></textarea>
+            <div class="input-picture">
+              <label class="text-upload-file"> <i class="icon-upload fa fa-image"> </i>subir una foto
+                <input type="file"/>
+              </label>
+            </div>
+            <input class="btn-publication" type="submit" value="publicar"/>
+          </div>
+        </form>
+        <div class="row-title">
+          <p class="title">Mis publicaciones</p>
+        </div>
+        <div class="row-publications">
+          <div class="card-published">
+            <div class="options-card">
+              <div class="container-image"> <img src="https://cdn.pixabay.com/photo/2015/07/09/00/29/woman-837156_960_720.jpg" alt="image"/></div>
+              <div class="container-details">
+                <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
+                <p class="date">publicado el 27/12/2019</p>
+                <div class="container-options">
+                  <button class="delete">eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-published">
+            <div class="options-card">
+              <div class="container-image"> <img src="https://cdn.pixabay.com/photo/2015/07/09/00/29/woman-837156_960_720.jpg" alt="image"/></div>
+              <div class="container-details">
+                <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
+                <p class="date">publicado el 27/12/2019</p>
+                <div class="container-options">
+                  <button class="delete">eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-published">
+            <div class="options-card">
+              <div class="container-image"> <img src="https://cdn.pixabay.com/photo/2015/07/09/00/29/woman-837156_960_720.jpg" alt="image"/></div>
+              <div class="container-details">
+                <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
+                <p class="date">publicado el 27/12/2019</p>
+                <div class="container-options">
+                  <button class="delete">eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-published">
+            <div class="options-card">
+              <div class="container-image"> <img src="https://cdn.pixabay.com/photo/2015/07/09/00/29/woman-837156_960_720.jpg" alt="image"/></div>
+              <div class="container-details">
+                <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
+                <p class="date">publicado el 27/12/2019</p>
+                <div class="container-options">
+                  <button class="delete">eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-published">
+            <div class="options-card">
+              <div class="container-image"> <img src="https://cdn.pixabay.com/photo/2015/07/09/00/29/woman-837156_960_720.jpg" alt="image"/></div>
+              <div class="container-details">
+                <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
+                <p class="date">publicado el 27/12/2019</p>
+                <div class="container-options">
+                  <button class="delete">eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-published">
+            <div class="options-card">
+              <div class="container-image"> <img src="https://cdn.pixabay.com/photo/2015/07/09/00/29/woman-837156_960_720.jpg" alt="image"/></div>
+              <div class="container-details">
+                <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
+                <p class="date">publicado el 27/12/2019</p>
+                <div class="container-options">
+                  <button class="delete">eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-published">
+            <div class="options-card">
+              <div class="container-image"> <img src="https://cdn.pixabay.com/photo/2015/07/09/00/29/woman-837156_960_720.jpg" alt="image"/></div>
+              <div class="container-details">
+                <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
+                <p class="date">publicado el 27/12/2019</p>
+                <div class="container-options">
+                  <button class="delete">eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-published">
+            <div class="options-card">
+              <div class="container-image"> <img src="https://cdn.pixabay.com/photo/2015/07/09/00/29/woman-837156_960_720.jpg" alt="image"/></div>
+              <div class="container-details">
+                <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
+                <p class="date">publicado el 27/12/2019</p>
+                <div class="container-options">
+                  <button class="delete">eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-published">
+            <div class="options-card">
+              <div class="container-image"> <img src="https://cdn.pixabay.com/photo/2015/07/09/00/29/woman-837156_960_720.jpg" alt="image"/></div>
+              <div class="container-details">
+                <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
+                <p class="date">publicado el 27/12/2019</p>
+                <div class="container-options">
+                  <button class="delete">eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-published">
+            <div class="options-card">
+              <div class="container-image"> <img src="https://cdn.pixabay.com/photo/2015/07/09/00/29/woman-837156_960_720.jpg" alt="image"/></div>
+              <div class="container-details">
+                <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
+                <p class="date">publicado el 27/12/2019</p>
+                <div class="container-options">
+                  <button class="delete">eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="btn-contact"><a class="icon" href="https://api.whatsapp.com/send?phone=51943456321&amp;text=bienvenido" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+    <script src="../js/icons.js"></script>
+    <script src="../js/all.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+       AOS.init()</script>
+  </body>
+</html>

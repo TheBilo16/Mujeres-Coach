@@ -189,5 +189,4 @@ var blog = {
 }
 
 navAnimation.init();
-
 blog.init();
