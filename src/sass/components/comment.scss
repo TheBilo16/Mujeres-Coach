@@ -7,18 +7,16 @@
     .icon {
         .container-icon {
             @include flex(row,center,center);
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 100%;
             color: silver;
             background-color:lighten(#000, 90);
         }
     }
     .detail-comment {
-        padding: 0 10px;
+        padding: 0 1em;
         .commenter-name {
-            color: lighten($color: #000, $amount: 20);
-            margin-bottom: 10px;
             color:$color-base;
         }
         .text-comment {

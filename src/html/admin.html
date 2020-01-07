@@ -10,43 +10,31 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </head>
   <body>
-    <header class="app-title">
-      <div class="icon"><img src="../assets/logo-b.png" alt=""/></div>
-    </header>
-    <nav class="app-menu">
-      <ul class="list">
-        <li class="option"><a class="link" href="home.html">Home</a></li>
-        <li class="option"><a class="link" href="about.html">Acerca de Mi</a></li>
-        <li class="option"><a class="link" href="coaching.html">Coaching</a></li>
-        <li class="option"><a class="link" href="home.html#galeria">Galeria</a></li>
-        <li class="option"><a class="link" href="blog.html">Blog</a></li>
-        <li class="option"><a class="link" href="home.html#contact">Contactanos</a></li>
-      </ul>
-    </nav>
     <section class="app-content">
-      <div class="header-options">
+      <div class="header-options"><a class="link" href="">Logout</a></div>
+      <div class="nav-options">
         <div class="search"><i class="icon-search fa fa-search"></i>
           <input class="input-search" placeholder="buscar publicación..."/>
         </div>
         <button class="add-publication" id="add-publication"><i class="fa fa-plus"></i></button>
       </div>
       <div class="body-publications">
-        <div class="publication" id="publication">
-          <form class="add-publication"> 
+        <div class="publication toggle" id="publication">
+          <form class="add-publication toggle" enctype="multipart/form-data">
             <div class="row-title">
-              <p class="title">Subir publicación</p>
+              <p class="title">Agregar publicación</p>
             </div>
             <div class="row-body-publication">
-              <textarea class="text-field" placeholder="ingresar un titulo para la publicación" rows="3"></textarea>
-              <textarea class="text-field" placeholder="ingresar la descripción de la publicación" rows="6"></textarea>
+              <input class="text-field" type="text" placeholder="Titulo" rows="3"/>
+              <textarea class="text-field" placeholder="Descripcion..." rows="6"></textarea>
               <div class="input-picture">
                 <label class="text-upload-file"> <i class="icon-upload fa fa-image"> </i>subir una foto
                   <input type="file"/>
                 </label>
               </div>
               <div class="btn-options"> 
-                <input class="btn-cancel" type="reset" value="cancelar"/>
-                <input class="btn-publication" type="submit" value="publicar"/>
+                <input class="btn-cancel" type="reset" value="Cancelar" id="btn-cancel-publication"/>
+                <input class="btn-publication" type="submit" value="Publicar"/>
               </div>
             </div>
           </form>
@@ -61,12 +49,12 @@
               <div class="container-details">
                 <div class="text">
                   <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
-                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos velit animi! Velit distinctio nihil deleniti...</p>
+                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores mollitia consequatur corporis vel cumque eius magni, vitae, accusantium blanditiis fugit adipisci ducimus quae nam illo. Autem nisi possimus quam? Dolor soluta commodi in distinctio rem impedit! Inventore nisi, voluptatum odit delectus at quisquam omnis, officiis laudantium non ipsam dolor excepturi fugit voluptates praesentium eum. Nemo nobis fuga ratione ipsam quas?</p>
                 </div>
               </div>
               <div class="container-options">
-                <p class="date">publicado el 27/12/2019</p>
-                <button class="delete">eliminar</button>
+                <p class="date">Publicado el 27/12/2019</p>
+                <button class="delete">Eliminar</button>
               </div>
             </div>
           </div>
@@ -76,12 +64,12 @@
               <div class="container-details">
                 <div class="text">
                   <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
-                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos velit animi! Velit distinctio nihil deleniti...</p>
+                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores mollitia consequatur corporis vel cumque eius magni, vitae, accusantium blanditiis fugit adipisci ducimus quae nam illo. Autem nisi possimus quam? Dolor soluta commodi in distinctio rem impedit! Inventore nisi, voluptatum odit delectus at quisquam omnis, officiis laudantium non ipsam dolor excepturi fugit voluptates praesentium eum. Nemo nobis fuga ratione ipsam quas?</p>
                 </div>
               </div>
               <div class="container-options">
-                <p class="date">publicado el 27/12/2019</p>
-                <button class="delete">eliminar</button>
+                <p class="date">Publicado el 27/12/2019</p>
+                <button class="delete">Eliminar</button>
               </div>
             </div>
           </div>
@@ -91,12 +79,12 @@
               <div class="container-details">
                 <div class="text">
                   <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
-                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos velit animi! Velit distinctio nihil deleniti...</p>
+                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores mollitia consequatur corporis vel cumque eius magni, vitae, accusantium blanditiis fugit adipisci ducimus quae nam illo. Autem nisi possimus quam? Dolor soluta commodi in distinctio rem impedit! Inventore nisi, voluptatum odit delectus at quisquam omnis, officiis laudantium non ipsam dolor excepturi fugit voluptates praesentium eum. Nemo nobis fuga ratione ipsam quas?</p>
                 </div>
               </div>
               <div class="container-options">
-                <p class="date">publicado el 27/12/2019</p>
-                <button class="delete">eliminar</button>
+                <p class="date">Publicado el 27/12/2019</p>
+                <button class="delete">Eliminar</button>
               </div>
             </div>
           </div>
@@ -106,12 +94,12 @@
               <div class="container-details">
                 <div class="text">
                   <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
-                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos velit animi! Velit distinctio nihil deleniti...</p>
+                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores mollitia consequatur corporis vel cumque eius magni, vitae, accusantium blanditiis fugit adipisci ducimus quae nam illo. Autem nisi possimus quam? Dolor soluta commodi in distinctio rem impedit! Inventore nisi, voluptatum odit delectus at quisquam omnis, officiis laudantium non ipsam dolor excepturi fugit voluptates praesentium eum. Nemo nobis fuga ratione ipsam quas?</p>
                 </div>
               </div>
               <div class="container-options">
-                <p class="date">publicado el 27/12/2019</p>
-                <button class="delete">eliminar</button>
+                <p class="date">Publicado el 27/12/2019</p>
+                <button class="delete">Eliminar</button>
               </div>
             </div>
           </div>
@@ -121,12 +109,12 @@
               <div class="container-details">
                 <div class="text">
                   <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
-                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos velit animi! Velit distinctio nihil deleniti...</p>
+                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores mollitia consequatur corporis vel cumque eius magni, vitae, accusantium blanditiis fugit adipisci ducimus quae nam illo. Autem nisi possimus quam? Dolor soluta commodi in distinctio rem impedit! Inventore nisi, voluptatum odit delectus at quisquam omnis, officiis laudantium non ipsam dolor excepturi fugit voluptates praesentium eum. Nemo nobis fuga ratione ipsam quas?</p>
                 </div>
               </div>
               <div class="container-options">
-                <p class="date">publicado el 27/12/2019</p>
-                <button class="delete">eliminar</button>
+                <p class="date">Publicado el 27/12/2019</p>
+                <button class="delete">Eliminar</button>
               </div>
             </div>
           </div>
@@ -136,12 +124,12 @@
               <div class="container-details">
                 <div class="text">
                   <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
-                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos velit animi! Velit distinctio nihil deleniti...</p>
+                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores mollitia consequatur corporis vel cumque eius magni, vitae, accusantium blanditiis fugit adipisci ducimus quae nam illo. Autem nisi possimus quam? Dolor soluta commodi in distinctio rem impedit! Inventore nisi, voluptatum odit delectus at quisquam omnis, officiis laudantium non ipsam dolor excepturi fugit voluptates praesentium eum. Nemo nobis fuga ratione ipsam quas?</p>
                 </div>
               </div>
               <div class="container-options">
-                <p class="date">publicado el 27/12/2019</p>
-                <button class="delete">eliminar</button>
+                <p class="date">Publicado el 27/12/2019</p>
+                <button class="delete">Eliminar</button>
               </div>
             </div>
           </div>
@@ -151,12 +139,12 @@
               <div class="container-details">
                 <div class="text">
                   <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
-                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos velit animi! Velit distinctio nihil deleniti...</p>
+                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores mollitia consequatur corporis vel cumque eius magni, vitae, accusantium blanditiis fugit adipisci ducimus quae nam illo. Autem nisi possimus quam? Dolor soluta commodi in distinctio rem impedit! Inventore nisi, voluptatum odit delectus at quisquam omnis, officiis laudantium non ipsam dolor excepturi fugit voluptates praesentium eum. Nemo nobis fuga ratione ipsam quas?</p>
                 </div>
               </div>
               <div class="container-options">
-                <p class="date">publicado el 27/12/2019</p>
-                <button class="delete">eliminar</button>
+                <p class="date">Publicado el 27/12/2019</p>
+                <button class="delete">Eliminar</button>
               </div>
             </div>
           </div>
@@ -166,12 +154,12 @@
               <div class="container-details">
                 <div class="text">
                   <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
-                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos velit animi! Velit distinctio nihil deleniti...</p>
+                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores mollitia consequatur corporis vel cumque eius magni, vitae, accusantium blanditiis fugit adipisci ducimus quae nam illo. Autem nisi possimus quam? Dolor soluta commodi in distinctio rem impedit! Inventore nisi, voluptatum odit delectus at quisquam omnis, officiis laudantium non ipsam dolor excepturi fugit voluptates praesentium eum. Nemo nobis fuga ratione ipsam quas?</p>
                 </div>
               </div>
               <div class="container-options">
-                <p class="date">publicado el 27/12/2019</p>
-                <button class="delete">eliminar</button>
+                <p class="date">Publicado el 27/12/2019</p>
+                <button class="delete">Eliminar</button>
               </div>
             </div>
           </div>
@@ -181,12 +169,12 @@
               <div class="container-details">
                 <div class="text">
                   <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
-                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos velit animi! Velit distinctio nihil deleniti...</p>
+                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores mollitia consequatur corporis vel cumque eius magni, vitae, accusantium blanditiis fugit adipisci ducimus quae nam illo. Autem nisi possimus quam? Dolor soluta commodi in distinctio rem impedit! Inventore nisi, voluptatum odit delectus at quisquam omnis, officiis laudantium non ipsam dolor excepturi fugit voluptates praesentium eum. Nemo nobis fuga ratione ipsam quas?</p>
                 </div>
               </div>
               <div class="container-options">
-                <p class="date">publicado el 27/12/2019</p>
-                <button class="delete">eliminar</button>
+                <p class="date">Publicado el 27/12/2019</p>
+                <button class="delete">Eliminar</button>
               </div>
             </div>
           </div>
@@ -196,12 +184,12 @@
               <div class="container-details">
                 <div class="text">
                   <p class="dark">Lorem ipsum dolor sit amet consectetur</p>
-                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos velit animi! Velit distinctio nihil deleniti...</p>
+                  <p class="text-publication">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores mollitia consequatur corporis vel cumque eius magni, vitae, accusantium blanditiis fugit adipisci ducimus quae nam illo. Autem nisi possimus quam? Dolor soluta commodi in distinctio rem impedit! Inventore nisi, voluptatum odit delectus at quisquam omnis, officiis laudantium non ipsam dolor excepturi fugit voluptates praesentium eum. Nemo nobis fuga ratione ipsam quas?</p>
                 </div>
               </div>
               <div class="container-options">
-                <p class="date">publicado el 27/12/2019</p>
-                <button class="delete">eliminar</button>
+                <p class="date">Publicado el 27/12/2019</p>
+                <button class="delete">Eliminar</button>
               </div>
             </div>
           </div>

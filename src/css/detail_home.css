@@ -54,10 +54,7 @@ body::-webkit-scrollbar {
   width: 8px;
   -webkit-transition: .3s;
   -o-transition: .3s;
-  transition: .3s;
-  /*@include responsive($width-mobile){
-      display: none;
-    }*/ }
+  transition: .3s; }
   body::-webkit-scrollbar:hover {
     background: white; }
 
@@ -121,10 +118,7 @@ body::-webkit-scrollbar {
   width: 8px;
   -webkit-transition: .3s;
   -o-transition: .3s;
-  transition: .3s;
-  /*@include responsive($width-mobile){
-      display: none;
-    }*/ }
+  transition: .3s; }
   body::-webkit-scrollbar:hover {
     background: white; }
 

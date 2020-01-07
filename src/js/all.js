@@ -181,12 +181,90 @@ var blog = {
       click('active-modal-comment',ev => f.open());
       click('cancel-comment',ev => f.close());
    },
+   loadContentPublications : async function(){
+      let divExpand = document.querySelector(".section-blog .preview-blog-main");
+      let divMinus = document.querySelector(".section-blog .preview-blog-main .image-minus");
+      let divContent = document.querySelector(".section-blog .section-blog-published");
+      
+      const pathRequest = "../js/simulator.json";
+      const request = await fetch(pathRequest);
+      const response = await request.json();
+      
+      if(response.length > 0){
+         response.forEach((v,i) => {
+            if(i == 0){
+               let template = `<img class="image-main handler-image-publication-blog" src="${v.path_image}" />
+                  <h4 class="title handler-click-publication-blog">${v.title_publication}</h4>`;
+               const div = document.createElement("div");
+               div.classList.add("image-expand");
+               div.setAttribute("data-aos","zoom-in");
+               div.innerHTML = template;
+
+               divExpand.prepend(div);
+            }else if(i < 4){
+               let template = `<div class="image" data-aos="zoom-in">
+                  <img class="image-main handler-image-publication-blog" src="${v.path_image}" />
+                  <h4 class="title handler-click-publication-blog">${v.title_publication}</h4>
+               </div>`;
+               divMinus.innerHTML += template;
+            }else{
+               let template = `<div class="published-card" data-aos="zoom-in">
+                  <div class="container-image">
+                     <img class="image-published handler-image-publication-blog" src="${v.path_image}" alt="url image" />
+                  </div>
+                  <div class="container-detail-published">
+                     <strong class="dark title-published">${v.title_publication}</strong>
+                     <p class="text-published">${v.text_publication}</p>
+                     <button class="btn-read-more handler-click-publication-blog">Leer más</button>
+                  </div>
+               </div>`;
+               divContent.innerHTML += template;
+            }
+         })    
+
+         this.previewPublished();    
+         this.openAndCloseComment();
+         this.closePublication();
+      }else{
+         let sectionBlog = document.querySelector(".section-blog");
+         sectionBlog.innerHTML = `<div class="not-found">
+            <p class="message">No ahi publicaciones disponibles</p>
+         </div>`;
+      }
+   },
    init : function() {
-      this.previewPublished();
-      this.openAndCloseComment();
-      this.closePublication();
+      this.loadContentPublications();
    }
 }
 
-navAnimation.init();
-blog.init();
+//Admin Panel
+var publication = {
+   btnAddPublication : () => document.getElementById('add-publication'),
+   formButtonClose : () => document.getElementById("btn-cancel-publication"),
+   formPublication : () => document.getElementById('publication'),
+   toggleForm : function() {
+       var f = this.formPublication();
+       let add = f.querySelector(".add-publication");
+       var style = "toggle";
+       this.btnAddPublication().addEventListener('click', ev => {
+            f.classList.remove(style);
+            add.classList.remove(style);
+       });
+       this.formButtonClose().addEventListener("click", ev => {
+           f.classList.add(style);
+           add.classList.add(style);
+       })
+   },
+   createPublication : function(){
+      //Code fetch
+   },
+   init : function() {  
+      this.toggleForm();
+   }
+}
+
+
+//NavBar Init
+let loc = window.location.href.split("/");
+if(loc[loc.length - 1] != "admin.html") 
+   navAnimation.init();

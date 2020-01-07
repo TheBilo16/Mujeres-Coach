@@ -5,8 +5,18 @@
     &:hover{ text-decoration: underline; }
 }
 
+.not-found{
+    width: 100%;
+    height: 80vh;
+    @include flex(column,center,center);
+    .message{
+        font-size: 2em;
+    }
+}
+
 .section-blog{
     width: 80%;
+    min-height: 100vh;
     margin: 1em auto 0 auto;
     background: #fff;
 }
@@ -159,28 +169,30 @@
         overflow: auto;
         .data-description{
             width: 100%;
-            height: 45%;
+            height: 55%;
+            overflow: auto;
             .title{
-                height: 30%;
                 font-size: 1.4em;
-                padding: 1em;
+                padding: .5em 1em;
                 @include flex(row,flex-start,center);
             }
             .content{
-                height: 70%;
-                overflow: auto;
                 line-height: 1.4em;
-                padding: 1em 1.5em;
+                padding: .5em 1.5em;
                 color: lighten(#000,45);
+            }
+            &::-webkit-scrollbar{
+                display: none;
             }
         }
         .content-extra{
             width: 100%;
-            height: 55%;
+            height: 45%;
+            overflow: auto;
             .view-comments{
                 width: 100%;
                 height: 100%;
-                padding: 0 5%;
+                padding: 0 1em;
                 position: relative;
                 @import "components/comment";
                 .loader-comment{
@@ -212,6 +224,8 @@
                 }
             }
         }
+
+
     }
 
     .create-comment{

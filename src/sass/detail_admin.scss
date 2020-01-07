@@ -1,45 +1,49 @@
 @import "templates/main";
 
-.header-options {
+.header-options{
+    width: 80%;
+    margin: 0 auto;
+    padding: 2em 0;
+    .link{
+        color: $color-base;
+        &:hover{ text-decoration: underline; }
+    }
+}
+
+.nav-options {
     @include flex(row,none,center);
-    margin: 3em auto;
+    margin: 0 auto 3em auto;
     width:80%;
     .search {
          @include flex(row,none,center);
          background: lighten(#000, 95);
          padding: 15px;
-         border-radius: 40px;
-         width: 80%;
+         width: 50%;
          .icon-search {
-             color: gray;
+            color: gray;
          }
          .input-search {
-             padding-left: 10px;
-             font-size: 1em;
-             width: 100%;
+            padding-left: 10px;
+            font-size: 1em;
+            width: 100%;
          }
     }
     .add-publication {
         @include flex(row,center,center);
-        margin-left:auto;
         flex: none;
-        width: 50px;
-        height: 50px;
-        border-radius: 100%;
+        width: 45px;
+        height: 45px;
+        //border-radius: 50%;
         color: white;
         background: $color-base;
+        margin: 0 0 0 10px;
     }
 }
-
 
 .body-publications {
     margin: auto;
     width: 80%;
-    .row-title {
-        .title {
-            font-size: 2em;
-        }
-    }
+
     .publication {
         @include flex(row,center,center);
         background: rgba(0,0,0,.6);
@@ -49,73 +53,91 @@
         z-index: 100;
         width: 100%;
         height: 100%;
-    }
-    .add-publication {
-        background: white;
-        box-shadow: 0 5px 10px rgba(0,0,0,.6);
-        padding: 30px;
-        width: 500px;
+        transition: .3s;
+
         &.toggle {
-            display: none;
+            visibility: hidden;
+            opacity: 0;
         }
-        .title {
-            margin-bottom: 20px;
-        }
-        .row-body-publication {
-            @include flex(column);
-            .text-field {
-                border:1px solid rgba(100,100,100,.2);
-                padding: 10px;
-                width: 100%;
-                margin:20px 0;
+
+        .add-publication {
+            background: white;
+            box-shadow: 0 5px 10px rgba(0,0,0,.6);
+            padding: 30px;
+            width: 500px;
+            transition: .3s;
+            &.toggle {
+                visibility: hidden;
+                opacity: 0;
             }
-            .input-picture {
-                width: 100%; 
-                .text-upload-file {
-                    display: block;
-                    background: rgba(100,100,100,.1);
-                    color:rgb(80,80,80);
-                    padding: 15px;
-                    text-align: center;
-                    margin:20px 0;
-                    .icon-upload {
-                        margin-right: 10px;
+            .title {
+                margin-bottom: 20px;
+            }
+            .row-body-publication {
+                @include flex(column);
+                .text-field {
+                    border:1px solid rgba(100,100,100,.2);
+                    padding: 10px;
+                    width: 100%;
+                    margin: 5px 0;
+                }
+                .input-picture {
+                    width: 100%; 
+                    margin: 5px 0;
+                    
+                    .text-upload-file {
+                        display: block;
+                        background: rgba(100,100,100,.1);
+                        color:rgb(80,80,80);
+                        padding: 15px;
+                        text-align: center;
+                        cursor: pointer;
+                        .icon-upload {
+                            margin-right: 10px;
+                        }
+                    }
+                    input[type="file"] {
+                        display: none;
                     }
                 }
-                input[type="file"] {
-                    display: none;
+                .btn-options {
+                    margin-top: 20px;
+                    @include flex(row,space-between,center);
+                    width: 100%;
+                    > * {
+                        width: 45%;
+                    }
+                    .btn-cancel {
+                        
+                    }
+                    .btn-publication {
+                        color:white;
+                        background: $color-base;
+                        padding: 15px;
+                    }
                 }
             }
-            .btn-options {
-                margin-top: 20px;
-                @include flex(row,space-between,center);
-                width: 100%;
-                > * {
-                    width: 45%;
-                }
-                .btn-cancel {
+        }
+    }
 
-                }
-                .btn-publication {
-                    color:white;
-                    background: $color-base;
-                    padding: 15px;
-                }
-            }
+    .row-title {
+        .title {
+            font-size: 2em;
         }
     }
     
-
     .row-publications {
+        margin: 3em 0;
         display: grid;
         grid-template-columns: repeat(3,1fr);
+        grid-gap: 1em;
         .card-published {
-            width: 300px;
+            width: 100%;
             border:1px solid rgba(100,100,100,.1); 
-            margin:30px 0;
+
             .container-image {
                 width: 100%;
-                height: 200px;
+                height: 280px;
                 img {
                     width: 100%;
                     height: 100%;
@@ -124,13 +146,13 @@
             }
             .container-details {
                 .text{
-                    padding: 10px;
+                    padding: 1em 1.5em;
                     .dark {
                         font-size:1.3em;
                     }
                     .text-publication {
                         font-size: .8em;
-                        padding: 10px 0;
+                        padding: .8em 0 0 0;
                         color: lighten(#000,30);
                     }
                 }
@@ -146,7 +168,7 @@
                 }
                 button {
                     padding: 10px 15px;
-                    background: #223B90;
+                    background: $color-base;
                     color: white;
                     }
                 }

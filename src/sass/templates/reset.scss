@@ -57,9 +57,6 @@ body::-webkit-scrollbar {
     &:hover {
       background: white;
     }
-    /*@include responsive($width-mobile){
-      display: none;
-    }*/
 }
 
 body::-webkit-scrollbar-thumb {

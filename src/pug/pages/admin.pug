@@ -6,31 +6,33 @@ block title
 block css    
     link(rel="stylesheet", href="../css/detail_admin.css")
 
-block footer-content
+block header-content
 
 block content 
     .header-options
+        a(href="").link Logout
+    .nav-options
         .search
             i.icon-search.fa.fa-search
             input.input-search(placeholder="buscar publicación...")
         button.add-publication#add-publication
               i.fa.fa-plus
     .body-publications
-        .publication#publication
-            form.add-publication 
+        .publication#publication.toggle
+            form.add-publication.toggle(enctype="multipart/form-data")
                 .row-title
-                    p.title Subir publicación
+                    p.title Agregar publicación
                 .row-body-publication
-                    textarea.text-field(placeholder="ingresar un titulo para la publicación",rows="3")
-                    textarea.text-field(placeholder="ingresar la descripción de la publicación",rows="6")
+                    input.text-field(type="text" placeholder="Titulo",rows="3")
+                    textarea.text-field(placeholder="Descripcion...",rows="6")
                     .input-picture
                         label.text-upload-file 
                             i.icon-upload.fa.fa-image 
                             | subir una foto
                             input(type="file")
                     .btn-options 
-                        input.btn-cancel(type="reset",value="cancelar") 
-                        input.btn-publication(type="submit",value="publicar")
+                        input.btn-cancel(type="reset",value="Cancelar")#btn-cancel-publication
+                        input.btn-publication(type="submit",value="Publicar")
         .row-title
             p.title Mis publicaciones
         .row-publications
@@ -43,9 +45,12 @@ block content
                         .text
                             p.dark Lorem ipsum dolor sit amet consectetur
                             p.text-publication
-                             | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos velit animi! Velit distinctio nihil deleniti...
+                             | Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores mollitia consequatur corporis vel cumque eius magni, vitae, accusantium blanditiis fugit adipisci ducimus quae nam illo. Autem nisi possimus quam? Dolor soluta commodi in distinctio rem impedit! Inventore nisi, voluptatum odit delectus at quisquam omnis, officiis laudantium non ipsam dolor excepturi fugit voluptates praesentium eum. Nemo nobis fuga ratione ipsam quas?
                     .container-options
-                        p.date publicado el 27/12/2019
-                        button.delete eliminar
+                        p.date Publicado el 27/12/2019
+                        button.delete Eliminar
+
+block footer-content
+
 append js
     script(src="../js/admin.js")

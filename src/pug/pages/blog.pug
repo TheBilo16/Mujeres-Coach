@@ -9,32 +9,12 @@ block css
 block content 
     section.section-blog
         .preview-blog-main 
-            .image-expand
-                img.image-main.handler-image-publication-blog(src="https://cdn.pixabay.com/photo/2019/12/13/18/24/amsterdam-4693608_960_720.jpg",alt="main-image")
-                h4.title.handler-click-publication-blog Lorem ipsum dolor sit amet.
             .image-minus
-                .image
-                    img.handler-image-publication-blog(src="https://cdn.pixabay.com/photo/2019/12/29/15/45/paragliding-4727377_960_720.jpg",alt="main-image")
-                    h4.title.handler-click-publication-blog Lorem ipsum dolor sit amet.
-                .image
-                    img.handler-image-publication-blog(src="https://cdn.pixabay.com/photo/2019/12/28/20/31/conifer-4725680_960_720.jpg",alt="main-image")
-                    h4.title.handler-click-publication-blog Lorem ipsum dolor sit amet.
-                .image 
-                    img.handler-image-publication-blog(src="https://cdn.pixabay.com/photo/2019/12/30/20/35/snow-4730565_960_720.jpg",alt="main-image")
-                    h4.title.handler-click-publication-blog Lorem ipsum dolor sit amet.
+                //Content js
         .delimiter-title
             p Publicaciones
         .section-blog-published
-            - for(var i = 0 ;i < 8 ; i++)
-                .published-card(data-aos="zoom-in")
-                    .container-image 
-                        img.image-published.handler-image-publication-blog(src="https://cdn.pixabay.com/photo/2015/09/16/17/09/newspaper-943004__340.jpg",alt="url image")
-                    .container-detail-published
-                        strong.dark.title-published Lorem, ipsum dolor sit amet consectetur
-                        p.text-published
-                            | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi veritatis praesentium eos nesciunt ipsa numquam a, debitis o voluptatem earum...
-                        button.btn-read-more.handler-click-publication-blog Leer más
-
+                //Content js
 block footer-content
     include ../templates/footer
 
@@ -79,3 +59,6 @@ append floating-content
                 .buttons
                     input#send-comment(type="submit", value="Send").input.sub
                     button#cancel-comment(type="button").input Close
+
+append js
+    script(src="../js/blog.js")
