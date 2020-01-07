@@ -1,0 +1,30 @@
+extends ../templates/base
+block title
+  title Coaching
+block css
+   link(rel="stylesheet", href="view/css/detail_coach.css")
+block content
+  .container-landing-main
+    .image(data-aos="zoom-out")
+      img(src="https://cdn.pixabay.com/photo/2015/07/28/22/03/fireworks-865104_960_720.jpg",alt="image")
+    .text(data-aos="zoom-out")
+      p.title-text Lirem ipsum dolor sit.
+      p.desc-text Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi optio unde quam repellendus corporis, recusandae assumenda esse. Sint ullam maxime praesentium nobis fugiat quidem quisquam consequuntur consectetur natus numquam, nam tempora odio et laudantium. Quod distinctio ullam exercitationem odit quia unde officia cumque magni id!
+  .great-message(data-aos="fade-up")
+    p.title 
+      | Elit 
+      span.l-a Lorem 
+      | ipsum 
+      span.l-m dolor 
+      | sit.
+    p.desc-text-great Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, quasi sint molestiae explicabo ratione facere accusantium tempore quo corporis, hic quae quidem ab eos nisi. 
+  .cards-more-details
+    .container
+      include ../components/card_simple
+  .title-cards(data-aos="fade-up")
+    h3.title Lorem, ipsum dolor.
+  .content-cards
+    -for(var i=0; i < 3; i++)
+      .card-image(data-aos="zoom-in")
+        h3.title(data-aos="zoom-in-up") Coaching
+        p.text(data-aos="zoom-in-up") Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate veritatis magni voluptate, illo explicabo debitis.

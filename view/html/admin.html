@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Admin Panel Brunella</title>
+    <link rel="stylesheet" href="view/css/detail_admin.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </head>
+  <body>
+    <section class="app-content">
+      <div class="header-options">
+        <button class="link" id="logout-button">Logout</button>
+      </div>
+      <div class="nav-options">
+        <div class="search"><i class="icon-search fa fa-search"></i>
+          <input class="input-search" placeholder="Search Publication"/>
+        </div>
+        <button class="add-publication" id="add-publication"><i class="fa fa-plus"></i></button>
+      </div>
+      <div class="body-publications">
+        <div class="publication toggle" id="publication">
+          <form class="add-publication toggle" enctype="multipart/form-data">
+            <div class="row-title">
+              <p class="title">Agregar publicación</p>
+            </div>
+            <div class="row-body-publication">
+              <input class="text-field" type="text" placeholder="Titulo" rows="3"/>
+              <textarea class="text-field" placeholder="Descripcion..." rows="6"></textarea>
+              <div class="input-picture">
+                <label class="text-upload-file"> <i class="icon-upload fa fa-image"> </i>subir una foto
+                  <input type="file"/>
+                </label>
+              </div>
+              <div class="btn-options"> 
+                <input class="btn-cancel" type="reset" value="Cancelar" id="btn-cancel-publication"/>
+                <input class="btn-publication" type="submit" value="Publicar"/>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row-title">
+          <p class="title">Mis publicaciones</p>
+        </div>
+        <div class="row-publications" id="content-publications">
+          <!--Content js-->
+        </div>
+      </div>
+    </section>
+    <script src="view/js/icons.js"></script>
+    <script src="view/js/all.js"></script>
+    <script src="view/js/admin.js"></script>
+    <script>
+       AOS.init()</script>
+  </body>
+</html>

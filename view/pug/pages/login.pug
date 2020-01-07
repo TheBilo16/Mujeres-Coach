@@ -1,0 +1,21 @@
+extends ../templates/base
+
+block css
+   link(rel="stylesheet", href="view/css/detail_login.css")
+
+block header-content
+
+block content
+   .container
+      p.title Admin Panel
+      form#form-login
+         input(type="text" name="user" placeholder="Username" class="input username")
+         input(type="password" name="pass" placeholder="Password" class="input password")
+         input(type="submit" name="submit" value="Entry" class="input submit")
+   a(href="index.php?url=home").floating-button: i.fa.fa-door-open
+
+
+block floating-content
+block footer-content
+append js
+   script(src="view/js/login.js")

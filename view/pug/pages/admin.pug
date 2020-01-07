@@ -1,0 +1,46 @@
+extends ../templates/base
+
+block title
+    title Admin Panel Brunella
+
+block css    
+    link(rel="stylesheet", href="view/css/detail_admin.css")
+
+block header-content
+
+block content 
+    .header-options
+        button.link#logout-button Logout
+    .nav-options
+        .search
+            i.icon-search.fa.fa-search
+            input.input-search(placeholder="Search Publication")
+        button.add-publication#add-publication
+              i.fa.fa-plus
+    .body-publications
+        .publication#publication.toggle
+            form.add-publication.toggle(enctype="multipart/form-data")
+                .row-title
+                    p.title Agregar publicación
+                .row-body-publication
+                    input.text-field(type="text" placeholder="Titulo",rows="3")
+                    textarea.text-field(placeholder="Descripcion...",rows="6")
+                    .input-picture
+                        label.text-upload-file 
+                            i.icon-upload.fa.fa-image 
+                            | subir una foto
+                            input(type="file")
+                    .btn-options 
+                        input.btn-cancel(type="reset",value="Cancelar")#btn-cancel-publication
+                        input.btn-publication(type="submit",value="Publicar")
+        .row-title
+            p.title Mis publicaciones
+        .row-publications#content-publications
+            //Content js
+
+block floating-content
+
+block footer-content
+
+append js
+    script(src="view/js/admin.js")

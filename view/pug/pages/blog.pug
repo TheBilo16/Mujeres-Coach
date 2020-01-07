@@ -1,0 +1,59 @@
+extends ../templates/base
+
+block title
+    title Blog
+
+block css    
+    link(rel="stylesheet", href="view/css/detail_blog.css")
+
+block content 
+    section.section-blog
+        .preview-blog-main 
+            .image-minus
+                //Content js
+        .delimiter-title
+            p Publicaciones
+        .section-blog-published
+                //Content js
+
+append floating-content
+    .publication-blog-expand
+        .image
+            img(src="", alt="")
+            .icon#close-publication-blog
+                i.fa.fa-times
+            .icon.handleModal#active-modal-comment
+                i.fa.fa-comment-dots
+        .content-publication
+            .data-description
+                p.title Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, quas!
+                p.content Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum cumque animi est illo consequuntur facere, deserunt labore perspiciatis quis sit facilis numquam accusantium temporibus modi magnam tempora repudiandae ab dolores at magni ea dolor nulla sed itaque? Recusandae rem sequi doloribus maxime expedita sed modi quam? Quidem ullam inventore amet sit expedita ratione fugit quae iusto totam? Ad nesciunt nisi animi enim delectus nihil suscipit? Praesentium culpa non dolorem eos ducimus earum iure sit delectus neque! Aspernatur eius beatae voluptatibus inventore sunt odit harum ducimus. Odio, quisquam excepturi. Laboriosam fugiat corrupti error nihil quis. Eos incidunt porro quis qui recusandae.
+            .content-extra
+                .view-comments
+                    .loader-comment
+                        p.subtitle Loading Comments...
+                        .loader
+                        .create-comment
+                    //- for(var i = 0 ; i < 10 ; i++)
+                        .comment
+                            .row.icon
+                              .container-icon
+                                i.fa.fa-user
+                            .row.detail-comment
+                              .commenter-name Tony stark zuckerberg
+                              span.comment-date 10/20/40 10:24am
+                              p.text-comment Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.
+        .create-comment.animate#create-comment
+            p.subtitle Create New Comment
+            form.create
+                .user
+                    input(type="text" placeholder="User").input
+                    input(type="email" placeholder="Email").input
+                .message
+                    textarea(name="" placeholder="Comment").input.t-area
+                .buttons
+                    input#send-comment(type="submit", value="Send").input.sub
+                    button#cancel-comment(type="button").input Close
+
+append js
+    script(src="view/js/blog.js")
