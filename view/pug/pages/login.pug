@@ -9,8 +9,8 @@ block content
    .container
       p.title Admin Panel
       form#form-login
-         input(type="text" name="user" placeholder="Username" class="input username")
-         input(type="password" name="pass" placeholder="Password" class="input password")
+         input(type="text" name="user" placeholder="Username" maxlength="50" required class="input username")
+         input(type="password" name="pass" placeholder="Password" maxlength="50" required class="input password")
          input(type="submit" name="submit" value="Entry" class="input submit")
    a(href="index.php?url=home").floating-button: i.fa.fa-door-open
 

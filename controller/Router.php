@@ -2,10 +2,6 @@
    class Router{
       private $routerBase = "view/html/";
 
-      function __construct(){
-         
-      }
-
       function home(){
          $url = $this->routerBase . "home.html";
          require_once($url);
@@ -77,6 +73,39 @@
             }
 
             echo $response;
+         }else{
+            echo "false";
+         }
+      }
+
+      function AdminCreatePublication(){
+         if(isset($_FILES["image"])){
+            require_once("model/Conection.php");
+            require_once("model/Publications.php");
+   
+            $path = "public/image_publications/" . $_FILES["image"]["name"];
+            $type = explode("/",$_FILES["image"]["type"]);
+   
+            if($type[1] == "png" || $type[1] == "jpeg" || $type[1] == "jpg"){
+               $publications = new Publications();
+               
+               $values = [
+                  ":image" => $path,
+                  ":title" => $_POST["title"],
+                  ":text" => $_POST["text"] 
+               ];  
+               
+               $response = $publications->InsertPublication($values);
+               if($response == "true"){
+                  if(move_uploaded_file($_FILES["image"]["tmp_name"],$path)){
+                     echo $response;
+                  }
+               }else if($response == "false"){
+                  echo "ErrorUpdload";
+               }
+            }else{
+               echo "NoImage";
+            }
          }else{
             echo "false";
          }

@@ -18,7 +18,7 @@
             
             $stm->execute();
 
-            return $stm->rowCount() > 0 ? true : false;
+            return $stm->rowCount() > 0 ? "true" : "false";
          }catch(PDOException $err){
             die($err->getMessage());
          }
@@ -31,7 +31,7 @@
 
             switch($filter){
                case "all" : 
-                  $query = "select * from {$this->table}";
+                  $query = "select * from {$this->table} order by id_publication desc";
                   $stm = $this->con->prepare($query);
                   $stm->execute();
                   $data = $stm->fetchAll();

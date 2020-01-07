@@ -19,17 +19,17 @@ block content
               i.fa.fa-plus
     .body-publications
         .publication#publication.toggle
-            form.add-publication.toggle(enctype="multipart/form-data")
+            form#form-insert-publication.add-publication.toggle(enctype="multipart/form-data")
                 .row-title
                     p.title Agregar publicación
                 .row-body-publication
-                    input.text-field(type="text" placeholder="Titulo",rows="3")
-                    textarea.text-field(placeholder="Descripcion...",rows="6")
+                    input.text-field(type="text" name="title" maxlength="300" placeholder="Titulo",rows="3" required)
+                    textarea.text-field(placeholder="Descripcion..." maxlength="2000" name="text" rows="6" required)
                     .input-picture
                         label.text-upload-file 
-                            i.icon-upload.fa.fa-image 
+                            i.icon-upload.fa.fa-image
                             | subir una foto
-                            input(type="file")
+                            input(type="file" name="image" required)
                     .btn-options 
                         input.btn-cancel(type="reset",value="Cancelar")#btn-cancel-publication
                         input.btn-publication(type="submit",value="Publicar")

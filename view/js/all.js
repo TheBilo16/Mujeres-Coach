@@ -288,7 +288,7 @@ var publication = {
    },
    toggleForm : function() {
        var f = this.formPublication();
-       let add = f.querySelector(".add-publication");
+       let add = f.querySelector("#form-insert-publication");
        var style = "toggle";
        this.btnAddPublication().addEventListener('click', ev => {
             f.classList.remove(style);
@@ -300,7 +300,41 @@ var publication = {
        })
    },
    createPublication : function(){
-      //Code fetch
+      let form = this.formPublication().querySelector("#form-insert-publication");
+      form.addEventListener("submit", async ev => {
+         ev.preventDefault();
+
+         const dataForm = new FormData(form);
+         const headers = {
+            method : "POST",
+            body : dataForm
+         };
+
+         let inputs = form.querySelectorAll(".text-field");
+         let submit = form.querySelector("input[type='submit']");
+         submit.disabled = true;
+
+         const requestData = await fetch("index.php?url=AdminCreatePublication",headers);
+         const response = await requestData.text();
+         
+         switch(response){
+            case "true":
+               alert("Publicacion Subida");
+               [...inputs].forEach(v => v.value = "");
+               submit.disabled = false;
+               break;
+            case "false":
+            case "ErrorUpload":
+               alert("Ocurrio un error al subir la imagen...");
+               submit.disabled = false;
+               break;
+            case "NoImage":
+               alert("El archivo ingresado no es una Imagen");
+               submit.disabled = false;
+               break;   
+         }
+
+      })
    },
    getPublications : async function(){
       const divPublications = document.querySelector("#content-publications");
@@ -331,6 +365,7 @@ var publication = {
       this.logout();
       this.toggleForm();
       this.getPublications();
+      this.createPublication();
    }
 }
 
