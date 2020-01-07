@@ -128,17 +128,22 @@
                     .dark {
                         font-size:1.3em;
                     }
-                    .date {
-                        color: gray;
-                        font-size:.75em;
+                    .text-publication {
+                        font-size: .8em;
                         padding: 10px 0;
+                        color: lighten(#000,30);
                     }
                 }
             }
             .container-options {
+                @include flex(row,space-between,center);
                 padding: 10px;
-                text-align: right;
                 background:lighten(#000, 97);
+                .date {
+                    color: gray;
+                    font-size:.7em;
+                    padding: 10px 0;
+                }
                 button {
                     padding: 10px 15px;
                     background: #223B90;

@@ -682,14 +682,30 @@ body::-webkit-scrollbar-thumb:vertical:hover {
         padding: 10px; }
         .body-publications .row-publications .card-published .container-details .text .dark {
           font-size: 1.3em; }
-        .body-publications .row-publications .card-published .container-details .text .date {
-          color: gray;
-          font-size: .75em;
-          padding: 10px 0; }
+        .body-publications .row-publications .card-published .container-details .text .text-publication {
+          font-size: .8em;
+          padding: 10px 0;
+          color: #4d4d4d; }
       .body-publications .row-publications .card-published .container-options {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
         padding: 10px;
-        text-align: right;
         background: #f7f7f7; }
+        .body-publications .row-publications .card-published .container-options .date {
+          color: gray;
+          font-size: .7em;
+          padding: 10px 0; }
         .body-publications .row-publications .card-published .container-options button {
           padding: 10px 15px;
           background: #223B90;
