@@ -639,12 +639,28 @@ body::-webkit-scrollbar-thumb:vertical:hover {
             margin-right: 10px; }
         .body-publications .add-publication .row-body-publication .input-picture input[type="file"] {
           display: none; }
-      .body-publications .add-publication .row-body-publication .btn-publication {
-        color: white;
-        background: #de0d6b;
-        padding: 15px;
-        width: 100%;
-        margin-top: 20px; }
+      .body-publications .add-publication .row-body-publication .btn-options {
+        margin-top: 20px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        width: 100%; }
+        .body-publications .add-publication .row-body-publication .btn-options > * {
+          width: 45%; }
+        .body-publications .add-publication .row-body-publication .btn-options .btn-publication {
+          color: white;
+          background: #de0d6b;
+          padding: 15px; }
   .body-publications .row-publications {
     display: -ms-grid;
     display: grid;

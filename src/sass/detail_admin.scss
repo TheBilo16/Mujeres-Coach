@@ -86,12 +86,21 @@
                     display: none;
                 }
             }
-            .btn-publication {
-                color:white;
-                background: $color-base;
-                padding: 15px;
-                width: 100%;
+            .btn-options {
                 margin-top: 20px;
+                @include flex(row,space-between,center);
+                width: 100%;
+                > * {
+                    width: 45%;
+                }
+                .btn-cancel {
+
+                }
+                .btn-publication {
+                    color:white;
+                    background: $color-base;
+                    padding: 15px;
+                }
             }
         }
     }

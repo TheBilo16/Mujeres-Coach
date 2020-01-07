@@ -28,7 +28,9 @@ block content
                             i.icon-upload.fa.fa-image 
                             | subir una foto
                             input(type="file")
-                    input.btn-publication(type="submit",value="publicar")
+                    .btn-options 
+                        input.btn-cancel(type="reset",value="cancelar") 
+                        input.btn-publication(type="submit",value="publicar")
         .row-title
             p.title Mis publicaciones
         .row-publications
