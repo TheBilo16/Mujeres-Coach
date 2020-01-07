@@ -16,18 +16,19 @@ block content
         button.add-publication#add-publication
               i.fa.fa-plus
     .body-publications
-        form.add-publication#publication 
-            .row-title
-                p.title Subir publicación
-            .row-body-publication
-                textarea.text-field(placeholder="ingresar un titulo para la publicación",rows="3")
-                textarea.text-field(placeholder="ingresar la descripción de la publicación",rows="6")
-                .input-picture
-                    label.text-upload-file 
-                        i.icon-upload.fa.fa-image 
-                        | subir una foto
-                        input(type="file")
-                input.btn-publication(type="submit",value="publicar")
+        .publication#publication
+            form.add-publication 
+                .row-title
+                    p.title Subir publicación
+                .row-body-publication
+                    textarea.text-field(placeholder="ingresar un titulo para la publicación",rows="3")
+                    textarea.text-field(placeholder="ingresar la descripción de la publicación",rows="6")
+                    .input-picture
+                        label.text-upload-file 
+                            i.icon-upload.fa.fa-image 
+                            | subir una foto
+                            input(type="file")
+                    input.btn-publication(type="submit",value="publicar")
         .row-title
             p.title Mis publicaciones
         .row-publications
