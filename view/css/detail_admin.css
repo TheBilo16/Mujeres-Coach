@@ -605,6 +605,11 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     color: white;
     background: #de0d6b;
     margin: 0 0 0 10px; }
+  @media screen and (max-width: 600px) {
+    .nav-options {
+      width: 90%; }
+      .nav-options .search {
+        width: 100%; } }
 
 .body-publications {
   margin: auto;
@@ -788,6 +793,16 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       .body-publications .row-publications .not-found .message {
         display: inline;
         color: #737373; }
+    @media screen and (max-width: 1000px) {
+      .body-publications .row-publications {
+        -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr); } }
+    @media screen and (max-width: 600px) {
+      .body-publications .row-publications {
+        -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr; }
+        .body-publications .row-publications .not-found {
+          width: 100%; } }
 
 .app-footer {
   border-top: 1px solid #e6e6e6; }

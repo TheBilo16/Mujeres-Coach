@@ -1,9 +1,9 @@
 <?php
    class Conection{
-      private $host = "localhost";
+      private $host = "127.0.0.1";
       private $database = "blogBrunella";
       private $user = "root";
-      private $password = "";
+      private $password = "1234";
       protected $con = null;
 
       function __construct(){

@@ -556,7 +556,6 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     font-size: 2.1em;
     padding-bottom: 1em; }
   .container #form-login {
-    width: 30%;
     margin: 0 auto;
     display: -ms-grid;
     display: grid;

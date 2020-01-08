@@ -38,6 +38,13 @@
         background: $color-base;
         margin: 0 0 0 10px;
     }
+    @include responsive(600px) {
+        width: 90%;
+        .search {
+            width: 100%;
+        }
+    }
+
 }
 
 .body-publications {
@@ -203,6 +210,15 @@
             .message {
                 display: inline;
                 color: lighten( #000, 45);
+            }
+        }
+        @include responsive(1000px) {grid-template-columns: repeat(2,1fr);}
+
+        @include responsive(600px) {
+            grid-template-columns: 1fr;
+
+            .not-found {
+                width: 100%;
             }
         }
     }
