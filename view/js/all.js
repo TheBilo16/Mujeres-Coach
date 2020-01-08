@@ -140,6 +140,14 @@ var comment = {
    },
    close : function() {
       this.formCreateComment().classList.add('animate');
+   },
+   createComment : function() {
+      this.formCreateComment().querySelector("form").addEventListener('submit',ev=>{
+         ev.preventDefault();
+         fetch("").then(r=>r.json()).then(request=>{
+            
+         });
+      });
    }
 }
 
@@ -246,6 +254,7 @@ var blog = {
    },
    init : function() {
       this.loadContentPublications();
+      this.formComment().createComment();
    }
 }
 
