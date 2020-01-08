@@ -26,16 +26,33 @@
         color: lighten(#000,45);
         padding: 0;
       }
+      @include responsive (600px) {
+          width: 100%;
+      }
     }
   }
   .container-cards {
     @include flex(row,space-around);
-    margin: 8em auto;
     width: 80%;
+    margin: 8em auto;
+    @include responsive(850px) {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      grid-gap: 40px;
+      margin: 4em auto;
+    }
+    @include responsive(700px) {
+      @include flex(column,center,center);
+      width: 100%;
+      margin: 3em 0;
+    }
     .card {
       width: 200px;
       &:nth-child(odd){
         transform: translateY(-50px);
+        @include responsive(850px) {
+          transform: translateX(0);
+        }
       }
       @include flex(column,none,center);
       .card-image {
@@ -45,6 +62,9 @@
         border-radius: 100%;
         margin: 10px 0;
         padding: 4px;
+        @include responsive(850px) {
+          margin-top:.6in;
+        }
       }
       .detail-content {
         text-align: center;
@@ -86,6 +106,15 @@
             font-size: .9em;
             line-height: 1.7em;
           }
+          @include responsive(900px) {
+            .title {width: 80%;}
+            .text {width: 50%;}
+          }
+          @include responsive(500px) {
+            .title {width: 100%;}
+            .text {width: 60%;}
+          }
+
         }
       }
       .container-image {
