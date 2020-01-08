@@ -64,7 +64,30 @@
          padding-bottom: 2em;
          color: lighten(#000,45);
       }
+      @include responsive(800px) {
+         text-align: center;
+         .title-text {
+            margin: 1em 0 0;
+         }
+      }
    }
+   @include responsive(1200px) {
+      width: 90%;
+   }
+   @include responsive(950px) {
+      .slider,.text {
+         font-size: .9em;
+      }
+   }
+
+   @include responsive(800px) {
+      @include flex(column,none,none);
+      width: 100%;
+      .slider , .text{
+         width: 100%;
+      }
+   }
+
 }
 
 .content-tools{
@@ -81,6 +104,10 @@
                   0 -1px 2px rgb(230,230,230);
       font-size: 0.9em;
       text-align: center;
+
+      @include responsive(600px) {
+         width: 100%;
+      }
       .icon{
          font-size: 3em;
          height: 120px;
@@ -120,6 +147,27 @@
          line-height: 1.7em;
          color: lighten(#000,50);
       }
+      @include responsive(500px) {
+         padding: 0 1em;
+         .title {
+
+         }
+         .text {
+
+         }
+      }
+   }
+   @include responsive(800px) {
+      @include flex(column-reverse,none,none);
+      text-align: center;
+      .image {
+         height: 200px;
+      }
+      .desc{
+         .title {
+            margin-top: 1em;
+         }
+      }
    }
 }
 
@@ -133,7 +181,12 @@
          position: relative;
          margin: 5px;
          overflow: hidden;
-         .img{ width: 200px; }
+         .img{ 
+            width: 200px; 
+            @include responsive(550px) {
+               width: 100%;
+            }
+         }
          .icon{
             color: #fff;
             position: absolute;
@@ -176,6 +229,9 @@
          width: 40%;
          margin: 0 auto;
          color: lighten(#000, 45);
+         @include responsive(550px) {
+            width: 60%;
+         }
       }
    }
 }

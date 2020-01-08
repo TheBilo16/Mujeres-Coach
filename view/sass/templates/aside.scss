@@ -15,6 +15,12 @@
     }
   }
 
+  @include responsive(1100px) {
+    .title {
+      width: 100%;
+      text-align: center;
+    }
+  }
   .content{
     width: 80%;
     margin: 0 auto;
@@ -44,7 +50,7 @@
     .container-politics {
         width: 80%;
         margin: 0 auto;
-        .title-politics {
+         .title-politics {
           color: #1f1f1f;
           margin-bottom: 20px;
           font-size: 1.5em;
@@ -59,7 +65,29 @@
             margin: 0 0 0 1em;
           }
         }
-    }    
+        @include responsive(1100px) {
+          width: 100%;
+          margin-top: 4em;
+        }
+        @include responsive(600px) {
+          width: 100%;
+          text-align: center;
+          .list-politics {
+            .item {
+              @include flex(column,center,center);
+            }
+          }
+        }
+
+    }  
+    
+    @include responsive(1100px) {
+      display: block;
+      widows: 100%;
+      .container-form {
+        text-align: center;
+      }
+    }
   }
 
 }

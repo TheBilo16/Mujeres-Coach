@@ -289,6 +289,10 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       background: linear-gradient(bottom, #223B90, #de0d6b);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent; }
+  @media screen and (max-width: 1100px) {
+    .panel-contact .title {
+      width: 100%;
+      text-align: center; } }
   .panel-contact .content {
     width: 80%;
     margin: 0 auto;
@@ -386,6 +390,34 @@ body::-webkit-scrollbar-thumb:vertical:hover {
         font-size: .85em;
         padding: 5px 0;
         margin: 0 0 0 1em; }
+      @media screen and (max-width: 1100px) {
+        .panel-contact .content .container-politics {
+          width: 100%;
+          margin-top: 4em; } }
+      @media screen and (max-width: 600px) {
+        .panel-contact .content .container-politics {
+          width: 100%;
+          text-align: center; }
+          .panel-contact .content .container-politics .list-politics .item {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center; } }
+    @media screen and (max-width: 1100px) {
+      .panel-contact .content {
+        display: block;
+        widows: 100%; }
+        .panel-contact .content .container-form {
+          text-align: center; } }
 
 .btn-global {
   padding: 0 .8em;
@@ -606,6 +638,35 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       line-height: 1.5em;
       padding-bottom: 2em;
       color: #737373; }
+    @media screen and (max-width: 800px) {
+      .content-slider .text {
+        text-align: center; }
+        .content-slider .text .title-text {
+          margin: 1em 0 0; } }
+  @media screen and (max-width: 1200px) {
+    .content-slider {
+      width: 90%; } }
+  @media screen and (max-width: 950px) {
+    .content-slider .slider, .content-slider .text {
+      font-size: .9em; } }
+  @media screen and (max-width: 800px) {
+    .content-slider {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: none;
+      -ms-flex-pack: none;
+      justify-content: none;
+      -webkit-box-align: none;
+      -ms-flex-align: none;
+      align-items: none;
+      width: 100%; }
+      .content-slider .slider, .content-slider .text {
+        width: 100%; } }
 
 .content-tools {
   width: 80%;
@@ -633,6 +694,9 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     box-shadow: 0 5px 15px #e6e6e6, 0 -1px 2px #e6e6e6;
     font-size: 0.9em;
     text-align: center; }
+    @media screen and (max-width: 600px) {
+      .content-tools .card-tool {
+        width: 100%; } }
     .content-tools .card-tool .icon {
       font-size: 3em;
       height: 120px;
@@ -682,6 +746,29 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     .content-profile .desc .text {
       line-height: 1.7em;
       color: gray; }
+    @media screen and (max-width: 500px) {
+      .content-profile .desc {
+        padding: 0 1em; } }
+  @media screen and (max-width: 800px) {
+    .content-profile {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+      flex-direction: column-reverse;
+      -webkit-box-pack: none;
+      -ms-flex-pack: none;
+      justify-content: none;
+      -webkit-box-align: none;
+      -ms-flex-align: none;
+      align-items: none;
+      text-align: center; }
+      .content-profile .image {
+        height: 200px; }
+      .content-profile .desc .title {
+        margin-top: 1em; } }
 
 .content-images {
   width: 80%;
@@ -709,6 +796,9 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       overflow: hidden; }
       .content-images .content .image .img {
         width: 200px; }
+        @media screen and (max-width: 550px) {
+          .content-images .content .image .img {
+            width: 100%; } }
       .content-images .content .image .icon {
         color: #fff;
         position: absolute;
@@ -756,6 +846,9 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       width: 40%;
       margin: 0 auto;
       color: #737373; }
+      @media screen and (max-width: 550px) {
+        .content-images .desc .message {
+          width: 60%; } }
 
 .app-footer {
   border-top: 1px solid #e6e6e6; }
