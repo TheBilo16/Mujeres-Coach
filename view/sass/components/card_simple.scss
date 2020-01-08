@@ -5,6 +5,9 @@
     color: white;
     margin: 3em 1em 3em 0;
     padding: 1.5em;
+    @include responsive(800px) {
+      margin:3em 0;
+    }
     .card-header {
       @include flex();
       .image {
