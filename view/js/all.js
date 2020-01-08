@@ -278,6 +278,7 @@ var publication = {
    btnAddPublication : () => document.getElementById('add-publication'),
    formButtonClose : () => document.getElementById("btn-cancel-publication"),
    formPublication : () => document.getElementById('publication'),
+   inputSearch : () => document.querySelector('.input-search'),
    logout : () => {
       const btn = document.querySelector("#logout-button");
       btn.addEventListener("click",async ev => {
@@ -301,6 +302,20 @@ var publication = {
    },
    createPublication : function(){
       let form = this.formPublication().querySelector("#form-insert-publication");
+      let picture = this.formPublication().querySelector("[name='image']");
+
+      picture.addEventListener('change', ev => {
+         var preview  = document.querySelector('.preview-image');
+         var reader = new FileReader();
+         reader.onload = e => {
+            preview.innerHTML = `
+              <img src="${e.target.result}"/>
+              <p class="name-image">${ev.target.files[0].name}</p>
+              `;
+         };
+         reader.readAsDataURL(ev.target.files[0]);
+      });
+
       form.addEventListener("submit", async ev => {
          ev.preventDefault();
 
@@ -336,36 +351,59 @@ var publication = {
 
       })
    },
-   getPublications : async function(){
+   getPublications : async function(title = null){
       const divPublications = document.querySelector("#content-publications");
       
-      const pathRequest = "index.php?url=blogRequestPublication";
+      var pathRequest;
+      if(title == null ){
+         pathRequest = "index.php?url=blogRequestPublication";
+      }
+      else {
+         pathRequest = "index.php?url=SearchByTitle&title="+title;
+      }
       const request = await fetch(pathRequest);
       const response = await request.json();
 
-      response.forEach(v => {
-         divPublications.innerHTML += `<div class="card-published">
-            <div class="container-image">
-               <img src="${v.path_image}" alt="image" />
-            </div>
-            <div class="container-details">
-               <div class="text">
-                  <p class="dark">${v.title_publication}</p>
-                  <p class="text-publication">${v.text_publication}</p>
+      divPublications.innerHTML = "";
+      if(response.length > 0){
+         response.forEach(v => {
+            divPublications.innerHTML += `<div class="card-published">
+               <div class="container-image">
+                  <img src="${v.path_image}" alt="image" />
                </div>
-            </div>
-            <div class="container-options">
-               <p class="date">${v.date_create}</p>
-               <button class="delete">Eliminar</button>
-            </div>
-         </div>`;
-      })
+               <div class="container-details">
+                  <div class="text">
+                     <p class="dark">${v.title_publication}</p>
+                     <p class="text-publication">${v.text_publication}</p>
+                  </div>
+               </div>
+               <div class="container-options">
+                  <p class="date">${v.date_create}</p>
+                  <button class="delete">Eliminar</button>
+               </div>
+            </div>`;
+         });
+      }
+      else {
+         divPublications.innerHTML = `
+         <div class="not-found">
+            <p class="dark">Ups!</p>
+            <p class="message">No se encontró ninguna coincidencia con ${title}...</p>
+         </div>
+         `;
+      }
+   },
+   searchByTitle : function() {
+      this.inputSearch().addEventListener('keyup', ev => {
+         this.getPublications(this.inputSearch().value);
+      });
    },
    init : function() {  
       this.logout();
       this.toggleForm();
       this.getPublications();
       this.createPublication();
+      this.searchByTitle();
    }
 }
 

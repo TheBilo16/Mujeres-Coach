@@ -99,6 +99,25 @@
                     input[type="file"] {
                         display: none;
                     }
+                    .preview-image {
+                        img {
+                            width: 100%;
+                            height: 200px;
+                            object-fit: cover;
+                            margin:10px 0;
+                            animation:show-image .5s 1;
+                        }
+                        @keyframes show-image {
+                            from {
+                                opacity: 0;
+                                height: 0;
+                            }
+                        }
+                        .name-image {
+                            color: gray;
+                            font-size: .8em;
+                        }
+                    }
                 }
                 .btn-options {
                     margin-top: 20px;
@@ -173,6 +192,19 @@
                     }
                 }
             }
+        .not-found {
+            position: relative;
+            width: 500px;
+            .dark {
+                font-size: 1.1em;
+                display: inline;
+                font-weight: bold;
+            }
+            .message {
+                display: inline;
+                color: lighten( #000, 45);
+            }
+        }
     }
 }
 

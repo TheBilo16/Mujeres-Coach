@@ -43,6 +43,14 @@
                   $stm->execute();
                   $data = $stm->fetchAll();
                   break;
+               case "like":
+                  $query = "select * from {$this->table} where title_publication LIKE CONCAT('%',:title,'%')";
+                  $stm = $this->con->prepare($query);
+                  $stm->bindValue(":title",$paramFilter);
+                  $stm->execute();
+                  $data = $stm->fetchAll();
+                  break;
+
             }
 
             return json_encode($data);

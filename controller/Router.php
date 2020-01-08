@@ -78,6 +78,18 @@
          }
       }
 
+      function SearchByTitle() {
+         require_once("model/Conection.php");
+         require_once("model/Publications.php");
+         $publications = new Publications();
+         if(isset($_GET["title"])) {
+            echo $publications->SelectPublication("like",$_GET["title"]);
+         }
+         else {
+            echo "error";
+         }
+      }
+
       function AdminCreatePublication(){
          if(isset($_FILES["image"])){
             require_once("model/Conection.php");
