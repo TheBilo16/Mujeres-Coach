@@ -89,6 +89,18 @@
             echo "error";
          }
       }
+      function FindPublication(){
+         require_once("model/Conection.php");
+         require_once("model/Publications.php");
+         $publications = new Publications();
+         if(isset($_GET["id"])) {
+            echo $publications->SelectPublication("find",$_GET["id"]);
+         }
+         else {
+            echo "error";
+         }
+
+      }
 
       function AdminCreatePublication(){
          if(isset($_FILES["image"])){

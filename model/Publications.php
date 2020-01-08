@@ -50,6 +50,13 @@
                   $stm->execute();
                   $data = $stm->fetchAll();
                   break;
+               case "find":
+                  $query = "select * from {$this->table} where id_publication = :id";
+                  $stm = $this->con->prepare($query);
+                  $stm->bindValue(":id",$paramFilter);
+                  $stm->execute();
+                  $data = $stm->fetch();
+                  break;
 
             }
             return json_encode($data);

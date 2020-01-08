@@ -149,7 +149,6 @@ var blog = {
    closeModalBlog : () => document.querySelector("#close-publication-blog"),
    imagesCards : () => document.querySelectorAll(".handler-image-publication-blog"),
    buttonCard : () => document.querySelectorAll('.handler-click-publication-blog'),
-   cardPublication : () => document.querySelector('.published-card'),
    formComment : () => comment,
    previewPublished : function() {
       let handlerButton = this.buttonCard();
@@ -157,12 +156,22 @@ var blog = {
       let modal = this.modalBlogContent();
 
       [...handlerButton].forEach(( button , index ) => {
-         button.addEventListener('click', () => {
+         button.addEventListener('click', ev => {
             let imageModal = modal.querySelector(".image img");
             modal.classList.add("animate");
             imageModal.src = handlerImage[index].src;
             document.body.style.overflow = "hidden";
-            alert(unescape(this.cardPublication().getAttribute("data-pbl")));
+            
+            let parent = ev.target.closest(".published-card"); 
+            let attribute = parent.getAttribute('data-pbl');
+            let data =JSON.parse(decodeURIComponent(attribute));
+            
+            fetch("index.php?url=FindPublication&id="+data.id_publication).then(r=>r.json()).then(request=>{
+               var m = this.modalBlogContent();
+               m.querySelector('.title').innerHTML = request.title_publication;
+               m.querySelector('.content').innerHTML = request.text_publication;
+               m.setAttribute('data-pbl',attribute);
+            });
          });
       });
    },
@@ -212,8 +221,7 @@ var blog = {
                </div>`;
                divMinus.innerHTML += template;
             }else{
-               let publication = escape(v);
-               let template = `<div class="published-card" data-aos="zoom-in" data-pbl="${publication}">
+               let template = `<div class="published-card" data-aos="zoom-in" data-pbl='${encodeURIComponent(JSON.stringify(v))}'>
                   <div class="container-image">
                      <img class="image-published handler-image-publication-blog" src="${v.path_image}" alt="url image" />
                   </div>
@@ -226,7 +234,6 @@ var blog = {
                divContent.innerHTML += template;
             }
          })    
-
          this.previewPublished();    
          this.openAndCloseComment();
          this.closePublication();
