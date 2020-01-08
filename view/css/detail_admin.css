@@ -650,6 +650,10 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       -webkit-transition: .3s;
       -o-transition: .3s;
       transition: .3s; }
+      @media screen and (max-width: 600px) {
+        .body-publications .publication .add-publication {
+          width: 100%;
+          height: 100%; } }
       .body-publications .publication .add-publication.toggle {
         visibility: hidden;
         opacity: 0; }
@@ -669,33 +673,70 @@ body::-webkit-scrollbar-thumb:vertical:hover {
         -webkit-box-align: start;
         -ms-flex-align: start;
         align-items: flex-start; }
-        .body-publications .publication .add-publication .row-body-publication .text-field {
-          border: 1px solid rgba(100, 100, 100, 0.2);
-          padding: 10px;
-          width: 100%;
-          margin: 5px 0; }
-        .body-publications .publication .add-publication .row-body-publication .input-picture {
-          width: 100%;
-          margin: 5px 0; }
-          .body-publications .publication .add-publication .row-body-publication .input-picture .text-upload-file {
-            display: block;
-            background: rgba(100, 100, 100, 0.1);
-            color: #505050;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer; }
-            .body-publications .publication .add-publication .row-body-publication .input-picture .text-upload-file .icon-upload {
-              margin-right: 10px; }
-          .body-publications .publication .add-publication .row-body-publication .input-picture input[type="file"] {
-            display: none; }
-          .body-publications .publication .add-publication .row-body-publication .input-picture .preview-image img {
-            width: 100%;
+        .body-publications .publication .add-publication .row-body-publication .container-input {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+          flex-direction: row;
+          -webkit-box-pack: start;
+          -ms-flex-pack: start;
+          justify-content: flex-start;
+          -webkit-box-align: start;
+          -ms-flex-align: start;
+          align-items: flex-start;
+          width: 100%; }
+          @media screen and (max-width: 600px) {
+            .body-publications .publication .add-publication .row-body-publication .container-input {
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-orient: vertical;
+              -webkit-box-direction: normal;
+              -ms-flex-direction: column;
+              flex-direction: column;
+              -webkit-box-pack: start;
+              -ms-flex-pack: start;
+              justify-content: flex-start;
+              -webkit-box-align: start;
+              -ms-flex-align: start;
+              align-items: flex-start; } }
+          .body-publications .publication .add-publication .row-body-publication .container-input .fields {
+            width: 100%; }
+            .body-publications .publication .add-publication .row-body-publication .container-input .fields .text-field {
+              border: 1px solid rgba(100, 100, 100, 0.2);
+              padding: 10px;
+              width: 100%;
+              margin: 5px 0; }
+            .body-publications .publication .add-publication .row-body-publication .container-input .fields .input-picture {
+              width: 100%;
+              margin: 5px 0; }
+              .body-publications .publication .add-publication .row-body-publication .container-input .fields .input-picture .text-upload-file {
+                display: block;
+                background: rgba(100, 100, 100, 0.1);
+                color: #505050;
+                padding: 15px;
+                text-align: center;
+                cursor: pointer; }
+                .body-publications .publication .add-publication .row-body-publication .container-input .fields .input-picture .text-upload-file .icon-upload {
+                  margin-right: 10px; }
+              .body-publications .publication .add-publication .row-body-publication .container-input .fields .input-picture input[type="file"] {
+                display: none; }
+          .body-publications .publication .add-publication .row-body-publication .container-input .preview .preview-image img {
+            width: 200px;
             height: 200px;
             -o-object-fit: cover;
             object-fit: cover;
             margin: 10px 0;
+            margin-left: 10px;
             -webkit-animation: show-image .5s 1;
             animation: show-image .5s 1; }
+            @media screen and (max-width: 600px) {
+              .body-publications .publication .add-publication .row-body-publication .container-input .preview .preview-image img {
+                width: 100%;
+                margin: 10px 0; } }
 
 @-webkit-keyframes show-image {
   from {
@@ -706,7 +747,7 @@ body::-webkit-scrollbar-thumb:vertical:hover {
   from {
     opacity: 0;
     height: 0; } }
-          .body-publications .publication .add-publication .row-body-publication .input-picture .preview-image .name-image {
+          .body-publications .publication .add-publication .row-body-publication .container-input .preview .preview-image .name-image {
             color: gray;
             font-size: .8em; }
         .body-publications .publication .add-publication .row-body-publication .btn-options {

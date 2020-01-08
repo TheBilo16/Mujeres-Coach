@@ -73,6 +73,10 @@
             padding: 30px;
             width: 500px;
             transition: .3s;
+            @include responsive(600px) {
+                width: 100%;
+                height: 100%;
+            }
             &.toggle {
                 visibility: hidden;
                 opacity: 0;
@@ -82,50 +86,72 @@
             }
             .row-body-publication {
                 @include flex(column);
-                .text-field {
-                    border:1px solid rgba(100,100,100,.2);
-                    padding: 10px;
+                .container-input {
+                    @include flex();
+                    @include responsive(600px) {
+                        @include flex(column);
+                    }
                     width: 100%;
-                    margin: 5px 0;
-                }
-                .input-picture {
-                    width: 100%; 
-                    margin: 5px 0;
-                    
-                    .text-upload-file {
-                        display: block;
-                        background: rgba(100,100,100,.1);
-                        color:rgb(80,80,80);
-                        padding: 15px;
-                        text-align: center;
-                        cursor: pointer;
-                        .icon-upload {
-                            margin-right: 10px;
-                        }
-                    }
-                    input[type="file"] {
-                        display: none;
-                    }
-                    .preview-image {
-                        img {
+                    .fields {
+                        width: 100%;
+                        .text-field {
+                            border:1px solid rgba(100,100,100,.2);
+                            padding: 10px;
                             width: 100%;
-                            height: 200px;
-                            object-fit: cover;
-                            margin:10px 0;
-                            animation:show-image .5s 1;
+                            margin: 5px 0;
                         }
-                        @keyframes show-image {
-                            from {
-                                opacity: 0;
-                                height: 0;
+                        .input-picture {
+                            width: 100%; 
+                            margin: 5px 0;
+                            
+                            .text-upload-file {
+                                display: block;
+                                background: rgba(100,100,100,.1);
+                                color:rgb(80,80,80);
+                                padding: 15px;
+                                text-align: center;
+                                cursor: pointer;
+                                .icon-upload {
+                                    margin-right: 10px;
+                                }
+                            }
+                            input[type="file"] {
+                                display: none;
+                            }
+                           
+                        }
+                    }
+                 
+                    .preview {
+                        .preview-image {
+                            img {
+                                width: 200px;
+                                height: 200px;
+                                object-fit: cover;
+                                margin:10px 0;
+                                margin-left: 10px;
+                                animation:show-image .5s 1;
+                                @include responsive(600px) {
+                                    width: 100%;
+                                    margin:10px 0;
+                                }
+                            }
+        
+                            @keyframes show-image {
+                                from {
+                                    opacity: 0;
+                                    height: 0;
+                                }
+                            }
+                            .name-image {
+                                color: gray;
+                                font-size: .8em;
                             }
                         }
-                        .name-image {
-                            color: gray;
-                            font-size: .8em;
-                        }
                     }
                 }
+
+                
                 .btn-options {
                     margin-top: 20px;
                     @include flex(row,space-between,center);

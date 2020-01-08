@@ -27,13 +27,19 @@
               <p class="title">Agregar publicación</p>
             </div>
             <div class="row-body-publication">
-              <input class="text-field" type="text" name="title" maxlength="300" placeholder="Titulo" rows="3" required="required"/>
-              <textarea class="text-field" placeholder="Descripcion..." maxlength="2000" name="text" rows="6" required="required"></textarea>
-              <div class="input-picture">
-                <label class="text-upload-file"> <i class="icon-upload fa fa-image"></i>subir una foto
-                  <input type="file" name="image" required="required"/>
-                </label>
-                <div class="preview-image"></div>
+              <div class="container-input">
+                <div class="fields"> 
+                  <input class="text-field" type="text" name="title" maxlength="300" placeholder="Titulo" rows="3" required="required"/>
+                  <textarea class="text-field" placeholder="Descripcion..." maxlength="2000" name="text" rows="6" required="required"></textarea>
+                  <div class="input-picture">
+                    <label class="text-upload-file"> <i class="icon-upload fa fa-image"></i>subir una foto
+                      <input type="file" name="image" required="required"/>
+                    </label>
+                  </div>
+                </div>
+                <div class="preview">
+                  <div class="preview-image"></div>
+                </div>
               </div>
               <div class="btn-options"> 
                 <input class="btn-cancel" type="reset" value="Cancelar" id="btn-cancel-publication"/>

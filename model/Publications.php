@@ -52,7 +52,6 @@
                   break;
 
             }
-
             return json_encode($data);
          }
          catch(PDOException $err){

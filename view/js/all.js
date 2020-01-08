@@ -149,6 +149,7 @@ var blog = {
    closeModalBlog : () => document.querySelector("#close-publication-blog"),
    imagesCards : () => document.querySelectorAll(".handler-image-publication-blog"),
    buttonCard : () => document.querySelectorAll('.handler-click-publication-blog'),
+   cardPublication : () => document.querySelector('.published-card'),
    formComment : () => comment,
    previewPublished : function() {
       let handlerButton = this.buttonCard();
@@ -161,6 +162,7 @@ var blog = {
             modal.classList.add("animate");
             imageModal.src = handlerImage[index].src;
             document.body.style.overflow = "hidden";
+            alert(unescape(this.cardPublication().getAttribute("data-pbl")));
          });
       });
    },
@@ -210,7 +212,8 @@ var blog = {
                </div>`;
                divMinus.innerHTML += template;
             }else{
-               let template = `<div class="published-card" data-aos="zoom-in">
+               let publication = escape(v);
+               let template = `<div class="published-card" data-aos="zoom-in" data-pbl="${publication}">
                   <div class="container-image">
                      <img class="image-published handler-image-publication-blog" src="${v.path_image}" alt="url image" />
                   </div>
