@@ -134,4 +134,38 @@
             echo "false";
          }
       }
+      
+      function CreateComment() {
+         require_once("model/Conection.php");
+         require_once("model/Comments.php");
+         $comments = new Comments();
+         if(empty($_POST["text_comment"]) || trim($_POST["text_comment"]) == "" ){
+            echo "false";
+         } else {
+            $values = [
+               ":username" => $_POST["username"],
+               ":email" => $_POST["email"],
+               "text_publication" => $_POST["text_comment"],
+               "id_publication" => $_POST["id_publication"]
+            ];
+            $response = $comments->InsertComment($values);
+            if($response == "true") {
+               echo $response;
+            } else {
+               echo "error publication";
+            }
+         }
+      }
+
+      function AllComments() {
+         require_once("model/Conection.php");
+         require_once("model/Comments.php");
+         $comments = new Comments();
+         if(isset($_GET["id_publication"])){
+            echo $comments->ViewComment($_GET["id_publication"]);
+         }else {
+            echo "error";
+         }
+      }
+
    }

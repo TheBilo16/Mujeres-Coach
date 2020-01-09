@@ -135,6 +135,8 @@ var navAnimation = {
 //form interactive comment 
 var comment = {
    formCreateComment : () => document.querySelector('#create-comment'),
+   formModal : () => document.querySelector(".publication-blog-expand"),
+   viewComments : () => document.querySelector(".view-comments"),
    open : function() {
       this.formCreateComment().classList.remove('animate');
    },
@@ -142,10 +144,40 @@ var comment = {
       this.formCreateComment().classList.add('animate');
    },
    createComment : function() {
-      this.formCreateComment().querySelector("form").addEventListener('submit',ev=>{
+      const form = this.formCreateComment().querySelector("form");
+      form.addEventListener('submit',ev=>{
          ev.preventDefault();
-         fetch("").then(r=>r.json()).then(request=>{
-            
+         let formData = new FormData(form);
+         formData.append("id_publication",JSON.parse(decodeURIComponent(this.formModal().getAttribute('data-pbl'))).id_publication);
+         let headers = {
+            method : "POST",
+            body : formData
+         }
+         console.log(headers.body);
+         fetch("index.php?url=CreateComment",headers).then(r=>r.text()).then(request=>{
+            console.log(request)
+         });
+         
+      });
+   },
+   showingComments : function(publication) {
+      fetch("index.php?url=AllComments&id_publication="+publication).then(r=>r.json()).then(request=>{
+         this.viewComments().innerHTML = "";
+         request.forEach((data,index)=>{
+            this.viewComments().innerHTML += `
+               <div class="comment">
+                 <div class="row icon">
+                     <div class="container-icon">
+                      <i class="fa fa-user"></i>
+                     </div>
+                  </div>
+                  <div class="row detail-comment">
+                     <div class="commenter-name">${data.username_comment}</div>
+                     <span class="comment-date">${data.date_comment}</span>
+                     <p class="text-comment">${data.text_comment}</p>
+                  </div>
+               </div>
+            `;
          });
       });
    }
@@ -181,7 +213,8 @@ var blog = {
             m.querySelector('.title').innerHTML = response.title_publication;
             m.querySelector('.content').innerHTML = response.text_publication;
             m.setAttribute('data-pbl',attribute);
-
+            comment.showingComments(data.id_publication);
+            console.clear();
          });
       });
    },
@@ -242,11 +275,13 @@ var blog = {
                   </div>
                </div>`;
                divContent.innerHTML += template;
+               console.clear();
             }
          })    
          this.previewPublished();    
          this.openAndCloseComment();
          this.closePublication();
+
       }else{
          let sectionBlog = document.querySelector(".section-blog");
          sectionBlog.innerHTML = `<div class="not-found">

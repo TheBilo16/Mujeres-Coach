@@ -47,10 +47,10 @@ append floating-content
             p.subtitle Create New Comment
             form.create
                 .user
-                    input(type="text" placeholder="User").input
-                    input(type="email" placeholder="Email").input
+                    input(type="text" placeholder="User" name="username").input
+                    input(type="email" placeholder="Email" name="email").input
                 .message
-                    textarea(name="" placeholder="Comment").input.t-area
+                    textarea(name="text_comment" placeholder="Comment").input.t-area
                 .buttons
                     input#send-comment(type="submit", value="Send").input.sub
                     button#cancel-comment(type="button").input Close

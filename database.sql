@@ -34,10 +34,11 @@ create table posts(
    foreign key(id_comment) references comments(id_comment)
 ) engine = InnoDB;
 
-create view UsersComments
-as
-	select date_comment,username_comment,text_comment from comments;
 
+create view UsersComments as
+	select date_comment,username_comment,text_comment, id_publication from comments inner join posts 
+    on comments.id_comment = posts.id_comment;
+    
 delimiter //
 create procedure InsertComment(idPublication int,userC varchar(40),mail varchar(100),textC varchar(200))
 begin
