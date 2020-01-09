@@ -157,10 +157,17 @@ var comment = {
          fetch("index.php?url=CreateComment",headers).then(r=>r.text()).then(request=>{
             console.log(request)
          });
-         
+
       });
    },
    showingComments : function(publication) {
+      this.viewComments().innerHTML = `
+         <div class="loader-comment">
+            <p class="subtitle">Cargando comentarios...</p>
+            <div class="loader"></div>
+         </div>
+      `;
+
       fetch("index.php?url=AllComments&id_publication="+publication).then(r=>r.json()).then(request=>{
          this.viewComments().innerHTML = "";
          request.forEach((data,index)=>{
@@ -179,6 +186,7 @@ var comment = {
                </div>
             `;
          });
+         console.clear();
       });
    }
 }
