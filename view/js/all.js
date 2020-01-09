@@ -148,16 +148,19 @@ var comment = {
       form.addEventListener('submit',ev=>{
          ev.preventDefault();
          let formData = new FormData(form);
-         formData.append("id_publication",JSON.parse(decodeURIComponent(this.formModal().getAttribute('data-pbl'))).id_publication);
+         let id =JSON.parse(decodeURIComponent(this.formModal().getAttribute('data-pbl'))).id_publication;
+         alert(id);
+         formData.append("id_publication",id);
          let headers = {
             method : "POST",
             body : formData
          }
-         console.log(headers.body);
          fetch("index.php?url=CreateComment",headers).then(r=>r.text()).then(request=>{
-            console.log(request)
+            if(request=="true"){
+              this.showingComments(blog.id_publication);
+               console.clear();
+            }
          });
-
       });
    },
    showingComments : function(publication) {
@@ -193,6 +196,7 @@ var comment = {
 
 //Blog
 var blog = {
+   id_publication:0,
    modalBlogContent : () => document.querySelector(".publication-blog-expand"),
    closeModalBlog : () => document.querySelector("#close-publication-blog"),
    imagesCards : () => document.querySelectorAll(".handler-image-publication-blog"),
@@ -222,6 +226,7 @@ var blog = {
             m.querySelector('.content').innerHTML = response.text_publication;
             m.setAttribute('data-pbl',attribute);
             comment.showingComments(data.id_publication);
+            this.id_publication = data.id_publication;
             console.clear();
          });
       });

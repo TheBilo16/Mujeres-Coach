@@ -139,14 +139,11 @@
          require_once("model/Conection.php");
          require_once("model/Comments.php");
          $comments = new Comments();
-         if(empty($_POST["text_comment"]) || trim($_POST["text_comment"]) == "" ){
-            echo "false";
-         } else {
             $values = [
+               ":id_publication" => $_POST["id_publication"],
                ":username" => $_POST["username"],
                ":email" => $_POST["email"],
-               "text_publication" => $_POST["text_comment"],
-               "id_publication" => $_POST["id_publication"]
+               ":text_comment" => $_POST["text_comment"]
             ];
             $response = $comments->InsertComment($values);
             if($response == "true") {
@@ -154,7 +151,6 @@
             } else {
                echo "error publication";
             }
-         }
       }
 
       function AllComments() {

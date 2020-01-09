@@ -9,15 +9,17 @@
          try{
 
             $query = $this->con->prepare("call InsertComment(:id_publication,:username,:email,:text_comment)");
-            foreach( $query as $key => $value ) {
-               $query->bindParam(":".$key,$value);
+            foreach( $keys as $key => $value ) {
+               $query->bindValue($key,$value);
             }
+            $query->execute();
             if($query->rowCount() > 0) {
                return "true";
             }
             return "false";
             
          }catch(PDOException $err) {
+            die($err->getMessage());
             return "false";
          }
 
