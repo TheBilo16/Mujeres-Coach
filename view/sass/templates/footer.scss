@@ -27,6 +27,24 @@
             }
          }
       }
+      @include responsive(1000px){
+         grid-template-columns: 1fr 1fr 1fr;
+      }
+      @include responsive(800px){
+         padding: 2.5em 3em;
+         grid-template-columns: 1fr 1fr;
+         font-size: .9em;
+      }
+      @include responsive(600px){
+         padding: 2em 2em;
+      }
+      @include responsive(450px){
+         grid-template-columns: 1fr;
+         grid-gap: 10px;
+         .column{
+            border-left: none;
+         }
+      }
    }
    .copyright{
       text-align: center;

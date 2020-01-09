@@ -44,7 +44,7 @@
                   $data = $stm->fetchAll();
                   break;
                case "like":
-                  $query = "select * from {$this->table} where title_publication LIKE CONCAT('%',:title,'%')";
+                  $query = "select * from {$this->table} where title_publication LIKE CONCAT('%',:title,'%') order by id_publication desc";
                   $stm = $this->con->prepare($query);
                   $stm->bindValue(":title",$paramFilter);
                   $stm->execute();

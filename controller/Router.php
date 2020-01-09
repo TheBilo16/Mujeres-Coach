@@ -89,6 +89,7 @@
             echo "error";
          }
       }
+
       function FindPublication(){
          require_once("model/Conection.php");
          require_once("model/Publications.php");
@@ -99,7 +100,6 @@
          else {
             echo "error";
          }
-
       }
 
       function AdminCreatePublication(){

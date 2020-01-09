@@ -27,7 +27,8 @@
         padding: 0;
       }
       @include responsive (600px) {
-          width: 100%;
+        width: 100%;
+        font-size: .9em;
       }
     }
   }
@@ -106,13 +107,15 @@
             font-size: .9em;
             line-height: 1.7em;
           }
+
           @include responsive(900px) {
             .title {width: 80%;}
-            .text {width: 50%;}
+            .text {width: 60%;}
           }
           @include responsive(500px) {
-            .title {width: 100%;}
-            .text {width: 60%;}
+            padding: 15px;
+            .title {width: 100%; font-size: 2.5em;}
+            .text {width: 80%;}
           }
 
         }

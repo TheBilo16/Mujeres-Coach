@@ -4,16 +4,12 @@
    padding: 1.3em 1em;
    position: relative;
    background: #fff;
-   //background:darken($color: $color-base, $amount: 4);
    .icon{ 
       text-align: center;
       img{
          width: 360px;
+         @include responsive(650px){ width: 320px; }
+         @include responsive(450px){ width: 280px; }
       }
    }
-   /*.title{
-      font-size: 1.2em;
-      text-align: center;
-      color: white;
-   }*/
 }

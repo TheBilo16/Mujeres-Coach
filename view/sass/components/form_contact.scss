@@ -10,9 +10,6 @@
   }
   .row {
     margin: 5px;
-    @include responsive(600px) {
-      margin: 10px 0;
-    }
 
     &.row-message{
       grid-column: span 2;

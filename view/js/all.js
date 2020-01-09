@@ -164,7 +164,7 @@ var blog = {
       let modal = this.modalBlogContent();
 
       [...handlerButton].forEach(( button , index ) => {
-         button.addEventListener('click', ev => {
+         button.addEventListener('click', async ev => {
             let imageModal = modal.querySelector(".image img");
             modal.classList.add("animate");
             imageModal.src = handlerImage[index].src;
@@ -172,14 +172,16 @@ var blog = {
             
             let parent = ev.target.closest(".published-card"); 
             let attribute = parent.getAttribute('data-pbl');
-            let data =JSON.parse(decodeURIComponent(attribute));
+            let data = JSON.parse(decodeURIComponent(attribute));
             
-            fetch("index.php?url=FindPublication&id="+data.id_publication).then(r=>r.json()).then(request=>{
-               var m = this.modalBlogContent();
-               m.querySelector('.title').innerHTML = request.title_publication;
-               m.querySelector('.content').innerHTML = request.text_publication;
-               m.setAttribute('data-pbl',attribute);
-            });
+            const request = await fetch(`index.php?url=FindPublication&id=${data.id_publication}`);
+            const response = await request.json();
+
+            var m = this.modalBlogContent();
+            m.querySelector('.title').innerHTML = response.title_publication;
+            m.querySelector('.content').innerHTML = response.text_publication;
+            m.setAttribute('data-pbl',attribute);
+
          });
       });
    },
@@ -354,8 +356,7 @@ var publication = {
          switch(response){
             case "true":
                alert("Publicacion Subida");
-               [...inputs].forEach(v => v.value = "");
-               submit.disabled = false;
+               window.location = "index.php?url=admin";
                break;
             case "false":
             case "ErrorUpload":
