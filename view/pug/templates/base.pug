@@ -18,7 +18,9 @@ html(lang="en")
          include aside
          include footer
       block floating-content
-         include ../components/btn_contact
+         .content-floating
+            include ../components/btn_contact
+            include ../components/nav_responsive
       block js
          script(src="view/js/icons.js")
          script(src="view/js/all.js")

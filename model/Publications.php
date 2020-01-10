@@ -65,4 +65,17 @@
             die($err->getMessage());
          }
       }
+
+      function deletePublication($id){
+         try{
+            $query = "DELETE FROM publications WHERE id_publication = :id";
+            $stm = $this->con->prepare($query);
+            $stm->bindValue(":id",$id,PDO::PARAM_INT);
+            $stm->execute();
+
+            return $stm->rowCount() > 0 ? "true" : "false";
+         }catch(PDOException $err){
+            die($err->getMessage());
+         }
+      }
    }

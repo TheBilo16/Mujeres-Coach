@@ -29,27 +29,17 @@ append floating-content
                 p.title Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, quas!
                 p.content Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum cumque animi est illo consequuntur facere, deserunt labore perspiciatis quis sit facilis numquam accusantium temporibus modi magnam tempora repudiandae ab dolores at magni ea dolor nulla sed itaque? Recusandae rem sequi doloribus maxime expedita sed modi quam? Quidem ullam inventore amet sit expedita ratione fugit quae iusto totam? Ad nesciunt nisi animi enim delectus nihil suscipit? Praesentium culpa non dolorem eos ducimus earum iure sit delectus neque! Aspernatur eius beatae voluptatibus inventore sunt odit harum ducimus. Odio, quisquam excepturi. Laboriosam fugiat corrupti error nihil quis. Eos incidunt porro quis qui recusandae.
             .content-extra
+                p.title Comentarios
                 .view-comments
-                    //- .loader-comment
-                            p.subtitle Loading Comments...
-                            .loader
-                    //- for(var i = 0 ; i < 10 ; i++)
-                        .comment
-                            .row.icon
-                              .container-icon
-                                i.fa.fa-user
-                            .row.detail-comment
-                              .commenter-name Tony stark zuckerberg
-                              span.comment-date 10/20/40 10:24am
-                              p.text-comment Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.
+                    //Comment (js ajax)
         .create-comment.animate#create-comment
             p.subtitle Create New Comment
             form.create
                 .user
-                    input(type="text" placeholder="User" name="username").input
-                    input(type="email" placeholder="Email" name="email").input
+                    input(type="text" placeholder="User" maxlength="40" required name="username").input
+                    input(type="email" placeholder="Email" maxlength="100" required name="email").input
                 .message
-                    textarea(name="text_comment" placeholder="Comment").input.t-area
+                    textarea(name="text_comment" maxlength="400" placeholder="Comment" required).input.t-area
                 .buttons
                     input#send-comment(type="submit", value="Send").input.sub
                     button#cancel-comment(type="button").input Close

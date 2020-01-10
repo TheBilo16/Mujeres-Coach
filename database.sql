@@ -30,14 +30,14 @@ create table posts(
    id int auto_increment primary key,
    id_publication int not null,
    id_comment int not null,
-   foreign key(id_publication) references publications(id_publication),
-   foreign key(id_comment) references comments(id_comment)
+   foreign key(id_publication) references publications(id_publication) on delete cascade on update cascade,
+   foreign key(id_comment) references comments(id_comment) on delete cascade on update cascade
 ) engine = InnoDB;
 
 
 create view UsersComments as
 	select date_comment,username_comment,text_comment, id_publication from comments inner join posts 
-    on comments.id_comment = posts.id_comment;
+    on comments.id_comment = posts.id_comment order by date_comment desc;
     
 delimiter //
 create procedure InsertComment(idPublication int,userC varchar(40),mail varchar(100),textC varchar(200))
@@ -61,6 +61,7 @@ begin
 end//
 delimiter ;
 
+/*call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
 call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
 call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
 call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
@@ -68,5 +69,4 @@ call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape
 call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
 call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
 call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
-call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
-call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
+call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");*/
