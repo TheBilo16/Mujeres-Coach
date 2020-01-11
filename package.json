@@ -1,0 +1,31 @@
+{
+  "name": "Mujeres-Coach",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheBilo16/Mujeres-Coach.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheBilo16/Mujeres-Coach/issues"
+  },
+  "homepage": "https://github.com/TheBilo16/Mujeres-Coach#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/runtime": "^7.7.7",
+    "babel-loader": "^8.0.6"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-async-to-generator": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.6"
+  }
+}
