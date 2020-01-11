@@ -3,7 +3,7 @@ extends ../templates/base
 block title
    title Homepage
 block css
-   link(rel="stylesheet", href="view/css/detail_home.css?v=1.1")
+   link(rel="stylesheet", href=`view/css/detail_home.css?v=${version}`)
 block content
    .content-slider
       .slider(data-aos="fade-right")
@@ -62,7 +62,7 @@ block content
                   i.fa.fa-image
       .desc(data-aos="fade-up")
          p.message Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, quis?
+prepend footer-content
+   include ../templates/aside.pug
 append floating-content
    include ../components/views_image_expand
-append js
-   script(src="view/js/home.js?v=1.1")

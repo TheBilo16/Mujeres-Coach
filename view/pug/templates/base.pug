@@ -1,3 +1,5 @@
+- let version = 2;
+
 <!DOCTYPE html>
 html(lang="en")
    head
@@ -15,14 +17,14 @@ html(lang="en")
       section.app-content
          block content
       block footer-content
-         include aside
          include footer
       block floating-content
          .content-floating
             include ../components/btn_contact
             include ../components/nav_responsive
+            include ../components/btn_galery
       block js
-         script(src="view/js/icons.js?v=1.1")
-         script(src="view/js/all.js?v=1.1")
+         script(src=`view/js/icons.js?v=${version}`)
+         script(src=`view/js/all.js?v=${version}`)
       script 
         | AOS.init()

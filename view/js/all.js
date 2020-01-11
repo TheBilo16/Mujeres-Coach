@@ -581,11 +581,80 @@ var publication = {
    }
 }
 
+//Contact
+var contact = {
+   form : () => document.querySelector(".panel-contact .contact-form"),
+   inputs : () => document.querySelectorAll(".panel-contact .contact-form .text-field"),
+   clearInputs : function(){
+      let inputs = this.inputs();
+      for(let inp of inputs)
+         inp.value = "";
+   },
+   sendMail : function(){
+      let form = this.form();
+      form.addEventListener("submit",async ev => {
+         ev.preventDefault();
+
+         const formData = new FormData(form);
+         const headers = {
+            method : "POST",
+            body : formData
+         }
+
+         const request = await fetch("index.php?url=SendEmail",headers);
+         const response = await request.text();
+
+         console.log(response);     //Debug ~ Delete when this ready
+
+         switch(""){
+            case "mailSend":
+               alert("Mensaje Enviado");
+               this.clearInputs();
+               break;
+            case "mailFail":
+            default:
+               alert("Ocurrio un error inesperado...");
+               break;
+         }
+      })
+   },
+   init : function(){
+      this.sendMail();
+   }
+}
+
 //Init
 window.addEventListener("load", ev => {
    let loc = window.location.href.split("/");
    let size = loc[loc.length - 1];
 
-   if(size != "index.php?url=admin") 
-      navAnimation.init();
+   if(size != "index.php?url=admin") navAnimation.init();
+
+   switch(size){
+      //Home
+      case "index.php?url=home":
+         slider.init_slider();
+         viewImages.__init__();
+         contact.init();
+         break;
+      //Blog
+      case "index.php?url=blog":
+         blog.init();
+         break;
+      //Login
+      case "index.php?url=login":
+         login.init();
+         break;
+      //Admin
+      case "index.php?url=admin":
+         publication.init();
+         break;
+      //Contact
+      case "index.php?url=contact":
+         contact.init();
+         break;
+      //About ~ Coaching
+      default:
+         break;
+   }
 })

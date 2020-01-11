@@ -4,10 +4,10 @@ block title
     title Blog
 
 block css    
-    link(rel="stylesheet", href="view/css/detail_blog.css?v=1.1")
+    link(rel="stylesheet", href=`view/css/detail_blog.css?v=${version}`)
 
 block content 
-    section.section-blog
+    .section-blog
         .preview-blog-main 
             .image-minus
                 //Content js
@@ -26,8 +26,8 @@ append floating-content
                 i.fa.fa-comment-dots
         .content-publication
             .data-description
-                p.title Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, quas!
-                p.content Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum cumque animi est illo consequuntur facere, deserunt labore perspiciatis quis sit facilis numquam accusantium temporibus modi magnam tempora repudiandae ab dolores at magni ea dolor nulla sed itaque? Recusandae rem sequi doloribus maxime expedita sed modi quam? Quidem ullam inventore amet sit expedita ratione fugit quae iusto totam? Ad nesciunt nisi animi enim delectus nihil suscipit? Praesentium culpa non dolorem eos ducimus earum iure sit delectus neque! Aspernatur eius beatae voluptatibus inventore sunt odit harum ducimus. Odio, quisquam excepturi. Laboriosam fugiat corrupti error nihil quis. Eos incidunt porro quis qui recusandae.
+                p.title
+                p.content
             .content-extra
                 p.title Comentarios
                 .view-comments
@@ -43,6 +43,3 @@ append floating-content
                 .buttons
                     input#send-comment(type="submit", value="Send").input.sub
                     button#cancel-comment(type="button").input Close
-
-append js
-    script(src="view/js/blog.js?v=1.1")   
