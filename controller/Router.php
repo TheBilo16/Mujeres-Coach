@@ -134,6 +134,21 @@
             echo "false";
          }
       }
+
+      function AdminDeletePublication(){
+         if(isset($_POST["id_publication"])){
+            require_once("model/Conection.php");
+            require_once("model/Publications.php");
+
+            $id = intval($_POST["id_publication"]);
+            $publications = new Publications();
+            $response = $publications->deletePublication($id);
+
+            echo ($response == "true" ? "deleteOk" : "deleteFail");
+         }else{
+            echo "deleteFail";
+         }
+      }
       
       function CreateComment() {
          require_once("model/Conection.php");

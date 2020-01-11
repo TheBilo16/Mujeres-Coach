@@ -116,7 +116,7 @@ var navAnimation = {
    nav : () => document.querySelector('nav'),
    html : () => document.querySelector('html'),
    section : () => document.querySelector('section'),
-   init : function() {
+   scrollEvent : function(){
       window.addEventListener('scroll',()=> {
          var style = this.nav().style;
          if(this.html().scrollTop >= this.nav().previousElementSibling.getBoundingClientRect().height){
@@ -129,6 +129,21 @@ var navAnimation = {
             style.position = "relative";
          }
       });
+   },
+   responsiveMenu : function(){
+      const activeMenu = document.querySelector("#nav-icon-responsive");
+      const Menu = document.querySelector("#nav-content-responsive");
+      const closeMenu = Menu.querySelector("#close-nav-responsive");
+      activeMenu.addEventListener("click", ev => {
+         Menu.classList.remove("animate");
+      });
+      closeMenu.addEventListener("click", ev => {
+         Menu.classList.add("animate");
+      });
+   },
+   init : function() {
+      this.scrollEvent();
+      this.responsiveMenu();
    }
 }
 
@@ -137,30 +152,39 @@ var comment = {
    formCreateComment : () => document.querySelector('#create-comment'),
    formModal : () => document.querySelector(".publication-blog-expand"),
    viewComments : () => document.querySelector(".view-comments"),
+   clearInputs : function(form){
+      let inputs = form.querySelectorAll(".input");
+      [...inputs].forEach( (v,i)=> { if(i < 3) v.value = ""; })
+   },
    open : function() {
       this.formCreateComment().classList.remove('animate');
    },
    close : function() {
-      this.formCreateComment().classList.add('animate');
+      const form = this.formCreateComment();
+      form.classList.add('animate');
+      this.clearInputs(form.querySelector("form"));
    },
    createComment : function() {
       const form = this.formCreateComment().querySelector("form");
-      form.addEventListener('submit',ev=>{
+      form.addEventListener('submit',async ev => {
          ev.preventDefault();
+
          let formData = new FormData(form);
-         let id =JSON.parse(decodeURIComponent(this.formModal().getAttribute('data-pbl'))).id_publication;
-         alert(id);
+         let id = JSON.parse(decodeURIComponent(this.formModal().getAttribute('data-pbl'))).id_publication;
          formData.append("id_publication",id);
-         let headers = {
-            method : "POST",
-            body : formData
+         let headers = { method : "POST", body : formData }
+         this.clearInputs(form);
+
+         const request = await fetch("index.php?url=CreateComment",headers)
+         const response = await request.text();
+         if(response == "true"){
+            alert("Comentario publicado");
+            this.showingComments(blog.id_publication);
+            console.clear();
+            this.close();
+         }else{
+            alert("Error database...");
          }
-         fetch("index.php?url=CreateComment",headers).then(r=>r.text()).then(request=>{
-            if(request=="true"){
-              this.showingComments(blog.id_publication);
-               console.clear();
-            }
-         });
       });
    },
    showingComments : function(publication) {
@@ -172,24 +196,33 @@ var comment = {
       `;
 
       fetch("index.php?url=AllComments&id_publication="+publication).then(r=>r.json()).then(request=>{
-         this.viewComments().innerHTML = "";
-         request.forEach((data,index)=>{
-            this.viewComments().innerHTML += `
-               <div class="comment">
-                 <div class="row icon">
-                     <div class="container-icon">
-                      <i class="fa fa-user"></i>
+         let divComments = this.viewComments();
+         divComments.innerHTML = "";
+         if(request.length > 0){
+            request.forEach((data,index)=>{
+               divComments.innerHTML += `
+                  <div class="comment">
+                    <div class="row icon">
+                        <div class="container-icon">
+                         <i class="fa fa-user"></i>
+                        </div>
+                     </div>
+                     <div class="row detail-comment">
+                        <div class="commenter-name">${data.username_comment}</div>
+                        <span class="comment-date">${data.date_comment}</span>
+                        <p class="text-comment">${data.text_comment}</p>
                      </div>
                   </div>
-                  <div class="row detail-comment">
-                     <div class="commenter-name">${data.username_comment}</div>
-                     <span class="comment-date">${data.date_comment}</span>
-                     <p class="text-comment">${data.text_comment}</p>
-                  </div>
+               `;
+            });
+         }else{
+            divComments.innerHTML = `<div class="comment-0">
+               <div class="icon">
+                  <i class="fa fa-comment"></i>
                </div>
-            `;
-         });
-         console.clear();
+               <p class="message">Se el primero en comentar...</p>
+            </div>`;
+         }
       });
    }
 }
@@ -214,10 +247,12 @@ var blog = {
             imageModal.src = handlerImage[index].src;
             document.body.style.overflow = "hidden";
             
+            //Codding of ID
             let parent = ev.target.closest(".published-card"); 
             let attribute = parent.getAttribute('data-pbl');
             let data = JSON.parse(decodeURIComponent(attribute));
             
+            //Get Data
             const request = await fetch(`index.php?url=FindPublication&id=${data.id_publication}`);
             const response = await request.json();
 
@@ -227,7 +262,7 @@ var blog = {
             m.setAttribute('data-pbl',attribute);
             comment.showingComments(data.id_publication);
             this.id_publication = data.id_publication;
-            console.clear();
+
          });
       });
    },
@@ -242,7 +277,7 @@ var blog = {
    },
    openAndCloseComment : function() {
       var f = this.formComment();
-      function click(el, callEvent ) {
+      const click = function (el, callEvent ) {
          document.getElementById(el).addEventListener('click',callEvent);
       }
       click('active-modal-comment',ev => f.open());
@@ -261,19 +296,32 @@ var blog = {
 
       if(responseJson.length > 0){
          responseJson.forEach((v,i) => {
+            //La class published-card es necesaria para el recojo de datos
+            let text = v.text_publication;
+            let textBig = (text.length > 150 ? text.substr(0,150) : text) + "...";
+
             if(i == 0){
                let template = `<img class="image-main handler-image-publication-blog" src="${v.path_image}" />
-                  <h4 class="title handler-click-publication-blog">${v.title_publication}</h4>`;
+                  <div class="content-text">
+                     <h4 class="title handler-click-publication-blog">${v.title_publication}</h4>
+                     <p class="message">${textBig}</p>
+                  </div>`;
+               
                const div = document.createElement("div");
-               div.classList.add("image-expand");
+               div.classList.add("image-expand","published-card");
                div.setAttribute("data-aos","zoom-in");
+               div.setAttribute("data-pbl",encodeURIComponent(JSON.stringify(v)));
+
                div.innerHTML = template;
 
                divExpand.prepend(div);
             }else if(i < 4){
-               let template = `<div class="image" data-aos="zoom-in">
+               let template = `<div class="image published-card" data-aos="zoom-in" data-pbl='${encodeURIComponent(JSON.stringify(v))}'>
                   <img class="image-main handler-image-publication-blog" src="${v.path_image}" />
-                  <h4 class="title handler-click-publication-blog">${v.title_publication}</h4>
+                  <div class="content-text">
+                     <h4 class="title handler-click-publication-blog">${v.title_publication}</h4>
+                     <p class="message">${textBig}</p>
+                  </div>
                </div>`;
                divMinus.innerHTML += template;
             }else{
@@ -283,14 +331,25 @@ var blog = {
                   </div>
                   <div class="container-detail-published">
                      <strong class="dark title-published">${v.title_publication}</strong>
-                     <p class="text-published">${v.text_publication}</p>
+                     <p class="text-published">${textBig}</p>
                      <button class="btn-read-more handler-click-publication-blog">Leer más</button>
                   </div>
                </div>`;
                divContent.innerHTML += template;
                console.clear();
             }
-         })    
+         })   
+         
+         if(responseJson.length < 5){
+            divContent.classList.add("not-publication");
+            divContent.innerHTML = `<div class="publication-end" data-aos="zoom-in">
+               <div class="icon">
+                  <i class="fa fa-grin-beam-sweat"></i>
+               </div>
+               <p class="message">Aun no tenemos mas publicaciones disponibles...</p>
+            </div>`;
+         }
+         
          this.previewPublished();    
          this.openAndCloseComment();
          this.closePublication();
@@ -360,13 +419,18 @@ var publication = {
        var f = this.formPublication();
        let add = f.querySelector("#form-insert-publication");
        var style = "toggle";
+       var preview  = document.querySelector('.preview-image');
+
        this.btnAddPublication().addEventListener('click', ev => {
             f.classList.remove(style);
             add.classList.remove(style);
+            document.body.style.overflow = "hidden";
        });
        this.formButtonClose().addEventListener("click", ev => {
            f.classList.add(style);
            add.classList.add(style);
+           preview.innerHTML = "";
+           document.body.style.overflow = "auto";
        })
    },
    createPublication : function(){
@@ -419,21 +483,19 @@ var publication = {
 
       })
    },
-   getPublications : async function(title = null){
+   getPublications : async function(title = null,search = false){
       const divPublications = document.querySelector("#content-publications");
       
       var pathRequest;
-      if(title == null ){
-         pathRequest = "index.php?url=blogRequestPublication";
-      }
-      else {
-         pathRequest = "index.php?url=SearchByTitle&title="+title;
-      }
+      if(title == null ) pathRequest = "index.php?url=blogRequestPublication";
+      else pathRequest = "index.php?url=SearchByTitle&title=" + title;
+
       const request = await fetch(pathRequest);
       const response = await request.json();
 
       divPublications.innerHTML = "";
       if(response.length > 0){
+
          response.forEach(v => {
             divPublications.innerHTML += `<div class="card-published">
                <div class="container-image">
@@ -447,23 +509,67 @@ var publication = {
                </div>
                <div class="container-options">
                   <p class="date">${v.date_create}</p>
-                  <button class="delete">Eliminar</button>
+                  <button id="${v.id_publication}" class="delete">Eliminar</button>
                </div>
             </div>`;
          });
+
+         this.deletePublication();
+
+      }else{
+         if(search){
+            divPublications.classList.remove("notPublication");
+            divPublications.innerHTML = `<div class="not-found">
+               <p class="dark">Ups!</p>
+               <p class="message">No se encontró ninguna coincidencia con ${title}...</p>
+            </div>`;
+         }else{
+            divPublications.classList.add("notPublication");
+            divPublications.innerHTML = `<div class="not-publication">
+               <div class="icon">
+                  <i class="fa fa-grin-beam-sweat"></i>
+               </div>
+               <p class="message">No ahi publicaciones disponibles</p>
+            </div>`;
+         }
       }
-      else {
-         divPublications.innerHTML = `
-         <div class="not-found">
-            <p class="dark">Ups!</p>
-            <p class="message">No se encontró ninguna coincidencia con ${title}...</p>
-         </div>
-         `;
+   },
+   deletePublication : function(){
+      const deletes = document.querySelectorAll(".card-published .delete");
+      for(let d of deletes){
+         d.addEventListener("click", async ev => {
+            let d = { id_publication : ev.target.id };
+
+            let body = new FormData();
+            body.append("id_publication", ev.target.id); 
+
+            let headers = {
+               method: 'POST',
+               body: body
+            }
+
+            const awaitRequest = confirm("Estas seguro de quere borrar esta publicacion?");
+            if(awaitRequest){
+               const request = await fetch("index.php?url=AdminDeletePublication",headers);
+               const response = await request.text();
+   
+               switch(response){
+                  case "deleteOk":
+                     alert("La publicacion se elimino con exito");
+                     window.location.href = "index.php?url=admin";
+                     break;
+                  case "deleteFail":
+                  default:
+                     alert("Ocurrio un error");
+                     break;
+               }
+            }
+         })
       }
    },
    searchByTitle : function() {
       this.inputSearch().addEventListener('keyup', ev => {
-         this.getPublications(this.inputSearch().value);
+         this.getPublications(this.inputSearch().value,true);
       });
    },
    init : function() {  

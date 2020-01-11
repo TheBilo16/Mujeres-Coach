@@ -92,7 +92,14 @@
         <p>(2019) Derechos Reservador a M&D DADA</p>
       </div>
     </footer>
-    <div class="btn-contact"><a class="icon" href="https://api.whatsapp.com/send?phone=51943456321&amp;text=bienvenido" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+    <div class="content-floating">
+      <div class="btn-contact"><a class="icon" href="https://api.whatsapp.com/send?phone=51943456321&amp;text=bienvenido" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+      <div class="nav-icon" id="nav-icon-responsive"><i class="fa fa-bars"></i></div>
+      <div class="nav-responsive animate" id="nav-content-responsive">
+        <div class="links-nav"><a class="link" href="index.php?url=home">Home</a><a class="link" href="index.php?url=about">Acerca de Mi</a><a class="link" href="index.php?url=coaching">Coaching</a><a class="link" href="index.php?url=home#galeria">Galeria</a><a class="link" href="index.php?url=blog">Blog</a><a class="link" href="#contact">Contactanos</a></div>
+        <div class="icon-close" id="close-nav-responsive"><i class="fa fa-times"></i></div>
+      </div>
+    </div>
     <div class="publication-blog-expand">
       <div class="image"><img src="" alt=""/>
         <div class="icon" id="close-publication-blog"><i class="fa fa-times"></i></div>
@@ -104,18 +111,21 @@
           <p class="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum cumque animi est illo consequuntur facere, deserunt labore perspiciatis quis sit facilis numquam accusantium temporibus modi magnam tempora repudiandae ab dolores at magni ea dolor nulla sed itaque? Recusandae rem sequi doloribus maxime expedita sed modi quam? Quidem ullam inventore amet sit expedita ratione fugit quae iusto totam? Ad nesciunt nisi animi enim delectus nihil suscipit? Praesentium culpa non dolorem eos ducimus earum iure sit delectus neque! Aspernatur eius beatae voluptatibus inventore sunt odit harum ducimus. Odio, quisquam excepturi. Laboriosam fugiat corrupti error nihil quis. Eos incidunt porro quis qui recusandae.</p>
         </div>
         <div class="content-extra">
-          <div class="view-comments"></div>
+          <p class="title">Comentarios</p>
+          <div class="view-comments">
+            <!--Comment (js ajax)-->
+          </div>
         </div>
       </div>
       <div class="create-comment animate" id="create-comment">
         <p class="subtitle">Create New Comment</p>
         <form class="create">
           <div class="user">
-            <input class="input" type="text" placeholder="User" name="username"/>
-            <input class="input" type="email" placeholder="Email" name="email"/>
+            <input class="input" type="text" placeholder="User" maxlength="40" required="required" name="username"/>
+            <input class="input" type="email" placeholder="Email" maxlength="100" required="required" name="email"/>
           </div>
           <div class="message">
-            <textarea class="input t-area" name="text_comment" placeholder="Comment"></textarea>
+            <textarea class="input t-area" name="text_comment" maxlength="400" placeholder="Comment" required="required"></textarea>
           </div>
           <div class="buttons">
             <input class="input sub" id="send-comment" type="submit" value="Send"/>

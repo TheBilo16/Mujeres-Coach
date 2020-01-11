@@ -7,16 +7,19 @@
 
 .not-found{
     width: 100%;
-    height: 80vh;
+    height: 70vh;
     @include flex(column,center,center);
     .message{
         font-size: 2em;
+    }
+    @include responsive(700px){
+        border-top: 1px solid rgb(230,230,230);
+        .message{ font-size: 1.4em; }
     }
 }
 
 .section-blog{
     width: 80%;
-    min-height: 100vh;
     margin: 1em auto 0 auto;
     background: #fff;
     @include responsive(950px){ width: 90%; }
@@ -30,6 +33,35 @@
     grid-template-columns: 1fr;
     grid-gap: 5px;
 
+    //Text-image(expand/minus)
+    .content-text{
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        color: #fff;
+        left: 0;
+        z-index: 10;
+        padding: 2em;
+        .title{
+            font-size: 2em;
+            padding-bottom: .4em;
+        }
+        .message{
+            width: 70%;
+            font-size: 0.9em;
+            line-height: 1.6em;
+            color: rgb(187, 187, 187);
+            padding-bottom: .5em;
+        }
+        @include responsive(800px){
+            text-align: center;
+            .message{ width: 100%; }
+        }
+        @include responsive(500px){
+            padding: 1em;
+        }
+    }
+
     .image-expand{
         width: 100%;
         height: 470px;
@@ -41,15 +73,7 @@
             object-fit: cover;
             transition: .3s;
         }
-        .title{
-            position: absolute;
-            bottom: 0;
-            color: #fff;
-            left: 0;
-            font-size: 2em;
-            padding: 1em;
-            z-index: 10;
-        }
+
         &:after{
             content: "";
             background: linear-gradient(bottom,#000,transparent);
@@ -62,6 +86,10 @@
         @include responsive(650px){
             height: 350px;
             font-size: .9em;
+        }
+        
+        @include responsive(450px){
+            height: 280px;
         }
     }
 
@@ -81,14 +109,10 @@
                 object-fit: cover;
                 transition: .3s;
             }
-            .title{
-                position: absolute;
-                bottom: 0;
-                color: #fff;
-                left: 0;
-                font-size: 1.3em;
+            .content-text{
                 padding: 1em;
-                z-index: 10;
+                .title{ font-size: 1.3em; }
+                .message{ width: 100%; }
             }
             &:after{
                 content: "";
@@ -116,7 +140,8 @@
             .image{ height: 220px; font-size: .9em;}
         }
         @include responsive(450px){
-            width: 95%;  
+            width: 90%;  
+            .image{ height: 180px;}
         }
     }
 }
@@ -153,6 +178,26 @@
     }
     @include responsive(400px){
         width: 85%;
+    }
+
+    //Javascript line 298(loadContentPublication)
+    .publication-end{
+        width: 100%;
+        height: 300px;
+        text-align: center;
+        @include flex(column,center,center);
+        .icon{
+            color: $color-base;
+            font-size: 3em;
+            padding-bottom: .5em;
+        }
+        .message{
+            font-weight: bold;
+            color: #444;
+        }
+    }
+    &.not-publication{
+        grid-template-columns: 1fr;
     }
 }
 
@@ -213,10 +258,9 @@
         overflow: auto;
         .data-description{
             width: 100%;
-            height: 55%;
-            overflow: auto;
+            min-height: 200px;
             .title{
-                font-size: 1.4em;
+                font-size: 1.6em;
                 padding: .5em 1em;
                 @include flex(row,flex-start,center);
             }
@@ -225,18 +269,20 @@
                 padding: .5em 1.5em;
                 color: lighten(#000,45);
             }
-            &::-webkit-scrollbar{
-                display: none;
-            }
         }
         .content-extra{
             width: 100%;
-            height: 45%;
-            overflow: auto;
+            .title{
+                padding: .5em 1em 1em 1em;
+                font-size: 1.4em;;
+                border-bottom: 1px solid rgb(230,230,230);
+                @include responsive(650px){
+                    font-size: 1.2em;
+                }
+            }
             .view-comments{
                 width: 100%;
                 height: 100%;
-                padding: 0 1em;
                 position: relative;
                 @import "components/comment";
                 .loader-comment{
@@ -266,7 +312,23 @@
                         }
                     } 
                 }
+                .comment-0{
+                    width: 100%;
+                    height: 250px;
+                    @include flex(column,center,center);
+                    .icon{
+                        color: $color-base;
+                        font-size: 2em;
+                        padding-bottom: 0.5em;
+                    }
+                    .message{
+                        font-size: 1.2em;
+                    }
+                }
             }
+        }
+        &::-webkit-scrollbar{
+            display: none;
         }
     }
 
@@ -308,10 +370,15 @@
 
         &.animate{
             transition:.5s;
-            left: -100%;
+            bottom: -100%;
             opacity: .4;
-            transform:scale(.5);
+            transform: scale(.5);
             transform-origin: top;
+            @include responsive(800px){
+                bottom: initial;
+                left: -100%;
+                transform-origin: left;
+            }
         }
         &:not(.animate) {
             opacity:1;
@@ -325,35 +392,38 @@
                 }
             }
         }
+        
+        @include responsive(800px){
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            bottom: initial;
+            top: 0;
+            left: 0;
+        }
     }
 
     &.animate{
         left: 0;
     }
 
-    @include responsive(900px){
+    @include responsive(950px){
         .image{ width: 50%; }
         .content-publication{ width: 50%; }  
     }
 
-    @include responsive(750px){
+    @include responsive(800px){
         overflow: auto;
         flex-direction: column;
-        .image,.content-publication,.create-comment{ width: 100%; height: initial; }
+        .image,.content-publication{ width: 100%; height: initial; }
         .content-publication{
-            height: auto;
             overflow: initial;
             .data-description{
                 padding: 1.5em 0;
-                height: max-content;
             }
             .content-extra{
                 height: 250px;
-                overflow: initial;
             }
-        }
-        .create-comment{
-            left: 0;
         }
     }
 }

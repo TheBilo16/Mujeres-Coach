@@ -1,10 +1,11 @@
 .comment {
     @include flex();
-    margin:15px 0;
     margin-left: auto;
-    padding: 10px;
+    padding: 1em ;
     width: 100%;
+    @include flex(row,flex-start,center);
     .icon {
+        padding-left: 1em;
         .container-icon {
             @include flex(row,center,center);
             width: 50px;
@@ -15,12 +16,12 @@
         }
     }
     .detail-comment {
-        padding: 0 1em;
+        padding: 0 1.5em;
         .commenter-name {
             color:$color-base;
         }
         .text-comment {
-            padding: 10px 0;
+            padding: 5px 0 0 0;
             line-height: 20px;
             font-size: .9em;
             color: rgb(60,60,60);
@@ -30,5 +31,13 @@
             padding: 0;
             color: lighten($color: #000, $amount: 45);
         }
+    }
+    &:nth-child(2n){
+        background: rgb(240,240,240);
+    }
+    @include responsive(650px){
+        font-size: .9em;
+        .icon{ padding-left: .5em; }
+        .detail-comment{ padding: 0 1em; }
     }
 }
