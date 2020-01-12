@@ -628,7 +628,7 @@ window.addEventListener("load", ev => {
    let loc = window.location.href.split("/");
    let size = loc[loc.length - 1];
 
-   if(size != "index.php?url=admin") navAnimation.init();
+   if(size != "index.php?url=admin" && size != "index.php?url=login") navAnimation.init();
 
    switch(size){
       //Home
