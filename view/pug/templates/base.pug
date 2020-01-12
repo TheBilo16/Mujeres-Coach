@@ -10,6 +10,8 @@ html(lang="en")
       block css
       link(href="https://unpkg.com/aos@2.3.1/dist/aos.css",rel="stylesheet")
       script(src="https://unpkg.com/aos@2.3.1/dist/aos.js")
+      script(src=`view/js/icons.js?v=${version}` async)
+      script(src=`view/js/all.js?v=${version}`)
    body
       block header-content
          include header
@@ -23,8 +25,5 @@ html(lang="en")
             include ../components/btn_contact
             include ../components/nav_responsive
             include ../components/btn_galery
-      block js
-         script(src=`view/js/icons.js?v=${version}`)
-         script(src=`view/js/all.js?v=${version}`)
       script 
         | AOS.init()

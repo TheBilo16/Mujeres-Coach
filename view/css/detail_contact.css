@@ -454,8 +454,9 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     align-items: center; }
     .view-images-expand .image .container-images {
       width: 70%;
-      height: 100%;
+      height: 80%;
       overflow: hidden;
+      position: relative;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -474,12 +475,23 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       flex: 0 0 auto; }
       .view-images-expand .image .container-images .image-expand {
         width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
         -webkit-transition: .3s;
         -o-transition: .3s;
         transition: .3s; }
       @media screen and (max-width: 750px) {
         .view-images-expand .image .container-images {
           width: 100%; } }
+      .view-images-expand .image .container-images:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.3); }
     .view-images-expand .image .left, .view-images-expand .image .right {
       width: -webkit-max-content;
       width: -moz-max-content;
@@ -494,7 +506,8 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       color: #fff;
       font-size: 2.5em;
       cursor: pointer;
-      padding: 1em; }
+      padding: 1em;
+      z-index: 1; }
       @media screen and (max-width: 750px) {
         .view-images-expand .image .left, .view-images-expand .image .right {
           padding: .5em;
@@ -570,6 +583,11 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       transform: scale(0.95); }
   .btn-contact.hide {
     right: -100%; }
+  @media screen and (max-width: 600px) {
+    .btn-contact {
+      width: 40px;
+      height: 40px;
+      font-size: 1.4em; } }
 
 .nav-icon, .galery-icon {
   position: fixed;
@@ -601,9 +619,18 @@ body::-webkit-scrollbar-thumb:vertical:hover {
   @media screen and (max-width: 850px) {
     .nav-icon, .galery-icon {
       right: 10px; } }
+  @media screen and (max-width: 600px) {
+    .nav-icon, .galery-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1.3em;
+      bottom: 60px; } }
 
 .galery-icon {
   bottom: 140px; }
+  @media screen and (max-width: 600px) {
+    .galery-icon {
+      bottom: 110px; } }
 
 .nav-responsive {
   position: fixed;
@@ -660,9 +687,78 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     transform: scale(0.8);
     opacity: 0; }
 
+.image-parallax {
+  width: 100%;
+  height: 70vh;
+  position: relative;
+  background: url("https://cdn.pixabay.com/photo/2015/06/24/15/45/ipad-820272_960_720.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .image-parallax .text, .image-parallax .title {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    z-index: 1; }
+  .image-parallax .title {
+    font-size: 3em;
+    text-align: center;
+    padding-bottom: .3em; }
+    .image-parallax .title span {
+      font-weight: bold;
+      font-size: 1.3em; }
+    @media screen and (max-width: 650px) {
+      .image-parallax .title {
+        font-size: 2.5em; } }
+    @media screen and (max-width: 450px) {
+      .image-parallax .title {
+        font-size: 2em; } }
+    @media screen and (max-width: 350px) {
+      .image-parallax .title {
+        font-size: 1.8em; } }
+  .image-parallax .text {
+    width: 30%;
+    line-height: 1.5em; }
+    @media screen and (max-width: 900px) {
+      .image-parallax .text {
+        width: 45%; } }
+    @media screen and (max-width: 600px) {
+      .image-parallax .text {
+        width: 60%; } }
+    @media screen and (max-width: 400px) {
+      .image-parallax .text {
+        width: 80%;
+        font-size: 0.9em; } }
+  .image-parallax:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0; }
+  @media screen and (max-width: 450px) {
+    .image-parallax {
+      height: 45vh; } }
+
 .app-footer {
   border-top: 1px solid #e6e6e6; }
   .app-footer .content {
+    position: relative;
     font-size: 1.1em;
     padding: 3em 4em;
     display: -ms-grid;
@@ -697,6 +793,11 @@ body::-webkit-scrollbar-thumb:vertical:hover {
           color: #f11377; }
         .app-footer .content .column .link:first-letter {
           font-size: 1.1em; }
+    .app-footer .content .image-decoration {
+      width: 140px;
+      position: absolute;
+      bottom: 20px;
+      right: 20px; }
     @media screen and (max-width: 1000px) {
       .app-footer .content {
         -ms-grid-columns: 1fr 1fr 1fr;
@@ -706,7 +807,9 @@ body::-webkit-scrollbar-thumb:vertical:hover {
         padding: 2.5em 3em;
         -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
-        font-size: .9em; } }
+        font-size: .9em; }
+        .app-footer .content .image-decoration {
+          display: none; } }
     @media screen and (max-width: 600px) {
       .app-footer .content {
         padding: 2em 2em; } }
@@ -714,9 +817,14 @@ body::-webkit-scrollbar-thumb:vertical:hover {
       .app-footer .content {
         -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
-        grid-gap: 10px; }
+        grid-gap: 2em; }
         .app-footer .content .column {
-          border-left: none; } }
+          border-left: none; }
+        .app-footer .content .image-decoration {
+          display: block;
+          width: 160px;
+          bottom: initial;
+          top: 20px; } }
   .app-footer .copyright {
     text-align: center;
     padding: 2.5em 1em .5em 1em;

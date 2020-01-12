@@ -1,2 +1,50 @@
 @import "templates/main";
+
+.image-parallax{
+   width: 100%;
+   height: 70vh;
+   position: relative;
+   background: url("https://cdn.pixabay.com/photo/2015/06/24/15/45/ipad-820272_960_720.jpg");
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   @include flex(column,center,center);
+   .text,.title{
+      position: relative;
+      text-align: center;
+      color: #fff;
+      z-index: 1;
+   }
+   .title{
+      font-size: 3em;
+      text-align: center;
+      padding-bottom: .3em;
+      span{ font-weight: bold; font-size: 1.3em; }
+      @include responsive(650px){ font-size: 2.5em; }
+      @include responsive(450px){ font-size: 2em; }
+      @include responsive(350px){ font-size: 1.8em; }
+   }
+   .text{
+      width: 30%;
+      line-height: 1.5em;
+      @include responsive(900px){  width: 45%; }
+      @include responsive(600px){ width: 60%; }
+      @include responsive(400px){ width: 80%; font-size: 0.9em; }
+   }
+   &:after{
+      content : "";
+      width: 100%;
+      height: 100%;
+      background: rgba(#000,.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+   }
+
+   @include responsive(450px){
+      height: 45vh;
+   }
+}
+
 @import "templates/footer.scss";

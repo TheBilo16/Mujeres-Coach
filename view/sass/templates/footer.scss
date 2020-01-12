@@ -1,6 +1,7 @@
 .app-footer{
    border-top: 1px solid rgb(230,230,230);
    .content{
+      position: relative;
       font-size: 1.1em;
       padding: 3em 4em;
       display: grid;
@@ -27,6 +28,12 @@
             }
          }
       }
+      .image-decoration{
+         width: 140px;
+         position: absolute;
+         bottom: 20px;
+         right: 20px;
+      }
       @include responsive(1000px){
          grid-template-columns: 1fr 1fr 1fr;
       }
@@ -34,16 +41,18 @@
          padding: 2.5em 3em;
          grid-template-columns: 1fr 1fr;
          font-size: .9em;
+         .image-decoration{ display: none; }
       }
       @include responsive(600px){
          padding: 2em 2em;
       }
       @include responsive(450px){
          grid-template-columns: 1fr;
-         grid-gap: 10px;
+         grid-gap: 2em;
          .column{
             border-left: none;
          }
+         .image-decoration{ display: block; width: 160px; bottom: initial; top: 20px; }
       }
    }
    .copyright{

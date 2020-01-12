@@ -1,7 +1,7 @@
 //Slider Home
 var slider = {
    idBucle : null,
-   time : 2,
+   time : 4,
    image_count : 0,
    translate_x : 0,
    element : () => document.querySelector(".content-slider .slider"),
@@ -93,6 +93,9 @@ var viewImages = {
    },
    clickImage : function(){
       let images = document.querySelectorAll(".content-images .content .icon");
+      let left = this.buttons("btn-left");
+      let right = this.buttons("btn-right");
+
       [...images].forEach((img,i) => {
          img.addEventListener("click", ev => {
             this.translate_x = 100 * i;
@@ -100,6 +103,13 @@ var viewImages = {
                imgh.style.transform = `translateX(-${this.translate_x}%)`;
             }
             this.divHide().classList.add("animate");
+            if(i == 0){
+               left.classList.add("active");
+               right.classList.remove("active");
+            }else if(i == images.length - 1){
+               right.classList.add("active");
+               left.classList.remove("active");
+            }
          });
       });
    },
@@ -172,6 +182,7 @@ var comment = {
          let formData = new FormData(form);
          let id = JSON.parse(decodeURIComponent(this.formModal().getAttribute('data-pbl'))).id_publication;
          formData.append("id_publication",id);
+         
          let headers = { method : "POST", body : formData }
          this.clearInputs(form);
 
@@ -180,50 +191,43 @@ var comment = {
          if(response == "true"){
             alert("Comentario publicado");
             this.showingComments(blog.id_publication);
-            console.clear();
             this.close();
          }else{
             alert("Error database...");
          }
       });
    },
-   showingComments : function(publication) {
-      this.viewComments().innerHTML = `
-         <div class="loader-comment">
-            <p class="subtitle">Cargando comentarios...</p>
-            <div class="loader"></div>
-         </div>
-      `;
+   showingComments : async function(publication) {
+      const request = await fetch(`index.php?url=AllComments&id_publication=${publication}`)
+      const response = await request.json();
+      let divComments = this.viewComments();
 
-      fetch("index.php?url=AllComments&id_publication="+publication).then(r=>r.json()).then(request=>{
-         let divComments = this.viewComments();
-         divComments.innerHTML = "";
-         if(request.length > 0){
-            request.forEach((data,index)=>{
-               divComments.innerHTML += `
-                  <div class="comment">
-                    <div class="row icon">
-                        <div class="container-icon">
-                         <i class="fa fa-user"></i>
-                        </div>
-                     </div>
-                     <div class="row detail-comment">
-                        <div class="commenter-name">${data.username_comment}</div>
-                        <span class="comment-date">${data.date_comment}</span>
-                        <p class="text-comment">${data.text_comment}</p>
+      divComments.innerHTML = "";
+      if(response.length > 0){
+         response.forEach((data,index)=>{
+            divComments.innerHTML += `
+               <div class="comment">
+                  <div class="row icon">
+                     <div class="container-icon">
+                        <i class="fa fa-user"></i>
                      </div>
                   </div>
-               `;
-            });
-         }else{
-            divComments.innerHTML = `<div class="comment-0">
-               <div class="icon">
-                  <i class="fa fa-comment"></i>
+                  <div class="row detail-comment">
+                     <div class="commenter-name">${data.username_comment}</div>
+                     <span class="comment-date">${data.date_comment}</span>
+                     <p class="text-comment">${data.text_comment}</p>
+                  </div>
                </div>
-               <p class="message">Se el primero en comentar...</p>
-            </div>`;
-         }
-      });
+            `;
+         });
+      }else{
+         divComments.innerHTML = `<div class="comment-0">
+            <div class="icon">
+               <i class="fa fa-comment"></i>
+            </div>
+            <p class="message">Se el primero en comentar...</p>
+         </div>`;
+      }
    }
 }
 
@@ -316,6 +320,7 @@ var blog = {
 
                divExpand.prepend(div);
             }else if(i < 4){
+               textBig = textBig.length > 80 ? textBig.substr(0,80) + "..." : textBig;
                let template = `<div class="image published-card" data-aos="zoom-in" data-pbl='${encodeURIComponent(JSON.stringify(v))}'>
                   <img class="image-main handler-image-publication-blog" src="${v.path_image}" />
                   <div class="content-text">
@@ -336,7 +341,6 @@ var blog = {
                   </div>
                </div>`;
                divContent.innerHTML += template;
-               console.clear();
             }
          })   
          
@@ -606,7 +610,7 @@ var contact = {
 
          console.log(response);     //Debug ~ Delete when this ready
 
-         switch(""){
+         switch(response){
             case "mailSend":
                alert("Mensaje Enviado");
                this.clearInputs();
@@ -627,30 +631,27 @@ var contact = {
 window.addEventListener("load", ev => {
    let loc = window.location.href.split("/");
    let size = loc[loc.length - 1];
+   let url = size.split("?")[1].split("=")[1];
 
-   if(size != "index.php?url=admin" && size != "index.php?url=login") navAnimation.init();
+   if(url != "admin" && url != "login") navAnimation.init();
 
-   switch(size){
-      //Home
-      case "index.php?url=home":
+   switch(url){
+      case "home":
+      case "home#galeria":
          slider.init_slider();
          viewImages.__init__();
          contact.init();
          break;
-      //Blog
-      case "index.php?url=blog":
+      case "blog":
          blog.init();
          break;
-      //Login
-      case "index.php?url=login":
+      case "login":
          login.init();
          break;
-      //Admin
-      case "index.php?url=admin":
+      case "admin":
          publication.init();
          break;
-      //Contact
-      case "index.php?url=contact":
+      case "contact":
          contact.init();
          break;
       //About ~ Coaching
