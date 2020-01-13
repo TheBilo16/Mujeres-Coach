@@ -35,6 +35,14 @@ create table posts(
 ) engine = InnoDB;
 
 
+create table events(
+   id_event int auto_increment primary key,
+   date_create datetime default now(),
+   path_image varchar(500) not null,
+   title_event varchar(300) not null,
+   text_event varchar(2000) not null
+) engine = InnoDB;
+
 create view UsersComments as
 	select date_comment,username_comment,text_comment, id_publication from comments inner join posts 
     on comments.id_comment = posts.id_comment order by date_comment desc;
@@ -54,12 +62,22 @@ begin
 end//
 delimiter ; 
 
+
+delimiter //
+create procedure InsertEvent(pathImage varchar(500),title varchar(300), textE varchar(2000))
+begin
+	insert events(path_image,title_event,text_event) values(pathImage,title,textE);
+end//
+delimiter ;
+
+
 delimiter //
 create procedure InsertPublication(pathImage varchar(500),title varchar(300), textP varchar(2000))
 begin
 	insert publications(path_image,title_publication,text_publication) values(pathImage,title,textP);
 end//
 delimiter ;
+
 
 call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
 call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
@@ -70,3 +88,10 @@ call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape
 call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
 call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
 call InsertPublication("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Publicacion de Prueba","Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
+ 
+
+call InsertEvent("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Evento a","a Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
+call InsertEvent("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Evento b","b Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
+call InsertEvent("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Evento c","c Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
+call InsertEvent("https://cdn.pixabay.com/photo/2020/01/04/23/37/landscape-4742004_960_720.jpg","Evento d","d Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda perspiciatis quibusdam placeat aperiam ipsa dicta saepe asperiores dolor alias quo modi, reprehenderit repudiandae eaque iste dolorum illum adipisci eligendi natus.");
+
