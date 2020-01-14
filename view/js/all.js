@@ -231,6 +231,9 @@ var comment = {
    }
 }
 
+const loading = () => document.querySelector(".loading");
+var loadingClose = false;
+
 //Blog
 var blog = {
    id_publication:0,
@@ -330,6 +333,10 @@ var blog = {
                </div>`;
                divMinus.innerHTML += template;
             }else{
+               if(!loadingClose){
+                  loading().classList.add("animate");
+                  loadingClose = false;
+               }
                let template = `<div class="published-card" data-aos="zoom-in" data-pbl='${encodeURIComponent(JSON.stringify(v))}'>
                   <div class="container-image">
                      <img class="image-published handler-image-publication-blog" src="${v.path_image}" alt="url image" />
@@ -345,6 +352,10 @@ var blog = {
          })   
          
          if(responseJson.length < 5){
+            if(!loadingClose){
+               loading().classList.add("animate");
+               loadingClose = false;
+            }
             divContent.classList.add("not-publication");
             divContent.innerHTML = `<div class="publication-end" data-aos="zoom-in">
                <div class="icon">
@@ -406,7 +417,7 @@ var login = {
 }
 
 //Admin Panel
-var publication = {
+var adminPanel = {
    type: "",
    nav : () => document.querySelector("#nav-form"),
    textTitleHeader : () => document.querySelector("#text-row-title"),
@@ -443,7 +454,7 @@ var publication = {
    },
    back : function(button){
       const divPublications = document.querySelector("#content-publications");
-      button.addEventListener("click", ev => window.location.href = "index.php?url=admin")
+      button.addEventListener("click", ev => window.location.reload())
    },
    create : function(){
       let form = this.formPublication().querySelector("#form-insert-publication");
@@ -689,6 +700,38 @@ var contact = {
    }
 }
 
+//Event
+var event  = {
+   divContent : () => document.querySelector("#content-events"),
+   getEvents : async function(){
+      let Div = this.divContent();
+
+      const request = await fetch("index.php?url=eventRequest");
+      const response = await request.json();
+
+      if(response.length > 0){
+         let template = "";
+         for(let data of response){
+            template += `<div class="card">
+               <div class="head">
+                  <img src="${data.path_image}" alt="eventsBrunella" class="img-event" />
+               </div>
+               <div class="body">
+                  <p class="title">${data.title_event}</p>
+                  <p class="message">${data.text_event}</p>
+               </div>
+            </div>`;
+         }
+         Div.innerHTML = template;
+      }else{
+
+      }
+   },
+   init : function(){
+      this.getEvents();
+   }
+}
+
 //Init
 window.addEventListener("load", ev => {
    let loc = window.location.href.split("/");
@@ -711,7 +754,10 @@ window.addEventListener("load", ev => {
          login.init();
          break;
       case "admin":
-         publication.init();
+         adminPanel.init();
+         break;
+      case "events":
+         event.init();
          break;
       case "contact":
          contact.init();

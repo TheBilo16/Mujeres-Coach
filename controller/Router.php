@@ -108,6 +108,7 @@
             echo "error";
          }
       }
+      
       function SearchByTitleEvent(){
          require_once("model/Conection.php");
          require_once("model/Events.php");

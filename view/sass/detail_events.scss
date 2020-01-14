@@ -1,2 +1,78 @@
 @import "templates/main";
+
+.header-title{
+   width: 100%;
+   padding: 6em 0;
+   text-align: center;
+   .title{
+      font-size: 3em;
+      color: $color-base;
+      font-weight: bold;
+   }
+   @include responsive(950px){
+      padding: 5em 0;
+      font-size: .8em;
+   }
+   @include responsive(850px){
+      border-top: 1px solid rgb(230,230,230);
+   }
+}
+
+.body-events{
+   margin: 0 0 6em 0;
+   .content-events{
+      width: 70%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(1,1fr);
+      grid-gap: 1.5em;
+      .card{
+         width: 100%;
+         box-shadow: 0 5px 10px rgb(230,230,230);
+         display: flex; 
+         $h : 200px;
+         .head{
+            width: 40%;
+            line-height: 0;
+            padding: 1em;
+            .img-event{ 
+               width: 100%;
+               height: $h;
+               object-fit: cover;
+               object-position: center;
+               filter: brightness(80%);
+            }
+         }
+         .body{
+            width: 65%;
+            padding: 1.5em 1em 1em 1em;
+            height: $h;
+            .title{
+               font-size: 1.3em;
+               padding-bottom: .5em;
+               color: $color-base;
+            }
+            .message{
+               width: 100%;
+               color: lighten(#000,45);
+               font-size: .9em;
+            } 
+            overflow: auto;
+            &:-webkit-scrollbar{
+               display: none;
+            }
+         }
+         &:hover{
+            box-shadow: 0 5px 30px rgb(230,230,230);
+         }
+      }
+   }
+   @include responsive(950px){
+      margin: 0 0 4em 0;
+      .content-events{
+         width: 80%;
+      }
+   }
+}
+
 @import "templates/footer.scss";

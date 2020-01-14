@@ -6,6 +6,33 @@
 @import "./nav";
 @import "./aside";
 
+//Loader
+.loading{
+   width: 100%;
+   height: 100vh;
+   background: $color-base;
+   position: fixed;
+   top: 0;
+   left: 0;
+   opacity: 1;
+   z-index: 999999;
+   &.animate{ left: -100%; opacity: 0; }
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   .loader{
+      width: 60px;
+      height: 60px;
+      border: 4px solid #fff;
+      border-bottom: 4px solid transparent;
+      border-radius: 50%;
+      animation: loader .4s infinite linear;
+      @keyframes loader{
+         to{ transform: rotate(1turn) }
+      }
+   }
+}
+
 //Button Style Global
 .btn-global{
    padding: 0 .8em;
