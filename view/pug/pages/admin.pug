@@ -11,17 +11,18 @@ block header-content
 block content 
     .header-options
         button.link#logout-button Logout
-    .nav-options
+        button.link#back-button Atras
+    .nav-options#nav-form
         .search
             i.icon-search.fa.fa-search
-            input.input-search(placeholder="Search Publication")
+            input.input-search(placeholder="Search...")
         button.add-publication#add-publication
               i.fa.fa-plus
     .body-publications
         .publication#publication.toggle
             form#form-insert-publication.add-publication.toggle(enctype="multipart/form-data")
                 .row-title
-                    p.title.modal Agregar publicación
+                    p.title.modal#title-modal Insertar
                 .row-body-publication
                     .container-input
                         .fields 
@@ -38,9 +39,11 @@ block content
                         input.btn-cancel(type="reset",value="Cancelar")#btn-cancel-publication
                         input.btn-publication(type="submit",value="Publicar")
         .row-title
-            p.title Mis publicaciones
+            p.title#text-row-title Elige una Opcion
         .row-publications#content-publications
-            //Content js
+            .buttons
+                button.btn-option#publications-button Publications
+                button.btn-option#events-button Events
 
 block floating-content
 

@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Admin Panel Brunella</title>
-    <link rel="stylesheet" href="view/css/detail_admin.css?v=2.1"/>
+    <link rel="stylesheet" href="view/css/detail_admin.css?v=3"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="view/js/icons.js?v=2.1" async="async"></script>
-    <script src="view/js/build/all-min.js?v=2.1"></script>
+    <script src="view/js/icons.js?v=3" async="async"></script>
+    <script src="view/js/all.js?v=3"></script>
   </head>
   <body>
     <section class="app-content">
       <div class="header-options">
         <button class="link" id="logout-button">Logout</button>
+        <button class="link" id="back-button">Atras</button>
       </div>
-      <div class="nav-options">
+      <div class="nav-options" id="nav-form">
         <div class="search"><i class="icon-search fa fa-search"></i>
-          <input class="input-search" placeholder="Search Publication"/>
+          <input class="input-search" placeholder="Search..."/>
         </div>
         <button class="add-publication" id="add-publication"><i class="fa fa-plus"></i></button>
       </div>
@@ -26,7 +27,7 @@
         <div class="publication toggle" id="publication">
           <form class="add-publication toggle" id="form-insert-publication" enctype="multipart/form-data">
             <div class="row-title">
-              <p class="title modal">Agregar publicación</p>
+              <p class="title modal" id="title-modal">Insertar</p>
             </div>
             <div class="row-body-publication">
               <div class="container-input">
@@ -51,10 +52,13 @@
           </form>
         </div>
         <div class="row-title">
-          <p class="title">Mis publicaciones</p>
+          <p class="title" id="text-row-title">Elige una Opcion</p>
         </div>
         <div class="row-publications" id="content-publications">
-          <!--Content js-->
+          <div class="buttons">
+            <button class="btn-option" id="publications-button">Publications</button>
+            <button class="btn-option" id="events-button">Events</button>
+          </div>
         </div>
       </div>
     </section>

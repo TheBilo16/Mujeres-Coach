@@ -265,6 +265,11 @@
          @include responsive(750px) { width: 60%; }
          @include responsive(500px) { width: 80%; }
       }
+      .link{
+         padding-top: .5em;
+         color: $color-base;
+         &:hover{ text-decoration: underline; }
+      }
    }
    @include responsive(850px){ width: 90%; }
    @include responsive(650px){ width: 80%; margin: 3em auto; }

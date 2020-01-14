@@ -7,6 +7,12 @@
     .link{
         color: $color-base;
         &:hover{ text-decoration: underline; }
+        &#back-button{
+            display:none;
+            margin-left: 10px;
+            color: $color-base-2;
+            font-weight: bold;
+        }
     }
 }
 
@@ -40,11 +46,11 @@
     }
     @include responsive(600px) {
         width: 90%;
-        .search {
-            width: 100%;
-        }
+        .search { width: 100%; }
     }
-
+    &#nav-form{
+        display: none;
+    }
 }
 
 .body-publications {
@@ -84,7 +90,6 @@
                 height: 100%;
             }
 
-
             &.toggle {
                 visibility: hidden;
                 opacity: 0;
@@ -92,6 +97,7 @@
             .title {
                 margin-bottom: 20px;
             }
+
             .row-body-publication {
                 @include flex(column);
 
@@ -187,8 +193,11 @@
                     .btn-publication {
                         color:white;
                         background: $color-base;
-                        &:hover{
-                            background: lighten($color-base, 10);
+                        &:hover{ background: lighten($color-base, 10); }
+                        &:disabled{ 
+                            cursor: initial;
+                            background: darken($color-base,10);
+                            color: #444; 
                         }
                     }
                 }
@@ -199,8 +208,8 @@
     .row-title {
         .title {
             width: 100%;
-            font-size: 1.8em;
-            padding-bottom: .5em;
+            font-size: 1.5em;
+            padding-bottom: .3em;
             border-bottom: 1px solid rgb(230,230,230);
             &.modal{
                 border-bottom: none;
@@ -210,7 +219,7 @@
     }
     
     .row-publications {
-        margin: 3em 0;
+        margin: 2.5em 0;
         display: grid;
         grid-template-columns: repeat(3,1fr);
         grid-gap: 1em;
@@ -257,9 +266,21 @@
                     padding: 10px 15px;
                     background: $color-base;
                     color: white;
-                    }
                 }
             }
+        }
+        .buttons{
+            width: 100%;
+            display: flex;
+            .btn-option{
+                background: $color-base;
+                color: #fff;
+                padding: 0 1em;
+                line-height: 2em;
+                &:active{ transform: scale(.95); }
+                &:nth-child(2){ margin-left: 5px; }
+            }
+        }
         .not-found {
             position: relative;
             width: 500px;
@@ -287,9 +308,7 @@
                 font-weight: bold;
             }
         }
-        &.notPublication{
-            grid-template-columns: 1fr;
-        }
+        &.notPublication{ grid-template-columns: 1fr; }
 
         @include responsive(1000px) { grid-template-columns: repeat(2,1fr);}
 

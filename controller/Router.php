@@ -37,6 +37,11 @@
          }
       }
 
+      function events(){
+         $url = $this->routerBase . "events.html";
+         require_once($url);
+      }
+
       function admin(){
          session_start();
          if(isset($_SESSION["user"])){
@@ -56,6 +61,15 @@
          $blog = $publications->SelectPublication();
 
          echo $blog;
+      }
+      function eventRequest(){
+         require_once("model/Conection.php");
+         require_once("model/Events.php");
+         
+         $events = new Events();
+         $event = $events->Select();
+         
+         echo $event;
       }
 
       function logout(){
@@ -94,6 +108,17 @@
             echo "error";
          }
       }
+      function SearchByTitleEvent(){
+         require_once("model/Conection.php");
+         require_once("model/Events.php");
+         $events = new Events();
+         if(isset($_GET["title"])) {
+            echo $events->Select("like",$_GET["title"]);
+         }
+         else {
+            echo "error";
+         }         
+      }
 
       function FindPublication(){
          require_once("model/Conection.php");
@@ -109,29 +134,82 @@
 
       function AdminCreatePublication(){
          if(isset($_FILES["image"])){
-            require_once("model/Conection.php");
-            require_once("model/Publications.php");
-   
-            $path = "public/image_publications/" . $_FILES["image"]["name"];
+            $path = "public/publications/" . $_FILES["image"]["name"];
             $type = explode("/",$_FILES["image"]["type"]);
+            $size = $_FILES["image"]["size"];
    
             if($type[1] == "png" || $type[1] == "jpeg" || $type[1] == "jpg"){
-               $publications = new Publications();
                
-               $values = [
-                  ":image" => $path,
-                  ":title" => $_POST["title"],
-                  ":text" => $_POST["text"] 
-               ];  
-               
-               $response = $publications->InsertPublication($values);
-               if($response == "true"){
-                  if(move_uploaded_file($_FILES["image"]["tmp_name"],$path)){
-                     echo $response;
+               define("MB",1048576);
+
+               if($size < (2 * MB)){
+                  require_once("model/Conection.php");
+                  require_once("model/Publications.php");
+                  $publications = new Publications();
+
+                  $values = [
+                     ":image" => $path,
+                     ":title" => $_POST["title"],
+                     ":text" => $_POST["text"] 
+                  ];  
+                  
+                  $response = $publications->InsertPublication($values);
+                  if($response == "true"){
+                     if(move_uploaded_file($_FILES["image"]["tmp_name"],$path)){
+                        echo $response;
+                     }
+                  }else if($response == "false"){
+                     echo "ErrorUpdload";
                   }
-               }else if($response == "false"){
-                  echo "ErrorUpdload";
-               }
+
+               }else{
+                  echo "LimitSize";
+               }   
+
+            }else{
+               echo "NoImage";
+            }
+         }else{
+            echo "false";
+         }
+      }
+
+      function AdminCreateEvent(){
+         if(isset($_FILES["image"])){
+
+            $path = "public/events/" . $_FILES["image"]["name"];
+            $type = explode("/",$_FILES["image"]["type"]);
+            $size = $_FILES["image"]["size"];
+   
+            if($type[1] == "png" || $type[1] == "jpeg" || $type[1] == "jpg"){
+               
+               define("MB",1048576);
+
+               if($size < (2 * MB)){
+                  require_once("model/Conection.php");
+                  require_once("model/events.php");
+                  $events = new Events();
+
+                  $values = [
+                     ":image" => $path,
+                     ":title" => $_POST["title"],
+                     ":text" => $_POST["text"] 
+                  ];  
+                  
+                  $response = $events->Insert($values);
+                  if($response == "true"){
+                     $image_path = $_FILES["image"]["tmp_name"];
+                     if(move_uploaded_file($image_path,$path)){
+                        echo $response;
+                     }
+                  }else if($response == "false"){
+                     echo "ErrorUpdload";
+                  }
+
+               }else{
+                  echo "LimitSize";
+               }   
+
             }else{
                echo "NoImage";
             }
@@ -153,6 +231,21 @@
          }else{
             echo "deleteFail";
          }
+      }
+
+      function AdminDeleteEvent(){
+         if(isset($_POST["id_publication"])){
+            require_once("model/Conection.php");
+            require_once("model/Events.php");
+
+            $id = intval($_POST["id_publication"]);
+            $events = new Events();
+            $response = $events->delete($id);
+
+            echo ($response == "true" ? "deleteOk" : "deleteFail");
+         }else{
+            echo "deleteFail";
+         }         
       }
       
       function CreateComment() {
@@ -186,17 +279,18 @@
 
       function SendEmail() {
          if(isset($_POST["name"])){
-            $to = "jhonyvegacuya24@gmail.com";
+            $to = "Coaching.pnl@brunellabenavente.com";
             $email = $_POST["email"];
             $name = $_POST["name"];
             $phone = $_POST["phone"];
             $message = $_POST["message"];
-            $asunt = $message;
+            $asunt = "Correo de contacto";
             $headers ="MIME-Version: 1.0 \r\n";
-            $headers.="from: $email \r\n";
+            $headers.="from: brunellabenavente.com \r\n";
             $headers.="Reply-To:$email \r\n";
             $headers.="Content-type: text/html;charset=utf-8 ";
             $headers.="X-Priority: 3 \r\n";
+            $headers.= "X-MSMail-Priority: Normal\n";
             $headers.="X-Mailer: smail-PHP ".phpversion();
             $completeMessage = include("__template__.php");
 

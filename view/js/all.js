@@ -407,10 +407,14 @@ var login = {
 
 //Admin Panel
 var publication = {
+   type: "",
+   nav : () => document.querySelector("#nav-form"),
+   textTitleHeader : () => document.querySelector("#text-row-title"),
+   buttonBack : () => document.querySelector("#back-button"),
    btnAddPublication : () => document.getElementById('add-publication'),
    formButtonClose : () => document.getElementById("btn-cancel-publication"),
    formPublication : () => document.getElementById('publication'),
-   inputSearch : () => document.querySelector('.input-search'),
+   inputSearch : () => document.querySelector('.search .input-search'),
    logout : () => {
       const btn = document.querySelector("#logout-button");
       btn.addEventListener("click",async ev => {
@@ -437,7 +441,11 @@ var publication = {
            document.body.style.overflow = "auto";
        })
    },
-   createPublication : function(){
+   back : function(button){
+      const divPublications = document.querySelector("#content-publications");
+      button.addEventListener("click", ev => window.location.href = "index.php?url=admin")
+   },
+   create : function(){
       let form = this.formPublication().querySelector("#form-insert-publication");
       let picture = this.formPublication().querySelector("[name='image']");
 
@@ -447,8 +455,7 @@ var publication = {
          reader.onload = e => {
             preview.innerHTML = `
               <img src="${e.target.result}"/>
-              <p class="name-image">${ev.target.files[0].name}</p>
-              `;
+              <p class="name-image">${ev.target.files[0].name}</p>`;
          };
          reader.readAsDataURL(ev.target.files[0]);
       });
@@ -466,7 +473,11 @@ var publication = {
          let submit = form.querySelector("input[type='submit']");
          submit.disabled = true;
 
-         const requestData = await fetch("index.php?url=AdminCreatePublication",headers);
+         var pathRequest = "";
+         if(this.type == "publication") pathRequest = "index.php?url=AdminCreatePublication";
+         else if(this.type == "event") pathRequest = "index.php?url=AdminCreateEvent";
+
+         const requestData = await fetch(pathRequest,headers);
          const response = await requestData.text();
          
          switch(response){
@@ -479,6 +490,10 @@ var publication = {
                alert("Ocurrio un error al subir la imagen...");
                submit.disabled = false;
                break;
+            case "LimitSize":
+               alert("La imagen ingresada no puede superar los 2MB");
+               submit.disabled = false;
+               break;
             case "NoImage":
                alert("El archivo ingresado no es una Imagen");
                submit.disabled = false;
@@ -487,40 +502,53 @@ var publication = {
 
       })
    },
-   getPublications : async function(title = null,search = false){
+   getContent : async function(title = null,search = false){
       const divPublications = document.querySelector("#content-publications");
       
       var pathRequest;
-      if(title == null ) pathRequest = "index.php?url=blogRequestPublication";
-      else pathRequest = "index.php?url=SearchByTitle&title=" + title;
+      if(this.type == "publication"){
+         if(title == null ) pathRequest = "index.php?url=blogRequestPublication";
+         else pathRequest = "index.php?url=SearchByTitle&title=" + title;
+      }else if(this.type == "event"){
+         if(title == null ) pathRequest = "index.php?url=eventRequest";
+         else pathRequest = "index.php?url=SearchByTitleEvent&title=" + title;         
+      }
 
       const request = await fetch(pathRequest);
       const response = await request.json();
 
       divPublications.innerHTML = "";
       if(response.length > 0){
+         //Create Data
+         for(let v of response){
+            let image = v.path_image;
+            let title = !v.title_publication ? v.title_event : v.title_publication;
+            let text = !v.text_publication ? v.text_event : v.text_publication;
+            let date = v.date_create;
+            let id = !v.id_publication ? v.id_event : v.id_publication;
 
-         response.forEach(v => {
             divPublications.innerHTML += `<div class="card-published">
                <div class="container-image">
-                  <img src="${v.path_image}" alt="image" />
+                  <img src="${image}" alt="image" />
                </div>
                <div class="container-details">
                   <div class="text">
-                     <p class="dark">${v.title_publication}</p>
-                     <p class="text-publication">${v.text_publication}</p>
+                     <p class="dark">${title}</p>
+                     <p class="text-publication">${text}</p>
                   </div>
                </div>
                <div class="container-options">
-                  <p class="date">${v.date_create}</p>
-                  <button id="${v.id_publication}" class="delete">Eliminar</button>
+                  <p class="date">${date}</p>
+                  <button id="${id}" class="delete">Eliminar</button>
                </div>
             </div>`;
-         });
+         };
 
-         this.deletePublication();
-
-      }else{
+         //Init Delete
+         this.delete();
+      }
+      else{
+         //Detect Search and Not Search
          if(search){
             divPublications.classList.remove("notPublication");
             divPublications.innerHTML = `<div class="not-found">
@@ -537,8 +565,9 @@ var publication = {
             </div>`;
          }
       }
+
    },
-   deletePublication : function(){
+   delete : function(){
       const deletes = document.querySelectorAll(".card-published .delete");
       for(let d of deletes){
          d.addEventListener("click", async ev => {
@@ -554,7 +583,12 @@ var publication = {
 
             const awaitRequest = confirm("Estas seguro de quere borrar esta publicacion?");
             if(awaitRequest){
-               const request = await fetch("index.php?url=AdminDeletePublication",headers);
+               
+               var pathRequest = "";
+               if(this.type == "publication") pathRequest = "index.php?url=AdminDeletePublication";
+               else if(this.type == "event") pathRequest = "index.php?url=AdminDeleteEvent"
+
+               const request = await fetch(pathRequest,headers);
                const response = await request.text();
    
                switch(response){
@@ -571,17 +605,45 @@ var publication = {
          })
       }
    },
-   searchByTitle : function() {
-      this.inputSearch().addEventListener('keyup', ev => {
-         this.getPublications(this.inputSearch().value,true);
+   search : function() {
+      let input = this.inputSearch();
+      input.addEventListener('keyup', ev => {
+         if(ev.target.value.length > 0) this.getContent(ev.target.value,true);
+         else this.getContent();
       });
+   },
+   loadContent : function(){
+      let publication = document.querySelector("#publications-button");
+      let events = document.querySelector("#events-button");
+      let title = this.textTitleHeader();
+
+      publication.addEventListener("click", ev => {
+         this.type = "publication";
+         title.innerHTML = "Publications";
+         __init__();
+      });
+
+      events.addEventListener("click", ev => {
+         this.type = "event";
+         title.innerHTML = "Events";
+         __init__();
+      });
+
+      const __init__ = () => {
+         this.getContent();
+         this.create();
+         this.search();
+         this.nav().style.display = "flex";
+
+         let backBtn = this.buttonBack();
+         backBtn.style.display = "inline-block";
+         this.back(backBtn);
+      }
    },
    init : function() {  
       this.logout();
       this.toggleForm();
-      this.getPublications();
-      this.createPublication();
-      this.searchByTitle();
+      this.loadContent();
    }
 }
 
