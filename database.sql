@@ -42,18 +42,6 @@ create table posts(
    foreign key(id_comment) references comments(id_comment) on delete cascade on update cascade
 ) engine = InnoDB;
 
-<<<<<<< HEAD
-=======
-
-create table events(
-   id_event int auto_increment primary key,
-   date_create datetime default now(),
-   path_image varchar(500) not null,
-   title_event varchar(300) not null,
-   text_event varchar(2000) not null
-) engine = InnoDB;
-
->>>>>>> c8a9caec7f7b269e9cf31f8adb5c5f2cbec64f73
 create view UsersComments as
 	select date_comment,username_comment,text_comment, id_publication from comments inner join posts 
     on comments.id_comment = posts.id_comment order by date_comment desc;
