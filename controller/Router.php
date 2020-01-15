@@ -158,6 +158,8 @@
                   if($response == "true"){
                      if(move_uploaded_file($_FILES["image"]["tmp_name"],$path)){
                         echo $response;
+                     }else{
+                        echo "false";
                      }
                   }else if($response == "false"){
                      echo "ErrorUpdload";
@@ -188,7 +190,7 @@
 
                if($size < (2 * MB)){
                   require_once("model/Conection.php");
-                  require_once("model/events.php");
+                  require_once("model/Events.php");
                   $events = new Events();
 
                   $values = [
@@ -202,6 +204,8 @@
                      $image_path = $_FILES["image"]["tmp_name"];
                      if(move_uploaded_file($image_path,$path)){
                         echo $response;
+                     }else{
+                        echo "false";
                      }
                   }else if($response == "false"){
                      echo "ErrorUpdload";

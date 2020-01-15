@@ -871,6 +871,9 @@ body::-webkit-scrollbar-thumb:vertical:hover {
           width: 160px;
           bottom: initial;
           top: 20px; } }
+    @media screen and (max-width: 450px) {
+      .app-footer .content .image-decoration {
+        width: 120px; } }
   .app-footer .copyright {
     text-align: center;
     padding: 2.5em 1em .5em 1em;

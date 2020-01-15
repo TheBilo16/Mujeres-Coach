@@ -54,6 +54,9 @@
          }
          .image-decoration{ display: block; width: 160px; bottom: initial; top: 20px; }
       }
+      @include responsive(450px){
+         .image-decoration{ width: 120px; }
+      }
    }
    .copyright{
       text-align: center;

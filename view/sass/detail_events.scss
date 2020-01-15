@@ -16,10 +16,19 @@
    @include responsive(850px){
       border-top: 1px solid rgb(230,230,230);
    }
+   @include responsive(650px){
+      font-size: .7em;
+   }
+   @include responsive(450px){
+      font-size: .6em;
+   }
 }
 
 .body-events{
    margin: 0 0 6em 0;
+   &.line{ 
+      @include responsive(850px) {border-top: 1px solid rgb(230,230,230); }
+   }
    .content-events{
       width: 70%;
       margin: 0 auto;
@@ -70,7 +79,71 @@
    @include responsive(950px){
       margin: 0 0 4em 0;
       .content-events{
-         width: 80%;
+         width: 85%;
+      }
+   }
+   @include responsive(850px){
+      .content-events{
+         width: 95%;
+         .card > .head{ width: 50%; }
+         .card > .body{ width: 50%; }
+      }
+   }
+   @include responsive(630px){
+      .content-events{
+         width: 60%;
+         .card{
+            display: block;
+            .head,.body{ width: 100%; }
+            .body{
+               height: 150px;
+               padding: 1em;
+               padding-top: .5em;
+               font-size: 0.9em;
+               text-align: center;
+            }
+         }
+      }
+   }
+   @include responsive(550px){
+      .content-events{ width: 70%; }
+   }
+   @include responsive(450px){
+      .content-events{ 
+         width: 80%; 
+         .card > .body{ font-size: 0.88em; }
+      }
+   }
+   @include responsive(400px){
+      .content-events{ width: 90%; }
+   }
+   .not-events{
+      width: 100%;
+      padding: 10em 0 6em 0;
+      @include flex(column,center,center);
+      color: lighten(#000, 45);
+      
+      .sub{
+         padding-bottom: 0.5em;
+         font-size: 3em;
+         @include responsive(700px){
+            font-size: 2.5em;
+         }
+         @include responsive(500px){
+            font-size: 2.2em;
+         }
+      }
+      .mes{
+         width: 30%;
+         margin: 0 auto;
+         text-align: center;
+         @include responsive(700px){
+            width: 60%;
+            font-size: .9em;
+         }
+      }
+      @include responsive(500px){
+         padding: 8em 0 4em 0;
       }
    }
 }

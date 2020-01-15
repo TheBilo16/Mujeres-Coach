@@ -374,6 +374,10 @@ var blog = {
          sectionBlog.innerHTML = `<div class="not-found">
             <p class="message">No ahi publicaciones disponibles</p>
          </div>`;
+         if(!loadingClose){
+            loading().classList.add("animate");
+            loadingClose = false;
+         }
       }
    },
    init : function() {
@@ -437,6 +441,7 @@ var adminPanel = {
    toggleForm : function() {
        var f = this.formPublication();
        let add = f.querySelector("#form-insert-publication");
+       let submit = add.querySelector("input[type='submit']");
        var style = "toggle";
        var preview  = document.querySelector('.preview-image');
 
@@ -450,6 +455,7 @@ var adminPanel = {
            add.classList.add(style);
            preview.innerHTML = "";
            document.body.style.overflow = "auto";
+           add.disabled = false;
        })
    },
    back : function(button){
@@ -462,13 +468,18 @@ var adminPanel = {
 
       picture.addEventListener('change', ev => {
          var preview  = document.querySelector('.preview-image');
-         var reader = new FileReader();
-         reader.onload = e => {
-            preview.innerHTML = `
-              <img src="${e.target.result}"/>
-              <p class="name-image">${ev.target.files[0].name}</p>`;
-         };
-         reader.readAsDataURL(ev.target.files[0]);
+         var type = ev.target.files[0].type.split("/")[0];
+         if(type == "image"){
+            var reader = new FileReader();
+            reader.onload = e => {
+               preview.innerHTML = `
+                 <img src="${e.target.result}"/>
+                 <p class="name-image">${ev.target.files[0].name}</p>`;
+            };
+            reader.readAsDataURL(ev.target.files[0]);
+         }else{
+            alert("Ingrese una imagen porfavor...");
+         }
       });
 
       form.addEventListener("submit", async ev => {
@@ -497,7 +508,7 @@ var adminPanel = {
                window.location = "index.php?url=admin";
                break;
             case "false":
-            case "ErrorUpload":
+            case "ErrorUpdload":
                alert("Ocurrio un error al subir la imagen...");
                submit.disabled = false;
                break;
@@ -702,6 +713,7 @@ var contact = {
 
 //Event
 var event  = {
+   header : () => document.querySelector("#header-title"),
    divContent : () => document.querySelector("#content-events"),
    getEvents : async function(){
       let Div = this.divContent();
@@ -724,7 +736,12 @@ var event  = {
          }
          Div.innerHTML = template;
       }else{
-
+         this.header().style.display = "none";
+         Div.parentNode.classList.add("line");
+         Div.parentNode.innerHTML = `<div class="not-events">
+            <p class="sub"><i class="fa fa-sad-tear"></i> Lo sentimos</p>
+            <p class="mes">No tenemos eventos disponibles en este momento</p>
+         </div>`;
       }
    },
    init : function(){
