@@ -733,9 +733,17 @@ var event  = {
                   <p class="message">${data.text_event}</p>
                </div>
             </div>`;
+            if(!loadingClose){
+               loading().classList.add("animate");
+               loadingClose = false;
+            }
          }
          Div.innerHTML = template;
       }else{
+         if(!loadingClose){
+            loading().classList.add("animate");
+            loadingClose = false;
+         }
          this.header().style.display = "none";
          Div.parentNode.classList.add("line");
          Div.parentNode.innerHTML = `<div class="not-events">
@@ -848,18 +856,6 @@ var video = {
       video.addEventListener("loadeddata", ev => {
          this.bar.text_time_final().innerHTML = this.time(video.duration);
          this.time_f = video.duration;
-      })
-
-      /*video.addEventListener("loadstart", ev => {
-         let v = video.parentElement;
-         v.innerHTML += `<div class="loading"><div class="spinner"></div></div>`;
-         console.log("hoa");
-      })*/
-
-      video.addEventListener("canplay", ev => {
-         let v = video.parentElement;
-         let loading = v.querySelector(".loading");
-         //v.removeChild(loading);
       })
 
       video.addEventListener("ended", ev => {
