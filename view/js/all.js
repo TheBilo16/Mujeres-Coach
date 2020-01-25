@@ -749,6 +749,138 @@ var event  = {
    }
 }
 
+//Video
+var video = {
+   time_f : 0,
+   video : () => document.querySelector("#video"),
+   buttons : {
+      play : () => document.querySelector("#button-play"),
+      sound : () => document.querySelector("#button-sound"),
+      stop : () => document.querySelector("#button-stop")
+   },
+   bar : {
+      text_time : () => document.querySelector("#time"),
+      text_time_final : () => document.querySelector("#time-final"),
+      bar_complete : () => document.querySelector("#bar"),
+      bar_internal : () => document.querySelector("#internal-bar")
+   },
+   time :  function(seconds){
+      var d=new Date(seconds*1000); 
+      var minutes = (d.getMinutes()<9)?"0"+d.getMinutes():d.getMinutes();
+      var seconds = (d.getSeconds()<9)?"0"+d.getSeconds():d.getSeconds();
+      return minutes+":"+seconds;	 
+   },
+   click_play : function(){
+      let video = this.video(),
+          play = this.buttons.play();
+      play.addEventListener("click", ev => {
+         if(video.paused){
+            video.play();
+            play.innerHTML = "<i class='fa fa-pause-circle'></i>";
+         }else{
+            video.pause();
+            play.innerHTML = "<i class='fa fa-play-circle'></i>";
+         }
+      });
+   },
+   click_sound : function(){
+      let video = this.video(),
+         sound = this.buttons.sound(),
+         state = 0;  
+      sound.addEventListener("click", ev => {
+         switch(state){
+            case 0:
+               video.volume = 0;
+               state = 1;
+               sound.innerHTML = `<i class="fa fa-volume-mute"></i>`;
+               break;
+            case 1:
+               video.volume = 0.5;
+               state = 2;
+               sound.innerHTML = `<i class="fa fa-volume-down"></i>`;
+               break;
+            case 2:
+               video.volume = 1;
+               state = 0;
+               sound.innerHTML = `<i class="fa fa-volume-up"></i>`;
+               break;
+         }
+      })
+   },
+   click_stop : function(){
+      let video = this.video(),
+         stop = this.buttons.stop(),
+         bar = this.bar.bar_internal(),
+         play = this.buttons.play();
+      stop.addEventListener("click", ev => {
+         video.load();
+         play.currentTime = 0;
+         bar.style.width = "0%";
+         play.innerHTML = "<i class='fa fa-play-circle'></i>";
+      })      
+   },
+   onProgress : function() {
+      let video = this.video(),
+      bar = this.bar.bar_internal(),
+      duration = this.bar.text_time_final(),
+      time = this.bar.text_time();
+      
+      video.addEventListener('timeupdate', ev => {
+         time.innerHTML = this.time(video.currentTime);
+         bar.style.width = (video.currentTime/video.duration*100)+"%";      
+      });
+   },
+   click_bar : function(){
+      let video = this.video(),
+            bar = this.bar.bar_complete(),
+            xl = bar.getBoundingClientRect();
+      bar.addEventListener("click", ev => {
+         let operation = (ev.offsetX / xl.width) * 100;
+         operation = (this.time_f * operation) / 100;
+         video.currentTime = operation;
+      })
+   },
+   initialize : function(){
+      let video = this.video(),
+            bar = this.bar.bar_internal(),
+            play = this.buttons.play();
+
+      video.addEventListener("loadeddata", ev => {
+         this.bar.text_time_final().innerHTML = this.time(video.duration);
+         this.time_f = video.duration;
+      })
+
+      /*video.addEventListener("loadstart", ev => {
+         let v = video.parentElement;
+         v.innerHTML += `<div class="loading"><div class="spinner"></div></div>`;
+         console.log("hoa");
+      })*/
+
+      video.addEventListener("canplay", ev => {
+         let v = video.parentElement;
+         let loading = v.querySelector(".loading");
+         //v.removeChild(loading);
+      })
+
+      video.addEventListener("ended", ev => {
+         video.load();
+         play.currentTime = 0;
+         bar.style.width = "0%";
+         play.innerHTML = "<i class='fa fa-play-circle'></i>";      
+         this.time_f = 0;   
+      })
+   },
+   init : function(){
+      this.initialize();
+      this.click_play();
+      this.click_sound();
+      this.click_stop();
+      this.onProgress();
+      this.click_bar();
+      window.addEventListener("resize", ev => this.click_bar())
+   }
+}
+
 //Init
 window.addEventListener("load", ev => {
    let loc = window.location.href.split("/");
@@ -756,6 +888,8 @@ window.addEventListener("load", ev => {
    let url = size.split("?")[1].split("=")[1];
 
    if(url != "admin" && url != "login") navAnimation.init();
+
+   if(url == "home") video.init();
 
    switch(url){
       case "home":

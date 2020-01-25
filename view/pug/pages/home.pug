@@ -2,7 +2,7 @@ extends ../templates/base
 
 block title
    title Homepage
-block css
+append css
    link(rel="stylesheet", href=`view/css/detail_home.css?v=${version}`)
 block content
    .content-slider
@@ -63,6 +63,10 @@ block content
       .desc(data-aos="fade-up")
          p.message ¡Mire nuestros proximos eventos!
          a(href="index.php?url=events").link Click aqui
+   .central-title(data-aos="fade-up")
+      p.title Presentacion
+   .content-video
+      include ../components/video
 prepend footer-content
    include ../templates/aside.pug
 append floating-content

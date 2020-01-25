@@ -275,4 +275,33 @@
    @include responsive(650px){ width: 80%; margin: 3em auto; }
 }
 
+.content-video{
+   width: 50%;
+   margin: 0 auto;
+   @import "components/video";
+   @include responsive(950px){
+      width: 70%;
+      .video-content .video{
+         height: 350px;
+      }
+   }
+   @include responsive(750px){
+      width: 80%;
+      .video-content .video{
+         height: 300px;
+      }
+   }
+   @include responsive(550px){
+      width: 85%;
+      .video-content .video{
+         height: 250px;
+      }
+   }
+   @include responsive(450px){
+      .video-content .video{
+         height: 180px;
+      }
+   }
+}
+
 @import "templates/footer";

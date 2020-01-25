@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Homepage</title>
-    <link rel="stylesheet" href="view/css/detail_home.css?v=4"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="view/assets/icon.png"/>
+    <link rel="stylesheet" href="view/css/detail_home.css?v=5"/>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="view/js/icons.js?v=4" async="async"></script>
-    <script src="view/js/all.js?v=4"></script>
+    <script src="view/js/icons.js?v=5" async="async"></script>
+    <script src="view/js/all.js?v=5"></script>
   </head>
   <body>
     <header class="app-title">
@@ -114,6 +115,31 @@
         </div>
         <div class="desc" data-aos="fade-up">
           <p class="message">¡Mire nuestros proximos eventos!</p><a class="link" href="index.php?url=events">Click aqui</a>
+        </div>
+      </div>
+      <div class="central-title" data-aos="fade-up">
+        <p class="title">Presentacion</p>
+      </div>
+      <div class="content-video">
+        <div class="video-content" data-aos="fade-left">
+          <div class="video">
+            <video class="container-source" preload="none" poster="view/assets/icon.png" id="video"> 
+              <source src="public/videos/Brunella.mp4" type="video/mp4"/>
+            </video>
+          </div>
+          <div class="controls">
+            <div class="button-play" id="button-play"><i class="fa fa-play-circle"></i></div>
+            <div class="button-stop" id="button-stop"><i class="fa fa-stop"></i></div>
+            <div class="progress-bar">
+              <div class="bar" id="bar">
+                <div class="internal-bar" id="internal-bar"></div>
+              </div>
+              <div class="text">
+                <p class="t"><span id="time">00:00</span> / <span id="time-final">00:00</span></p>
+              </div>
+            </div>
+            <div class="button-sound" id="button-sound"><i class="fa fa-volume-up"></i></div>
+          </div>
         </div>
       </div>
     </section>

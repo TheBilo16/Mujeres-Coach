@@ -1,0 +1,16 @@
+.video-content(data-aos="fade-left")
+   .video
+      video.container-source(preload="none" poster="view/assets/icon.png")#video 
+         source(src="public/videos/Brunella.mp4" type="video/mp4")
+   .controls
+      .button-play#button-play
+         i.fa.fa-play-circle
+      .button-stop#button-stop
+         i.fa.fa-stop
+      .progress-bar
+         .bar#bar
+            .internal-bar#internal-bar
+         .text
+            p.t <span id="time">00:00</span> / <span id="time-final">00:00</span>
+      .button-sound#button-sound
+         i.fa.fa-volume-up

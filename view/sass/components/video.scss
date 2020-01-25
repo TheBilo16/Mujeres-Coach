@@ -1,0 +1,108 @@
+.video-content{
+   width: 100%;
+   border:1px solid rgb(230,230,230);  /*debug*/
+
+   .video{
+      width: 100%;
+      height: 400px;
+      position: relative;
+      .container-source{
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+      .loading{
+         background: rgba(#000,.5);
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         line-height: 0;
+         margin: 0;
+         @include flex(row,center,center);
+         .spinner{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 5px solid transparent;
+            border-bottom: 5px solid #fff; 
+            animation: spin .8s infinite ease-in-out;
+            @keyframes spin{
+               from{ transform: rotate(0); }
+               to{ transform: rotate(1turn); }
+            }
+         }
+      }
+   }
+
+   .container-source:hover .controls .button-expand{
+      visibility: visible;
+      opacity: 1;
+   }
+
+   .controls{
+      background: #2f2f2f;
+      display: flex; 
+
+      .button-play{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         color: #fff;
+         padding: 0 .5em;
+         cursor: pointer;
+         font-size: 1.2em;
+         &:hover{ color: #9e9e9e; }
+      }
+
+      .progress-bar{
+         padding: 0 .5em;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 100%;
+         .bar{
+            width: 100%;
+            margin: 0 auto;
+            height: 5px;
+            border-radius: 1em;
+            background: #9e9e9e;
+            cursor: pointer;
+
+            .internal-bar{
+               width: 0%;
+               height: 100%;
+               background: #fff;
+               border-radius: 1em;
+            }
+         }
+
+         .text{
+            flex: none;
+            padding: 0 1em;
+            font-size: 0.8em;
+            color: #fff;
+         }
+      }
+      
+      .button-sound, .button-stop{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         color: #fff;
+         cursor: pointer;
+         &:hover{ color: #9e9e9e; }
+      }
+
+      .button-sound{
+         width: 50px;
+      }
+
+      .button-stop{
+         padding: 0 .3em;
+      }
+
+      > * { height: 30px; }
+   }
+}
