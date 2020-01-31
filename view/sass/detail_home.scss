@@ -147,6 +147,7 @@
    display: grid;
    grid-template-columns: 1fr 1fr;
    .image{
+      min-height: 300px;
       height: auto;
       background-image: url("../assets/brunella_profile.jpg");
       background-size: cover;
@@ -187,6 +188,7 @@
       @include flex(column-reverse,none,none);
       text-align: center;
       .image {
+         min-height: 200px;
          height: 200px;
       }
       .desc{

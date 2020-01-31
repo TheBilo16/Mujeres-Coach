@@ -18,7 +18,7 @@ block content
       .text(data-aos="fade-left")
          p.title-text ¡Coaching para todas!
          p.desc-text Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, quasi sint molestiae explicabo ratione facere accusantium tempore quo corporis, hic quae quidem ab eos nisi. Quis rerum dolores necessitatibus nisi debitis minima facere, excepturi, enim doloremque perferendis porro, eveniet odio?
-         a(href="coaching.html").btn-global Ver mas
+         a(href="index.php?url=coaching").btn-global Ver mas
    #services
    .central-title(data-aos="fade-up")
       p.title Servicios
@@ -59,9 +59,9 @@ block content
       p.title Galeria de Fotos
    .content-images
       .content
-         -for(var i = 0;i < 8; i++)
+         each i in images
             .image(data-aos="zoom-in")
-               img(src="view/assets/brunella_profile.jpg", alt="").img
+               img(src=i.link, alt="").img
                .icon
                   i.fa.fa-image
       .desc(data-aos="fade-up")

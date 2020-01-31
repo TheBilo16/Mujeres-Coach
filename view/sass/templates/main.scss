@@ -71,8 +71,8 @@
       position: relative;
       @include flex(row,center,center);
       .container-images{
-         width: 70%;
-         height: 80%;
+         width: 60%;
+         height: 90%;
          overflow: hidden;
          position: relative;
          @include flex(row,flex-start,center){ flex: 0 0 auto; };
@@ -84,15 +84,6 @@
          }
          @include responsive(750px){
             width: 100%;
-         }
-         &:after{
-            content:"";
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: rgba(#000,.3);
          }
       }
       .left,.right{
