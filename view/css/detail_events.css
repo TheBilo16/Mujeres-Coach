@@ -499,8 +499,8 @@ body::-webkit-scrollbar-thumb:vertical:hover {
     -ms-flex-align: center;
     align-items: center; }
     .view-images-expand .image .container-images {
-      width: 60%;
-      height: 90%;
+      width: 65%;
+      height: 75%;
       overflow: hidden;
       position: relative;
       display: -webkit-box;
@@ -524,12 +524,18 @@ body::-webkit-scrollbar-thumb:vertical:hover {
         height: 100%;
         -o-object-fit: cover;
         object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
         -webkit-transition: .3s;
         -o-transition: .3s;
         transition: .3s; }
       @media screen and (max-width: 750px) {
         .view-images-expand .image .container-images {
-          width: 100%; } }
+          width: 70%;
+          height: 75%; }
+          .view-images-expand .image .container-images .image-expand {
+            min-height: 250px;
+            height: auto; } }
     .view-images-expand .image .left, .view-images-expand .image .right {
       width: -webkit-max-content;
       width: -moz-max-content;

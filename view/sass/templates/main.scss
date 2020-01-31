@@ -71,8 +71,8 @@
       position: relative;
       @include flex(row,center,center);
       .container-images{
-         width: 60%;
-         height: 90%;
+         width: 65%;
+         height: 75%;
          overflow: hidden;
          position: relative;
          @include flex(row,flex-start,center){ flex: 0 0 auto; };
@@ -80,10 +80,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
             transition: .3s;
          }
          @include responsive(750px){
-            width: 100%;
+            width: 70%;
+            height: 75%;
+            .image-expand{ min-height: 250px; height: auto; }
          }
       }
       .left,.right{
